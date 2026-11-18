@@ -1,0 +1,32 @@
+# --- Secretos: NUNCA al repo ---
+.env
+*.pem
+*.key
+*.crt
+
+# --- Python ---
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# --- Datos pesados o sensibles ---
+# Los logs brutos se versionan solo anonimizados y en data/raw/muestras/.
+data/raw/*
+!data/raw/.gitkeep
+!data/raw/muestras/
+data/procesado/*.parquet
+results/**/modelos/*.joblib
+
+# --- Referencias: PDFs con copyright, solo locales (las citas van en el informe) ---
+informe/referencias/*.pdf
+
+# --- Editor / SO ---
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*

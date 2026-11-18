@@ -1,0 +1,112 @@
+# Stack ELK del laboratorio (TP Final SOR2 — E3).
+# Corre DENTRO de la VM monitoreada. auditd, Apache y Filebeat van instalados en la VM, no acá.
+#
+# Seguridad:
+#  - xpack.security habilitado: todo acceso requiere usuario/contraseña.
+#  - Cada servicio usa su propio usuario con mínimo privilegio (ver configs/elasticsearch/setup.sh).
+#  - Puertos atados a IPs concretas. Docker publica puertos con reglas iptables propias que
+#    NO pasan por ufw, así que la restricción real es esta lista de "ports", no el firewall:
+#      Elasticsearch 9200 -> solo 127.0.0.1 (Python y pruebas desde la propia VM)
+#      Logstash      5044 -> solo 127.0.0.1 (Filebeat corre en la misma VM)
+#      Kibana        5601 -> solo IP host-only (navegador en Windows)
+#  - Sin TLS: válido en nodo único (discovery.type=single-node); declarado como limitación.
+#
+# Uso:  cp .env.example .env  (completar)  &&  docker compose up -d
+
+name: sor2-e3
+
+services:
+  # Contenedor efímero: espera a ES, fija la contraseña de kibana_system y crea
+  # roles/usuarios del laboratorio. Termina con código 0 y no vuelve a correr.
+  setup:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
+    command: ["bash", "/setup/setup.sh"]
+    environment:
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - KIBANA_PASSWORD=${KIBANA_PASSWORD}
+      - LOGSTASH_INTERNAL_PASSWORD=${LOGSTASH_INTERNAL_PASSWORD}
+      - ANALYST_PASSWORD=${ANALYST_PASSWORD}
+    volumes:
+      - ./configs/elasticsearch/setup.sh:/setup/setup.sh:ro
+    depends_on:
+      es01:
+        condition: service_healthy
+    restart: "no"
+
+  es01:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
+    environment:
+      - node.name=es01
+      - cluster.name=${CLUSTER_NAME}
+      - discovery.type=single-node
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=true
+      - xpack.security.http.ssl.enabled=false
+      - xpack.security.transport.ssl.enabled=false
+      - xpack.license.self_generated.type=basic
+      - xpack.ml.enabled=false          # la consigna no usa Elastic ML: el modelo va en scikit-learn
+      - ES_JAVA_OPTS=-Xms${ES_HEAP} -Xmx${ES_HEAP}
+    ulimits:
+      memlock: { soft: -1, hard: -1 }
+      nofile: { soft: 65536, hard: 65536 }
+    mem_limit: ${ES_MEM_LIMIT}
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    ports:
+      - "127.0.0.1:9200:9200"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s -o /dev/null -w '%{http_code}' -u elastic:${ELASTIC_PASSWORD} http://localhost:9200 | grep -q 200"]
+      interval: 10s
+      timeout: 10s
+      retries: 30
+    restart: unless-stopped
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:${STACK_VERSION}
+    environment:
+      - SERVERNAME=kibana
+      - SERVER_PUBLICBASEURL=http://${LAB_IP}:5601
+      - ELASTICSEARCH_HOSTS=http://es01:9200
+      - ELASTICSEARCH_USERNAME=kibana_system
+      - ELASTICSEARCH_PASSWORD=${KIBANA_PASSWORD}
+      - XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY=${KIBANA_ENCRYPTION_KEY}
+      - TELEMETRY_OPTIN=false
+    mem_limit: ${KIBANA_MEM_LIMIT}
+    volumes:
+      - kibanadata:/usr/share/kibana/data
+    ports:
+      - "${LAB_IP}:5601:5601"
+    depends_on:
+      setup:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s -I http://localhost:5601 | grep -q 'HTTP/1.1 302'"]
+      interval: 10s
+      timeout: 10s
+      retries: 60
+    restart: unless-stopped
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:${STACK_VERSION}
+    environment:
+      - LS_JAVA_OPTS=-Xms${LS_HEAP} -Xmx${LS_HEAP}
+      - LOGSTASH_INTERNAL_PASSWORD=${LOGSTASH_INTERNAL_PASSWORD}
+    mem_limit: ${LS_MEM_LIMIT}
+    volumes:
+      - ./configs/logstash/pipeline:/usr/share/logstash/pipeline:ro
+    ports:
+      - "127.0.0.1:5044:5044"
+    depends_on:
+      setup:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:9600/ > /dev/null"]
+      interval: 10s
+      timeout: 10s
+      retries: 30
+    restart: unless-stopped
+
+volumes:
+  esdata:
+  kibanadata:

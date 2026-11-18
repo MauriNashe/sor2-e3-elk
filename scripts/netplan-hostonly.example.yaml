@@ -1,0 +1,12 @@
+# Ejemplo de IP fija para la interfaz host-only de la VM.
+# 1. Ver el nombre de la segunda interfaz:   ip -br link    (ej. enp0s8)
+# 2. Copiar:   sudo cp scripts/netplan-hostonly.example.yaml /etc/netplan/60-hostonly.yaml
+# 3. Ajustar el nombre de la interfaz, luego:   sudo chmod 600 /etc/netplan/60-hostonly.yaml && sudo netplan apply
+# La interfaz NAT (enp0s3) queda como la configuró el instalador (DHCP).
+network:
+  version: 2
+  ethernets:
+    enp0s8:
+      dhcp4: false
+      addresses:
+        - 192.168.56.10/24

@@ -1,0 +1,13 @@
+# Entorno de análisis (se instala en la VM: python3 -m venv .venv && .venv/bin/pip install -r requirements.txt)
+# El cliente de Elasticsearch debe tener la misma versión MAYOR que el servidor (9.x).
+# Una vez instalado, congelar versiones exactas con: pip freeze > requirements.lock
+elasticsearch>=9,<10
+pandas>=2.2
+numpy>=1.26
+scikit-learn>=1.5
+matplotlib>=3.8
+joblib>=1.4
+requests>=2.32
+psutil>=5.9
+pyyaml>=6.0
+python-dotenv>=1.0
