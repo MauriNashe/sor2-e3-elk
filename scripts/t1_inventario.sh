@@ -2,7 +2,9 @@
 # Inventario de recursos y versiones del laboratorio (Tarea 1). Se ejecuta en la VM, desde la raíz del repo:
 #     bash scripts/t1_inventario.sh
 # Salida: results/t1/inventario_<fecha>.txt  -> base de la tabla de recursos del informe.
+# Pide la contraseña de sudo al principio (auditctl y ufw necesitan root); no hace falta correrlo con sudo.
 set -uo pipefail
+sudo -v
 
 REPO_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 set -a; source "$REPO_DIR/.env"; set +a
@@ -36,10 +38,11 @@ curl -s -u "elastic:$ELASTIC_PASSWORD" http://127.0.0.1:9200/_nodes/jvm \
 sec "Límites y consumo de los contenedores"
 docker stats --no-stream --format 'table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.MemPerc}}'
 
-sec "Reglas auditd cargadas"
-auditctl -l 2>/dev/null || echo "(requiere sudo: sudo auditctl -l)"
+sec "Reglas y estado de auditd"
+sudo auditctl -l
+sudo auditctl -s
 
 sec "Firewall"
-ufw status 2>/dev/null || echo "(requiere sudo: sudo ufw status verbose)"
+sudo ufw status verbose
 
 echo; echo "Guardado en $OUT"

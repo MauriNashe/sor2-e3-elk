@@ -1,0 +1,44 @@
+=== Pruebas T1 — 2026-11-18T22:21:08-03:00 — host sor2-lab ===
+
+[1] Acceso sin credenciales debe ser rechazado
+  [OK]    GET / sin auth (esperado 401, obtenido 401)
+[2] Acceso con credenciales
+  [OK]    GET / con elastic (esperado 200, obtenido 200)
+{
+  "cluster_name": "sor2-lab",
+  "version": "9.5.6"
+}
+[3] Indexar documento de prueba en lab-test
+{
+  "_index": "lab-test",
+  "_id": "1",
+  "result": "created"
+}
+[4] Buscar el documento
+  [OK]    documentos encontrados en lab-test (esperado 1, obtenido 1)
+[5] Kibana: verificar a mano desde Windows (captura de Dev Tools: GET lab-test/_search)
+  [OK]    Kibana responde en 192.168.56.10:5601 (esperado 302, obtenido 302)
+[6] Elasticsearch NO expuesto fuera de localhost
+  [OK]    ES por IP host-only (192.168.56.10:9200) inaccesible (esperado 000, obtenido 000)
+    Puertos en escucha:
+      192.168.56.10:5601
+      127.0.0.1:5044
+      127.0.0.1:9200
+      0.0.0.0:22
+      [::]:22
+      *:80
+[7] Mínimo privilegio: logstash_internal no puede leer ni borrar
+  [OK]    logstash_internal _search (esperado 403, obtenido 403)
+  [OK]    logstash_internal DELETE índice (esperado 403, obtenido 403)
+  [OK]    lab_analyst puede leer lab-test (esperado 200, obtenido 200)
+  [OK]    lab_analyst no puede escribir en lab-test (esperado 403, obtenido 403)
+[8] Heap de Elasticsearch
+{
+  "nodo": "es01",
+  "version": "9.5.6",
+  "heap_max_bytes": 2147483648,
+  "heap_max_gb": 2
+}
+
+=== Resultado: 9 OK, 0 fallas ===
+Salida guardada en /home/labadmin/sor2-e3-elk-ml/results/t1/pruebas_20261118_222108.txt

@@ -68,19 +68,44 @@ latencias (incidente → evento → ingesta → alerta) se miden sin depender de
 
 ## Reproducción paso a paso
 
-### 1. Crear la VM (VirtualBox)
+> Versión corta, solo comandos con su resultado esperado: [PASO_A_PASO.md](PASO_A_PASO.md).
 
-1. ISO de **Ubuntu Server 24.04 LTS** (ubuntu.com).
-2. VM Linux/Ubuntu 64-bit con **10 GB de RAM** (mínimo 8), **4 vCPU** y **disco dinámico de 40 GB**.
-3. Redes:
-   - Adaptador 1: **NAT**.
-   - Adaptador 2: **Solo-anfitrión (host-only)**, red `192.168.56.0/24`. Se crea en *Archivo → Herramientas → Administrador de red*.
-4. Instalación: marcar **Install OpenSSH server**. **No** marcar el snap de Docker.
-5. IP fija para la interfaz host-only: ver [`scripts/netplan-hostonly.example.yaml`](scripts/netplan-hostonly.example.yaml).
-6. Desde Windows: `ssh <usuario>@192.168.56.10`.
+### 1. Crear la VM (Hyper-V)
 
-> Si la VM va lenta porque VirtualBox convive con Hyper-V (Docker Desktop/WSL2), cerrá Docker Desktop:
-> en este proyecto Docker corre dentro de la VM.
+Configuración usada en el laboratorio de referencia:
+
+| Parámetro | Valor |
+|---|---|
+| Anfitrión | Windows 11 Pro for Workstations · AMD Ryzen 5 5600 (6 núcleos/12 hilos) · 16 GB de RAM · Integridad de memoria (VBS/HVCI) activa |
+| Hipervisor | Hyper-V (rol de Windows) |
+| ISO | `ubuntu-24.04.5-live-server-amd64.iso` ([releases.ubuntu.com/24.04](https://releases.ubuntu.com/24.04/); verificar con `SHA256SUMS`) |
+| VM | Generación 2, arranque seguro con la plantilla *Microsoft UEFI Certificate Authority* |
+| Memoria | 8 GB **fija** (memoria dinámica desactivada). Con 10 GB Hyper-V no pudo arrancar la VM: necesita esa memoria libre de una vez y el anfitrión tenía ~9,9 GB libres |
+| Procesadores | 4 vCPU |
+| Disco | VHDX dinámico de 40 GB |
+| Red | Switch **interno** `LabSwitch`: Windows en `192.168.56.1/24`, con NAT de Windows (`LabNAT`) para la salida a internet |
+| IP de la VM | `192.168.56.10/24` fija, gateway `192.168.56.1`, DNS `1.1.1.1` y `8.8.8.8` |
+| Nombre de máquina | `sor2-lab` |
+
+> **Por qué Hyper-V y no VirtualBox:** con Integridad de memoria activa, el hipervisor de Windows está siempre
+> encendido. VirtualBox no puede usar AMD-V directamente y corre sobre Hyper-V en un modo lento (NEM). En la
+> primera prueba, la VM se colgó al descomprimir las imágenes de Docker. Hyper-V convive con esa protección sin
+> desactivarla.
+
+Pasos:
+
+1. Habilitar Hyper-V (PowerShell como administrador) y reiniciar:
+   `Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All`
+2. Crear la red y la VM con [`scripts/hyperv_crear_vm.ps1`](scripts/hyperv_crear_vm.ps1) (PowerShell como administrador; leerlo antes):
+   `powershell -ExecutionPolicy Bypass -File .\scripts\hyperv_crear_vm.ps1`
+3. `Start-VM sor2-lab; vmconnect.exe localhost sor2-lab` y, en el instalador de Ubuntu:
+   - **Red:** `eth0` en *Manual*: subred `192.168.56.0/24`, dirección `192.168.56.10`, gateway `192.168.56.1`, DNS `1.1.1.1,8.8.8.8`.
+   - **Almacenamiento:** llevar `ubuntu-lv` al tamaño máximo.
+   - **SSH:** marcar **Install OpenSSH server** (con la barra espaciadora).
+   - **Featured server snaps:** no marcar nada. Docker se instala después desde el repositorio oficial.
+4. Antes de reiniciar al final de la instalación, quitar la ISO: `Set-VMDvdDrive -VMName sor2-lab -Path $null`.
+5. Si la IP no quedó fija en el instalador, ver [`scripts/netplan-hostonly.example.yaml`](scripts/netplan-hostonly.example.yaml).
+6. Desde Windows: `ssh labadmin@192.168.56.10`. Si antes hubo otra VM en esa IP, primero `ssh-keygen -R 192.168.56.10`.
 
 ### 2. Llevar el repo a la VM
 
@@ -103,12 +128,14 @@ exit                              # volver a entrar para usar docker sin sudo
 
 ```bash
 cd ~/sor2-e3-elk-ml
-cp .env.example .env
-for i in 1 2 3 4 5; do openssl rand -hex 16; done   # 5 valores: uno por cada contraseña y la clave de Kibana
-nano .env                                          # pegar los valores
-chmod 600 .env
+cp .env.example .env && chmod 600 .env
+# una contraseña aleatoria por variable, sin mostrarlas en pantalla
+for v in ELASTIC_PASSWORD KIBANA_PASSWORD KIBANA_ENCRYPTION_KEY LOGSTASH_INTERNAL_PASSWORD ANALYST_PASSWORD; do
+  sed -i "s|^$v=.*|$v=$(openssl rand -hex 16)|" .env
+done
+grep -c '=cambiar' .env                            # debe dar 0
 docker compose up -d
-docker compose ps                                  # setup: Exited (0); es01, kibana, logstash: healthy
+docker compose ps -a                               # setup: Exited (0); es01, kibana, logstash: healthy
 docker compose logs setup                          # debe terminar en "[setup] Listo."
 ```
 

@@ -1,12 +1,19 @@
-# Ejemplo de IP fija para la interfaz host-only de la VM.
-# 1. Ver el nombre de la segunda interfaz:   ip -br link    (ej. enp0s8)
-# 2. Copiar:   sudo cp scripts/netplan-hostonly.example.yaml /etc/netplan/60-hostonly.yaml
-# 3. Ajustar el nombre de la interfaz, luego:   sudo chmod 600 /etc/netplan/60-hostonly.yaml && sudo netplan apply
-# La interfaz NAT (enp0s3) queda como la configuró el instalador (DHCP).
+# Ejemplo de IP fija para la VM en Hyper-V (switch interno LabSwitch + NAT de Windows).
+# Solo hace falta si la IP no quedó fija durante la instalación de Ubuntu.
+# 1. Ver el nombre de la interfaz:   ip -br link    (en Hyper-V suele ser eth0)
+# 2. Copiar:   sudo cp scripts/netplan-hostonly.example.yaml /etc/netplan/60-lab.yaml
+# 3. Ajustar el nombre de la interfaz y borrar la configuración que dejó el instalador para esa
+#    interfaz (en /etc/netplan/50-cloud-init.yaml), luego:
+#       sudo chmod 600 /etc/netplan/60-lab.yaml && sudo netplan apply
 network:
   version: 2
   ethernets:
-    enp0s8:
+    eth0:
       dhcp4: false
       addresses:
         - 192.168.56.10/24
+      routes:
+        - to: default
+          via: 192.168.56.1     # Windows hace la NAT hacia internet
+      nameservers:
+        addresses: [1.1.1.1, 8.8.8.8]

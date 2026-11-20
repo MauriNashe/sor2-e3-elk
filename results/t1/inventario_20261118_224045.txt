@@ -1,0 +1,91 @@
+Inventario del laboratorio — 2026-11-18T22:40:45-03:00
+
+===== Sistema operativo y kernel =====
+Ubuntu 24.04.5 LTS
+Linux 6.8.0-149-generic x86_64 GNU/Linux
+
+===== CPU =====
+CPU(s):                                  4
+Model name:                              AMD Ryzen 5 5600 6-Core Processor
+Thread(s) per core:                      2
+Core(s) per socket:                      2
+Socket(s):                               1
+Hypervisor vendor:                       Microsoft
+
+===== Memoria =====
+               total        used        free      shared  buff/cache   available
+Mem:           7,8Gi       5,0Gi       132Mi       4,6Mi       3,1Gi       2,8Gi
+Swap:          4,0Gi        21Mi       4,0Gi
+
+===== Disco =====
+Filesystem                         Size  Used Avail Use% Mounted on
+/dev/mapper/ubuntu--vg-ubuntu--lv   37G   14G   21G  41% /
+/dev/mapper/ubuntu--vg-ubuntu--lv   37G   14G   21G  41% /
+
+===== Reloj / NTP =====
+               Local time: mié 2026-11-18 22:40:45 -03
+           Universal time: jue 2026-11-19 01:40:45 UTC
+                 RTC time: jue 2026-11-19 01:40:45
+                Time zone: America/Argentina/Buenos_Aires (-03, -0300)
+System clock synchronized: yes
+              NTP service: active
+          RTC in local TZ: no
+Reference ID    : 40B00D84 (ntp1.scl.cl.hojmark.net)
+System time     : 0.000135893 seconds slow of NTP time
+Last offset     : -0.000118731 seconds
+
+===== Versiones de servicios monitoreados =====
+auditd:  1:3.1.2-2.1ubuntu0.1
+apache2: Server version: Apache/2.4.58 (Ubuntu)
+filebeat: filebeat version 9.5.6 (amd64), libbeat 9.5.6 [9c3843112456aa7984fc91d941139d4f78a34f1e built 2026-10-28 15:52:22 +0000 UTC] (FIPS-distribution: false)
+
+===== Docker =====
+Docker Engine 29.10.0
+Docker Compose version v5.8.0
+
+===== Stack Elastic (STACK_VERSION=9.5.6) =====
+SERVICE    IMAGE                                                 STATUS                    PORTS
+es01       docker.elastic.co/elasticsearch/elasticsearch:9.5.6   Up 23 minutes (healthy)   127.0.0.1:9200->9200/tcp, 9300/tcp
+kibana     docker.elastic.co/kibana/kibana:9.5.6                 Up 22 minutes (healthy)   192.168.56.10:5601->5601/tcp
+logstash   docker.elastic.co/logstash/logstash:9.5.6             Up 22 minutes (healthy)   127.0.0.1:5044->5044/tcp, 9600/tcp
+ES 9.5.6 | heap max: 2 GB | JVM 27.0.1.0.3
+
+===== Límites y consumo de los contenedores =====
+NAME                 CPU %     MEM USAGE / LIMIT   MEM %
+sor2-e3-kibana-1     0.70%     966.5MiB / 1GiB     94.39%
+sor2-e3-logstash-1   0.33%     630.2MiB / 1GiB     61.55%
+sor2-e3-es01-1       0.87%     2.728GiB / 3GiB     90.94%
+
+===== Reglas auditd cargadas =====
+(requiere sudo: sudo auditctl -l)
+
+===== Firewall =====
+(requiere sudo: sudo ufw status verbose)
+
+Guardado en /home/labadmin/sor2-e3-elk-ml/results/t1/inventario_20261118_224045.txt
+
+===== Reglas y estado de auditd =====
+No rules
+enabled 1
+failure 1
+pid 2588
+rate_limit 0
+backlog_limit 8192
+lost 0
+backlog 0
+backlog_wait_time 60000
+backlog_wait_time_actual 0
+loginuid_immutable 0 unlocked
+
+===== Firewall =====
+Status: active
+Logging: on (low)
+Default: deny (incoming), allow (outgoing), deny (routed)
+New profiles: skip
+
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW IN    192.168.56.0/24           
+80/tcp                     ALLOW IN    192.168.56.0/24           
+5601/tcp                   ALLOW IN    192.168.56.0/24           
+

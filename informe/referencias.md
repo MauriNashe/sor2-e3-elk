@@ -48,18 +48,22 @@ Hay que hacerlo con **todas**, incluidas las que sugiera una IA, que puede inven
 
 ## 3. Seguimiento
 
-Estados: `candidata` (sin verificar) → `verificada` (pasos 1–5) → `citada` (está en el texto del informe).
+Estados: `candidata` (sin verificar) → `metadatos ok` (pasos 1–3: DOI y datos comprobados) → `verificada` (pasos 1–5, leída) → `citada` (está en el texto del informe).
+
+> El 18/11/2026 se comprobaron con la API de Crossref los DOI y metadatos de A1–A6 (pasos 1–3). Falta leer cada artículo (paso 4) y contrastarlo con lo escrito en el marco teórico del informe.
+> He et al.: Crossref da 2021 como fecha en línea y 2022 como fecha del número (54(6), julio de 2022). En APA 7 se cita el año del número: **2022**.
+> Como hay dos "Landauer et al. (2023)" con distintos coautores, APA 7 los distingue así: (Landauer, Onder, et al., 2023) y (Landauer, Skopik, et al., 2023).
 
 ### 3.1 Académicas (marco teórico)
 
-| # | Referencia (verificar los datos) | Aporte esperado | Sección del informe | DOI | Estado |
+| # | Referencia | Aporte esperado | Sección del informe | DOI | Estado |
 |---|---|---|---|---|---|
-| A1 | Landauer, M. et al. (2023). *Deep learning for anomaly detection in log data: A survey.* Machine Learning with Applications | Panorama de detección de anomalías en logs; preprocesamiento y ventanas | 4 Marco teórico | | candidata |
-| A2 | Landauer, M. et al. (2023). *Maintainable log datasets for evaluation of intrusion detection systems.* IEEE Transactions on Dependable and Secure Computing | Escenarios de ataque etiquetados con logs de Apache y de audit; metodología de etiquetado | 4, 5 Metodología | | candidata |
-| A3 | He, S., He, P., Chen, Z., Yang, T., Su, Y., & Lyu, M. R. (2021). *A survey on automated log analysis for reliability engineering.* ACM Computing Surveys | Etapas del análisis de logs: parseo, features, detección | 4 | | candidata |
-| A4 | Le, V.-H., & Zhang, H. (2022). *Log-based anomaly detection with deep learning: How far are we?* ICSE 2022 | Advertencias de evaluación: división de datos, fuga de información, ventanas | 4, 7 Resultados | | candidata |
-| A5 | Zhu, J. et al. (2023). *Loghub: A large collection of system log datasets for AI-driven log analytics.* ISSRE 2023 | Datasets públicos de logs; contraste con un dataset propio de laboratorio | 4 | | candidata |
-| A6 | Liu, F. T., Ting, K. M., & Zhou, Z.-H. (2008). *Isolation Forest.* IEEE ICDM | Definición del método (clásica, **fuera de 2020–2026**: no cuenta entre las 5 recientes) | 4, 6.2 | | candidata |
+| A1 | Landauer, M., Onder, S., Skopik, F., & Wurzenberger, M. (2023). *Deep learning for anomaly detection in log data: A survey.* Machine Learning with Applications, 12, 100470 | Panorama de detección de anomalías en logs; preprocesamiento y ventanas | 2, 4.2 | 10.1016/j.mlwa.2023.100470 | metadatos ok · citada (borrador) |
+| A2 | Landauer, M., Skopik, F., Frank, M., Hotwagner, W., Wurzenberger, M., & Rauber, A. (2023). *Maintainable log datasets for evaluation of intrusion detection systems.* IEEE TDSC, 20(4), 3466–3482 | Escenarios de ataque etiquetados con logs de Apache y de audit; metodología de etiquetado | 2, 4.4 | 10.1109/TDSC.2022.3201582 | metadatos ok · citada (borrador) |
+| A3 | He, S., He, P., Chen, Z., Yang, T., Su, Y., & Lyu, M. R. (2022). *A survey on automated log analysis for reliability engineering.* ACM Computing Surveys, 54(6), 1–37 | Etapas del análisis de logs: parseo, features, detección | 4.1 | 10.1145/3460345 | metadatos ok · citada (borrador) |
+| A4 | Le, V.-H., & Zhang, H. (2022). *Log-based anomaly detection with deep learning: How far are we?* ICSE 2022, pp. 1356–1367 | Advertencias de evaluación: división de datos, etiquetas, detección temprana | 2, 4.3 | 10.1145/3510003.3510155 | metadatos ok · citada (borrador) |
+| A5 | Zhu, J., He, S., He, P., Liu, J., & Lyu, M. R. (2023). *Loghub: A large collection of system log datasets for AI-driven log analytics.* ISSRE 2023, pp. 355–366 | Datasets públicos de logs; contraste con un dataset propio de laboratorio | 2, 4.4 | 10.1109/ISSRE59848.2023.00071 | metadatos ok · citada (borrador) |
+| A6 | Liu, F. T., Ting, K. M., & Zhou, Z.-H. (2008). *Isolation forest.* IEEE ICDM 2008, pp. 413–422 | Definición del método (clásica, **fuera de 2020–2026**: no cuenta entre las 5 recientes) | 4.5 | 10.1109/ICDM.2008.17 | metadatos ok · citada (borrador) |
 | A7 | *(buscar)* Isolation Forest aplicado a detección de intrusiones o logs, 2020–2026 | Justificar que el método es pertinente | 4 | | — |
 | A8 | *(buscar)* Comparación entre reglas o firmas y ML en detección, 2020–2026 | Respaldo para H2 | 4, 7 | | — |
 
@@ -69,8 +73,8 @@ Son informes de la industria: no son académicos, pero sirven para los datos con
 
 | # | Fuente | Dato a buscar | Estado |
 |---|---|---|---|
-| P1 | IBM / Ponemon, *Cost of a Data Breach Report* (anual) | Días promedio para identificar y contener una brecha | candidata |
-| P2 | Mandiant, *M-Trends* (anual) | Tiempo de permanencia (dwell time) del atacante | candidata |
+| P1 | IBM, *Cost of a Data Breach Report 2026* | Edición 2026, según la cobertura publicada: 247 días para identificar y contener (241 el año anterior); costo promedio global de USD 4,99 millones. **Confirmar en el PDF y anotar la página** | citada (borrador) |
+| P2 | Mandiant, *M-Trends 2026* | Según la cobertura publicada: mediana global de 14 días de permanencia en 2025 (11 en 2024); unos 9 días con detección interna contra 25 días con aviso externo. **Confirmar en el PDF y anotar la página** | citada (borrador) |
 | P3 | Verizon, *Data Breach Investigations Report* (anual) | Peso de las aplicaciones web y los accesos indebidos entre los vectores | candidata |
 
 ### 3.3 Documentación técnica (cuenta para las 8, no para las 5 académicas)
@@ -80,7 +84,7 @@ Son informes de la industria: no son académicos, pero sirven para los datos con
 | D1 | Elastic, documentación de Elasticsearch/Logstash/Filebeat 9.x (módulos auditd y apache, ingest pipelines, seguridad) | Implementación (6.2) | candidata |
 | D2 | Linux Audit Framework: páginas de manual `auditd(8)`, `auditctl(8)`, `audit.rules(7)`, `ausearch(8)` | Capas del SO (6.3): cómo se agrupan los registros por número de serie | candidata |
 | D3 | Apache HTTP Server 2.4, documentación de *Log Files* (formato combined) | Campos de Apache (T2) | candidata |
-| D4 | scikit-learn, documentación de `IsolationForest`, y Pedregosa et al. (2011), *Scikit-learn: Machine Learning in Python*, JMLR | Implementación del modelo (2011: no cuenta como reciente) | candidata |
+| D4 | scikit-learn, documentación de `IsolationForest`, y Pedregosa et al. (2011), *Scikit-learn: Machine Learning in Python*, JMLR, 12, 2825–2830 (sin DOI) | Implementación del modelo (2011: no cuenta como reciente) | citada (borrador) |
 
 ---
 
