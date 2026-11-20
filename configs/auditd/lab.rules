@@ -1,0 +1,28 @@
+## Reglas de auditd del laboratorio (TP SOR2 — E3). Se instalan en /etc/audit/rules.d/lab.rules
+## y se cargan con `augenrules --load` (scripts/t2_ingesta_setup.sh).
+##
+## Criterios (riesgo R4 del plan):
+##  - Acotadas al usuario de prueba "labuser" y a las rutas del laboratorio, para que la actividad
+##    del propio stack (Docker, Elasticsearch, Filebeat) no contamine las observaciones.
+##  - Se filtra por uid y NO por auid: "sudo -u labuser" conserva el auid del administrador.
+##  - En la lista "exit" gana la primera regla que coincide: las exclusiones van primero.
+##  - Ninguna regla vigila lecturas sobre /var/log/audit ni sobre los logs que lee Filebeat
+##    (produciría realimentación).
+##  - Solo arquitectura de 64 bits (b64): el laboratorio no ejecuta binarios de 32 bits.
+
+## --- 1. Exclusiones: procesos del stack de recolección y de contenedores
+-a never,exit -F arch=b64 -F exe=/usr/share/filebeat/bin/filebeat
+-a never,exit -F arch=b64 -F exe=/usr/bin/dockerd
+-a never,exit -F arch=b64 -F exe=/usr/bin/containerd
+-a never,exit -F arch=b64 -F exe=/usr/bin/containerd-shim-runc-v2
+
+## --- 2. Archivo protegido de prueba (escenario I1)
+## Cualquier lectura, escritura o cambio de atributos, de cualquier usuario, exitoso o no.
+-w /srv/lab/protegido/secreto.txt -p rwa -k lab_protegido
+
+## --- 3. Accesos denegados del usuario de prueba (I1 y errores normales de B1)
+-a always,exit -F arch=b64 -S open,openat,creat,truncate,ftruncate -F exit=-EACCES -F uid=labuser -k lab_acceso_denegado
+-a always,exit -F arch=b64 -S open,openat,creat,truncate,ftruncate -F exit=-EPERM -F uid=labuser -k lab_acceso_denegado
+
+## --- 4. Procesos ejecutados por el usuario de prueba (actividad Linux, B1)
+-a always,exit -F arch=b64 -S execve -F uid=labuser -k lab_exec

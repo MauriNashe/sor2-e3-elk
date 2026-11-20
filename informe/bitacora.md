@@ -68,13 +68,21 @@ Para cada entrada:
 
 ## T2 — Ingesta y normalización
 
-**Fecha:**
+**Fecha:** 19/11/2026 (parte mínima)
 
 **Qué hice:**
+- Reglas de auditd (`configs/auditd/lab.rules`), Filebeat (`configs/filebeat/filebeat.yml`), pipeline final `lab-ingested`, plantilla de índice `lab` y los scripts `t2_ingesta_setup.sh` y `t2_verificar.sh`. Guía: `paso_a_paso/02_ingesta.md`.
+- _completar con la ejecución en la VM_
 
 **Qué falló y cómo lo resolví:**
 
 **Decisiones y por qué:**
+- **Reglas de auditd acotadas:** vigilancia del archivo protegido (cualquier usuario), accesos denegados (`EACCES`/`EPERM`) y `execve` solo del `uid` de `labuser`. Exclusiones de Filebeat, dockerd y containerd al principio, porque en la lista `exit` gana la primera regla que coincide. Se filtra por `uid` y no por `auid`, porque `sudo -u labuser` conserva el auid del administrador. Ninguna vigilancia de lectura sobre `/var/log/audit` (evita la realimentación con Filebeat).
+- **auditd.conf:** rotación de 50 MB × 10 archivos para que no se pierdan eventos durante el lote; `name_format = HOSTNAME` para que cada registro diga de qué máquina viene.
+- **Dónde se transforma cada cosa:** Filebeat solo lee y etiqueta; Logstash agrega la marca de recepción y enruta por fuente; el ingest pipeline del módulo en Elasticsearch parsea a ECS. Se reutilizan los pipelines oficiales de los módulos en lugar de escribir grok propios: están probados y producen campos ECS estándar.
+- **Plantilla propia `lab`:** se exporta el mapeo ECS de Filebeat y se adapta a los índices `lab-auditd-*`, `lab-apache-*` y `lab-otros-*`, sin data stream ni ILM, con una réplica de 0 (nodo único) y las marcas `lab.*` mapeadas como fecha. Sin plantilla, los campos se mapearían por inferencia y algunos (IP, códigos, fechas) quedarían con el tipo incorrecto.
+- **Pipeline final `lab-ingested`:** agrega `lab.es_ingested` en todos los documentos. No depende de que el pipeline de cada módulo complete `event.ingested`.
+- **Filebeat lee solo los archivos activos:** no los rotados ni los `.gz`, para no duplicar eventos. Sigue cada archivo por su inodo aunque se renombre.
 
 **Evidencia generada:**
 

@@ -68,7 +68,7 @@ latencias (incidente → evento → ingesta → alerta) se miden sin depender de
 
 ## Reproducción paso a paso
 
-> Versión corta, solo comandos con su resultado esperado: [PASO_A_PASO.md](PASO_A_PASO.md).
+> Versión corta, solo comandos con su resultado esperado, una guía por etapa: [paso_a_paso/](paso_a_paso/README.md).
 
 ### 1. Crear la VM (Hyper-V)
 

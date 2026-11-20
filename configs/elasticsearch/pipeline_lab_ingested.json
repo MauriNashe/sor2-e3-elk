@@ -1,0 +1,6 @@
+{
+  "description": "Pipeline final de los índices lab-auditd-*, lab-apache-* y lab-otros-*: marca propia de indexación (lab.es_ingested), independiente de lo que haga el pipeline de cada módulo.",
+  "processors": [
+    { "set": { "field": "lab.es_ingested", "value": "{{{_ingest.timestamp}}}" } }
+  ]
+}

@@ -1,7 +1,8 @@
-# Paso a paso del laboratorio
+# 01 — Laboratorio (T1: infraestructura)
 
-Guía corta para reproducir el laboratorio: cada paso tiene qué hace, el comando y qué debería devolver.
-Las explicaciones y decisiones están en el [README](README.md) y en [informe/bitacora.md](informe/bitacora.md).
+Guía corta para montar el laboratorio: cada paso tiene qué hace, el comando y qué debería devolver.
+Siguiente guía: [02 — Ingesta](02_ingesta.md).
+Las explicaciones y decisiones están en el [README](../README.md) y en [informe/bitacora.md](../informe/bitacora.md).
 
 **Dónde se ejecuta cada comando:**
 - 🪟 **PowerShell en Windows** (el equipo anfitrión).
