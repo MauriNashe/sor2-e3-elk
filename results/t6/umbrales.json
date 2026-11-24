@@ -1,0 +1,70 @@
+{
+  "fecha": "20261120_173856",
+  "reglas": {
+    "A1": {
+      "fuente": "auditd",
+      "nombre": "accesos denegados",
+      "campo": "aud_denegados",
+      "umbral": 10.0,
+      "condicion": null,
+      "criterio": "máximo F1 en validación (1.000); empatan 1 valores entre 10 y 10",
+      "umbral_sin_etiquetas": 3.0
+    },
+    "A2": {
+      "fuente": "auditd",
+      "nombre": "archivo vigilado",
+      "campo": "aud_clave_protegido",
+      "umbral": 1,
+      "condicion": null,
+      "criterio": "fijo por definición",
+      "umbral_sin_etiquetas": 1.0
+    },
+    "W1": {
+      "fuente": "apache",
+      "nombre": "frecuencia de 4xx",
+      "campo": "web_4xx",
+      "umbral": 27.0,
+      "condicion": null,
+      "criterio": "máximo F1 en validación (1.000); empatan 1 valores entre 27 y 27",
+      "umbral_sin_etiquetas": 20.0
+    },
+    "W2": {
+      "fuente": "apache",
+      "nombre": "proporción de 4xx",
+      "campo": "web_frac_4xx",
+      "umbral": 0.1149,
+      "condicion": [
+        "web_peticiones",
+        10
+      ],
+      "criterio": "máximo F1 en validación (0.960); empatan 3 valores entre 0.1 y 0.1298",
+      "umbral_sin_etiquetas": 0.13
+    },
+    "W3": {
+      "fuente": "apache",
+      "nombre": "4xx de un mismo cliente",
+      "campo": "web_max_4xx_cliente",
+      "umbral": 18.0,
+      "condicion": null,
+      "criterio": "máximo F1 en validación (0.960); empatan 1 valores entre 18 y 18",
+      "umbral_sin_etiquetas": 14.0
+    }
+  },
+  "conjuntos": {
+    "auditd": {
+      "completo": [
+        "A1",
+        "A2"
+      ],
+      "generico": [
+        "A1"
+      ]
+    },
+    "apache": {
+      "completo": [
+        "W1",
+        "W2"
+      ]
+    }
+  }
+}

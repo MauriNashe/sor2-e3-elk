@@ -1,0 +1,43 @@
+=== Verificación T2 — 2026-11-19T23:34:57-03:00 — marca t2check1795142097 — desde 2026-11-20T02:34:57.000Z (UTC) ===
+
+[1] Servicios
+  [OK]    filebeat activo (esperado active, obtenido active)
+  [OK]    reglas de auditd cargadas (lab_*) (esperado 4, obtenido 4)
+
+[2] Generar eventos conocidos
+  labuser: lectura de secreto.txt denegada (esperado)
+  GET /?t2check1795142097 -> 200
+  GET /no-existe-t2check1795142097 -> 404
+  Esperando 20 s a que el pipeline los procese...
+
+[3] Evidencia en los logs originales
+  audit.log: eventos SYSCALL con key=lab_protegido en los últimos 10 min: 2
+  access.log: líneas con la marca: 2
+  [OK]    peticiones de prueba en access.log (esperado 2, obtenido 2)
+
+[4] Llegada a Elasticsearch
+  [FALLA] peticiones de prueba en lab-apache-* (esperado 2, obtenido 0)
+  registros con lab_protegido en lab-auditd-* desde T0: 0 (cada evento de auditd son varios registros)
+  [FALLA] acceso al archivo protegido llegó a lab-auditd-* (esperado si, obtenido no)
+  [OK]    eventos sin módulo (lab-otros-*) (esperado 0, obtenido 0)
+  [FALLA] documentos con error de parseo desde T0 (esperado 0, obtenido 2)
+
+[5] Índices del laboratorio
+{"error":{"root_cause":[{"type":"security_exception","reason":"action [indices:monitor/stats] is unauthorized for user [lab_analyst] with effective roles [lab_analyst] on indices [lab-*], this action is granted by the index privileges [monitor,cross_cluster_replication,manage,all]"}],"type":"security_exception","reason":"action [indices:monitor/stats] is unauthorized for user [lab_analyst] with effective roles [lab_analyst] on indices [lab-*], this action is granted by the index privileges [monitor,cross_cluster_replication,manage,all]"},"status":403}
+[6] Ejemplo: petición 404 en lab-apache-* (campos y marcas de tiempo)
+{
+  "@timestamp": null,
+  "host": null,
+  "source_ip": null,
+  "method": null,
+  "url": null,
+  "status": null,
+  "event": null,
+  "lab": null
+}
+
+[7] Ejemplo: acceso al archivo protegido en lab-auditd-* (documento completo)
+null
+
+=== Resultado: 4 OK, 3 fallas ===
+Salida guardada en /home/labadmin/sor2-e3-elk-ml/results/t2/verificacion_20261119_233457.txt

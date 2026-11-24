@@ -1,0 +1,382 @@
+{
+  "fuente": "auditd",
+  "variante": "sin_clave_protegido",
+  "fecha": "2026-11-20T17:38:52",
+  "datos": {
+    "archivo": "data/procesado/ventanas_auditd.csv",
+    "sha256": "5cc22da6bdf3f5a475c23a72f47f0d61c68447200071b2462ed29a9110c3affc"
+  },
+  "caracteristicas": [
+    "aud_eventos",
+    "aud_exec",
+    "aud_clave_denegado",
+    "aud_sin_clave",
+    "aud_fallidos",
+    "aud_denegados",
+    "aud_denegados_proc",
+    "aud_frac_denegados",
+    "aud_op_apertura",
+    "aud_op_permisos",
+    "aud_procesos_distintos",
+    "aud_pids_distintos",
+    "aud_archivos_distintos",
+    "aud_archivos_denegados_distintos",
+    "aud_max_por_segundo",
+    "aud_segundos_activos"
+  ],
+  "hiperparametros": {
+    "transformacion": "log1p",
+    "n_estimators": 100,
+    "max_samples": "auto",
+    "max_features": 1.0
+  },
+  "semilla": 20261120,
+  "umbral": 0.5924788026814682,
+  "criterio_umbral": "máximo F1 por ventana en validación",
+  "grilla": {
+    "transformacion": [
+      "ninguna",
+      "log1p"
+    ],
+    "n_estimators": [
+      100,
+      300
+    ],
+    "max_samples": [
+      "auto",
+      16,
+      8
+    ],
+    "max_features": [
+      1.0,
+      0.6
+    ]
+  },
+  "busqueda": [
+    {
+      "transformacion": "log1p",
+      "n_estimators": 100,
+      "max_samples": "auto",
+      "max_features": 1.0,
+      "ap": 0.9866452991452992,
+      "roc_auc": 0.9944444444444445,
+      "orden": 12
+    },
+    {
+      "transformacion": "log1p",
+      "n_estimators": 100,
+      "max_samples": 16,
+      "max_features": 1.0,
+      "ap": 0.9790695415695416,
+      "roc_auc": 0.9916666666666667,
+      "orden": 14
+    },
+    {
+      "transformacion": "log1p",
+      "n_estimators": 100,
+      "max_samples": "auto",
+      "max_features": 0.6,
+      "ap": 0.9735750360750361,
+      "roc_auc": 0.9888888888888889,
+      "orden": 13
+    },
+    {
+      "transformacion": "log1p",
+      "n_estimators": 300,
+      "max_samples": "auto",
+      "max_features": 0.6,
+      "ap": 0.9530525030525031,
+      "roc_auc": 0.9805555555555556,
+      "orden": 19
+    },
+    {
+      "transformacion": "log1p",
+      "n_estimators": 100,
+      "max_samples": 8,
+      "max_features": 1.0,
+      "ap": 0.9515873015873016,
+      "roc_auc": 0.9777777777777779,
+      "orden": 16
+    },
+    {
+      "transformacion": "log1p",
+      "n_estimators": 300,
+      "max_samples": 16,
+      "max_features": 1.0,
+      "ap": 0.9373057498057499,
+      "roc_auc": 0.9722222222222222,
+      "orden": 20
+    },
+    {
+      "transformacion": "log1p",
+      "n_estimators": 300,
+      "max_samples": "auto",
+      "max_features": 1.0,
+      "ap": 0.9369750619750621,
+      "roc_auc": 0.975,
+      "orden": 18
+    },
+    {
+      "transformacion": "log1p",
+      "n_estimators": 100,
+      "max_samples": 16,
+      "max_features": 0.6,
+      "ap": 0.9295676545676546,
+      "roc_auc": 0.9722222222222222,
+      "orden": 15
+    },
+    {
+      "transformacion": "log1p",
+      "n_estimators": 300,
+      "max_samples": 16,
+      "max_features": 0.6,
+      "ap": 0.9295676545676546,
+      "roc_auc": 0.9722222222222222,
+      "orden": 21
+    },
+    {
+      "transformacion": "log1p",
+      "n_estimators": 300,
+      "max_samples": 8,
+      "max_features": 0.6,
+      "ap": 0.9144272394272396,
+      "roc_auc": 0.9638888888888889,
+      "orden": 23
+    },
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 100,
+      "max_samples": 16,
+      "max_features": 1.0,
+      "ap": 0.911925982514218,
+      "roc_auc": 0.9611111111111111,
+      "orden": 2
+    },
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 100,
+      "max_samples": 16,
+      "max_features": 0.6,
+      "ap": 0.894162087912088,
+      "roc_auc": 0.9555555555555556,
+      "orden": 3
+    },
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 300,
+      "max_samples": 8,
+      "max_features": 0.6,
+      "ap": 0.8808140933140933,
+      "roc_auc": 0.9527777777777778,
+      "orden": 11
+    },
+    {
+      "transformacion": "log1p",
+      "n_estimators": 300,
+      "max_samples": 8,
+      "max_features": 1.0,
+      "ap": 0.8797161172161173,
+      "roc_auc": 0.9444444444444444,
+      "orden": 22
+    },
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 300,
+      "max_samples": 16,
+      "max_features": 0.6,
+      "ap": 0.8591662966662967,
+      "roc_auc": 0.9444444444444444,
+      "orden": 9
+    },
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 100,
+      "max_samples": "auto",
+      "max_features": 1.0,
+      "ap": 0.8494440744440745,
+      "roc_auc": 0.9444444444444444,
+      "orden": 0
+    },
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 100,
+      "max_samples": 8,
+      "max_features": 0.6,
+      "ap": 0.8455191798941799,
+      "roc_auc": 0.9333333333333332,
+      "orden": 5
+    },
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 100,
+      "max_samples": 8,
+      "max_features": 1.0,
+      "ap": 0.8331122853181677,
+      "roc_auc": 0.9277777777777778,
+      "orden": 4
+    },
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 300,
+      "max_samples": "auto",
+      "max_features": 1.0,
+      "ap": 0.8186901061901062,
+      "roc_auc": 0.9361111111111111,
+      "orden": 6
+    },
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 300,
+      "max_samples": "auto",
+      "max_features": 0.6,
+      "ap": 0.8122086247086248,
+      "roc_auc": 0.9333333333333333,
+      "orden": 7
+    },
+    {
+      "transformacion": "log1p",
+      "n_estimators": 100,
+      "max_samples": 8,
+      "max_features": 0.6,
+      "ap": 0.807257326007326,
+      "roc_auc": 0.9444444444444445,
+      "orden": 17
+    },
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 300,
+      "max_samples": 16,
+      "max_features": 1.0,
+      "ap": 0.8061252405002406,
+      "roc_auc": 0.9166666666666667,
+      "orden": 8
+    },
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 100,
+      "max_samples": "auto",
+      "max_features": 0.6,
+      "ap": 0.8052641802641803,
+      "roc_auc": 0.9305555555555556,
+      "orden": 1
+    },
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 300,
+      "max_samples": 8,
+      "max_features": 1.0,
+      "ap": 0.7982142857142859,
+      "roc_auc": 0.8916666666666666,
+      "orden": 10
+    }
+  ],
+  "metricas_prueba": {
+    "ventana": {
+      "tp": 11,
+      "fp": 1,
+      "fn": 1,
+      "tn": 29,
+      "precision": 0.9166666666666666,
+      "recall": 0.9166666666666666,
+      "f1": 0.9166666666666666,
+      "fpr": 0.03333333333333333
+    },
+    "incidentes": 5,
+    "incidentes_detectados": 5,
+    "recall_incidente": 1.0,
+    "t_primera_alerta_mediana_s": 15.4,
+    "t_primera_alerta_max_s": 32.9,
+    "falsas_alarmas_hora": 2.857142857142857,
+    "horas_observadas": 0.35,
+    "detalle_incidentes": [
+      {
+        "sesion": "S11",
+        "escenario": "I1",
+        "inicio_incidente": "2026-11-20T07:13:23.281Z",
+        "detectado": true,
+        "ventanas_incidente": 2,
+        "ventanas_alertadas": 2,
+        "t_primera_alerta_s": 24.7
+      },
+      {
+        "sesion": "S14",
+        "escenario": "I1",
+        "inicio_incidente": "2026-11-20T07:23:16.457Z",
+        "detectado": true,
+        "ventanas_incidente": 3,
+        "ventanas_alertadas": 2,
+        "t_primera_alerta_s": 32.9
+      },
+      {
+        "sesion": "S16",
+        "escenario": "I1",
+        "inicio_incidente": "2026-11-20T07:29:19.369Z",
+        "detectado": true,
+        "ventanas_incidente": 3,
+        "ventanas_alertadas": 3,
+        "t_primera_alerta_s": 11.1
+      },
+      {
+        "sesion": "S26",
+        "escenario": "I1",
+        "inicio_incidente": "2026-11-20T08:03:11.155Z",
+        "detectado": true,
+        "ventanas_incidente": 2,
+        "ventanas_alertadas": 2,
+        "t_primera_alerta_s": 15.1
+      },
+      {
+        "sesion": "S35",
+        "escenario": "I1",
+        "inicio_incidente": "2026-11-20T08:33:18.400Z",
+        "detectado": true,
+        "ventanas_incidente": 2,
+        "ventanas_alertadas": 2,
+        "t_primera_alerta_s": 15.4
+      }
+    ]
+  },
+  "estabilidad_prueba": {
+    "f1_ventana": [
+      0.8461538461538461,
+      0.923076923076923,
+      0.8799999999999999,
+      0.923076923076923,
+      0.923076923076923,
+      0.888888888888889,
+      0.8,
+      0.8,
+      0.923076923076923,
+      0.923076923076923
+    ],
+    "recall_incidente": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "falsas_alarmas_hora": [
+      8.571428571428571,
+      5.714285714285714,
+      5.714285714285714,
+      5.714285714285714,
+      5.714285714285714,
+      8.571428571428571,
+      8.571428571428571,
+      8.571428571428571,
+      5.714285714285714,
+      5.714285714285714
+    ]
+  },
+  "versiones": {
+    "python": "3.12.3",
+    "scikit-learn": "1.9.1",
+    "numpy": "2.5.5"
+  }
+}

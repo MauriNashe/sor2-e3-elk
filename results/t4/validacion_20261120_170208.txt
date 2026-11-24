@@ -1,0 +1,63 @@
+T4 — ventanas y características (20261120_170208)
+Manifiesto: data/lote/manifiesto.csv (40 sesiones ok de 40)
+Período consultado: 2026-11-20T06:38:21.455Z – 2026-11-20T08:51:47.644Z
+Documentos traídos: 29462 SYSCALL, 31957 PATH, 21997 líneas de access.log
+
+== auditd: 120 ventanas de 20 sesiones
+  B1 entrenamiento etiqueta=0 36
+  B1 prueba        etiqueta=0 12
+  B1 validacion    etiqueta=0 12
+  I1 prueba        etiqueta=0 18
+  I1 prueba        etiqueta=1 12
+  I1 validacion    etiqueta=0 18
+  I1 validacion    etiqueta=1 12
+  Media de características por escenario y etiqueta:
+    grupo                aud_eventos              aud_exec         aud_denegados   aud_clave_protegido  aud_archivos_denegad
+    B1 e=0                    212.00                 81.60                190.23                  0.00                110.23
+    I1 e=0                    235.61                 83.67                212.67                  0.00                132.61
+    I1 e=1                    316.38                135.42                281.21                 43.58                137.75
+
+== apache: 120 ventanas de 20 sesiones
+  B2 entrenamiento etiqueta=0 36
+  B2 prueba        etiqueta=0 12
+  B2 validacion    etiqueta=0 12
+  I2 prueba        etiqueta=0 19
+  I2 prueba        etiqueta=1 11
+  I2 validacion    etiqueta=0 17
+  I2 validacion    etiqueta=1 13
+  Media de características por escenario y etiqueta:
+    grupo             web_peticiones               web_4xx  web_rutas_4xx_distin          web_clientes   web_max_4xx_cliente
+    B2 e=0                    125.88                  7.18                  1.93                  1.80                  5.13
+    I2 e=0                    193.64                 10.64                  2.08                  2.17                  6.44
+    I2 e=1                    307.00                108.75                 95.33                  3.25                 96.21
+
+== Eventos del incidente: Elasticsearch (suma de ventanas) vs. logs originales (manifiesto)
+  S02 I2 ES=133   logs=133   OK
+  S04 I2 ES=164   logs=164   OK
+  S06 I2 ES=250   logs=250   OK
+  S07 I2 ES=343   logs=343   OK
+  S08 I1 ES=124   logs=124   OK
+  S11 I1 ES=103   logs=102   DIFIERE
+  S14 I1 ES=73    logs=72    DIFIERE
+  S16 I1 ES=170   logs=170   OK
+  S17 I1 ES=133   logs=132   DIFIERE
+  S21 I1 ES=72    logs=71    DIFIERE
+  S22 I2 ES=196   logs=196   OK
+  S26 I1 ES=98    logs=97    DIFIERE
+  S27 I2 ES=371   logs=371   OK
+  S28 I2 ES=146   logs=146   OK
+  S30 I2 ES=252   logs=252   OK
+  S31 I1 ES=44    logs=43    DIFIERE
+  S32 I2 ES=79    logs=79    OK
+  S33 I2 ES=374   logs=374   OK
+  S34 I1 ES=148   logs=147   DIFIERE
+  S35 I1 ES=81    logs=80    DIFIERE
+  12/20 coinciden
+
+== Ventanas vs. consultas _count directas a Elasticsearch
+  aud_eventos            120/120 ventanas coinciden
+  aud_clave_protegido    120/120 ventanas coinciden
+  aud_denegados          120/120 ventanas coinciden
+  web_peticiones         120/120 ventanas coinciden
+  web_4xx                120/120 ventanas coinciden
+  Sin diferencias.

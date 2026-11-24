@@ -1,0 +1,4 @@
+fuente,sesión,escenario,ventana,detectores,explicación (IF),valores clave
+apache,S32,I2,1,IF completo,web_peticiones=470 (z=+3.1); web_4xx=20 (z=+2.4); web_404=20 (z=+2.4),"peticiones=470, 4xx=20, clientes=3"
+auditd,S35,I1,1,IF sin clave protegido,-,"denegados=1, exec=142, eventos=603"
+auditd,S35,I1,4,IF completo,aud_frac_denegados=0.0345 (z=+5.9); aud_exec=28 (z=-2.2); aud_pids_distintos=7 (z=-2.0),"denegados=1, exec=28, eventos=29"

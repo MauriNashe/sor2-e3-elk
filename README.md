@@ -10,14 +10,14 @@ basado en reglas, considerando la tasa de detección, las falsas alarmas y el ti
 
 | Tarea | Estado |
 |---|---|
-| T1 Infraestructura | En curso: repo y configuración listos, falta desplegar en la VM |
-| T2 Ingesta y normalización | Pendiente |
-| T3 Escenarios etiquetados | Pendiente |
-| T4 Ventanas y features | Pendiente |
-| T5 Isolation Forest | Pendiente |
-| T6 Baseline por reglas | Pendiente |
-| T7 Alertas y latencia | Pendiente |
-| T8 Evaluación y dashboards | Pendiente |
+| T1 Infraestructura | Completa: VM en Hyper-V, ELK 9.5.6 con autenticación, pruebas e inventario |
+| T2 Ingesta y normalización | Completa: auditd y Apache en `lab-*`, comparados contra los logs originales |
+| T3 Escenarios etiquetados | Completa: lote de 40 sesiones (B1, B2, I1, I2 × 10), 40 ok, 0 eventos perdidos |
+| T4 Ventanas y features | Completa: 120 ventanas por fuente, validadas contra `_count` y contra los logs originales |
+| T5 Isolation Forest | Completa: auditd (completo y ablación) y Apache; 5/5 incidentes de prueba en los tres |
+| T6 Baseline por reglas | Completa: con umbrales calibrados las reglas igualan o superan a IF; sin etiquetas, IF gana en Apache |
+| T7 Alertas y latencia | Completa: prueba en vivo de 17 min, 4/4 sesiones, alertas en 35–65 s, 0 eventos tardíos |
+| T8 Evaluación y dashboards | Completa: 0 eventos perdidos, dashboard exportado en `dashboards/`, evaluación en `analysis/` |
 
 ## Arquitectura
 

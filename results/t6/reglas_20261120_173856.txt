@@ -1,0 +1,129 @@
+T6 — Baseline por reglas (20261120_173856)
+
+=== auditd: entrenamiento 36, validación 42, prueba 42 ventanas
+  A1 accesos denegados: aud_denegados >= 10
+     criterio: máximo F1 en validación (1.000); empatan 1 valores entre 10 y 10
+     referencia sin etiquetas (máximo de entrenamiento + 1 paso): 3
+     validación:
+       Por ventana (30 s): TP=12 FP=0 FN=0 TN=30  precisión=1.000 recall=1.000 F1=1.000
+       Por incidente: 5/5 detectados (recall 1.00); primera alerta: mediana 21.2 s, máximo 28.0 s
+       Falsas alarmas: 0.0 por hora (0 en 0.35 h)
+     prueba:
+       Por ventana (30 s): TP=11 FP=0 FN=1 TN=30  precisión=1.000 recall=0.917 F1=0.957
+       Por incidente: 5/5 detectados (recall 1.00); primera alerta: mediana 15.4 s, máximo 32.9 s
+       Falsas alarmas: 0.0 por hora (0 en 0.35 h)
+  A2 archivo vigilado: aud_clave_protegido >= 1
+     criterio: fijo por definición
+     referencia sin etiquetas (máximo de entrenamiento + 1 paso): 1
+     validación:
+       Por ventana (30 s): TP=12 FP=0 FN=0 TN=30  precisión=1.000 recall=1.000 F1=1.000
+       Por incidente: 5/5 detectados (recall 1.00); primera alerta: mediana 21.2 s, máximo 28.0 s
+       Falsas alarmas: 0.0 por hora (0 en 0.35 h)
+     prueba:
+       Por ventana (30 s): TP=12 FP=0 FN=0 TN=30  precisión=1.000 recall=1.000 F1=1.000
+       Por incidente: 5/5 detectados (recall 1.00); primera alerta: mediana 15.1 s, máximo 24.7 s
+       Falsas alarmas: 0.0 por hora (0 en 0.35 h)
+  Reglas 'completo' (A1 o A2) — prueba:
+     Por ventana (30 s): TP=12 FP=0 FN=0 TN=30  precisión=1.000 recall=1.000 F1=1.000
+     Por incidente: 5/5 detectados (recall 1.00); primera alerta: mediana 15.1 s, máximo 24.7 s
+     Falsas alarmas: 0.0 por hora (0 en 0.35 h)
+  Isolation Forest 'auditd_completo' — mismas ventanas de prueba:
+     Por ventana (30 s): TP=9 FP=1 FN=3 TN=29  precisión=0.900 recall=0.750 F1=0.818
+     Por incidente: 5/5 detectados (recall 1.00); primera alerta: mediana 32.9 s, máximo 45.4 s
+     Falsas alarmas: 2.9 por hora (1 en 0.35 h)
+  Incidente por incidente (prueba): primera alerta en segundos desde el inicio real
+     sesión        reglas          IF
+     S11 I1        24.7 s      24.7 s
+     S14 I1         2.9 s      32.9 s
+     S16 I1        11.1 s      11.1 s
+     S26 I1        15.1 s      45.1 s
+     S35 I1        15.4 s      45.4 s
+  Falsos positivos en prueba — reglas: ninguno; IF: S35/v4
+  Reglas 'generico' (A1) — prueba:
+     Por ventana (30 s): TP=11 FP=0 FN=1 TN=30  precisión=1.000 recall=0.917 F1=0.957
+     Por incidente: 5/5 detectados (recall 1.00); primera alerta: mediana 15.4 s, máximo 32.9 s
+     Falsas alarmas: 0.0 por hora (0 en 0.35 h)
+  Isolation Forest 'auditd_sin_clave_protegido' — mismas ventanas de prueba:
+     Por ventana (30 s): TP=11 FP=1 FN=1 TN=29  precisión=0.917 recall=0.917 F1=0.917
+     Por incidente: 5/5 detectados (recall 1.00); primera alerta: mediana 15.4 s, máximo 32.9 s
+     Falsas alarmas: 2.9 por hora (1 en 0.35 h)
+  Incidente por incidente (prueba): primera alerta en segundos desde el inicio real
+     sesión        reglas          IF
+     S11 I1        24.7 s      24.7 s
+     S14 I1        32.9 s      32.9 s
+     S16 I1        11.1 s      11.1 s
+     S26 I1        15.1 s      15.1 s
+     S35 I1        15.4 s      15.4 s
+  Falsos positivos en prueba — reglas: ninguno; IF: S35/v1
+
+=== apache: entrenamiento 36, validación 42, prueba 42 ventanas
+  W1 frecuencia de 4xx: web_4xx >= 27
+     criterio: máximo F1 en validación (1.000); empatan 1 valores entre 27 y 27
+     referencia sin etiquetas (máximo de entrenamiento + 1 paso): 20
+     validación:
+       Por ventana (30 s): TP=13 FP=0 FN=0 TN=29  precisión=1.000 recall=1.000 F1=1.000
+       Por incidente: 5/5 detectados (recall 1.00); primera alerta: mediana 11.3 s, máximo 28.0 s
+       Falsas alarmas: 0.0 por hora (0 en 0.35 h)
+     prueba:
+       Por ventana (30 s): TP=11 FP=0 FN=0 TN=31  precisión=1.000 recall=1.000 F1=1.000
+       Por incidente: 5/5 detectados (recall 1.00); primera alerta: mediana 23.8 s, máximo 28.1 s
+       Falsas alarmas: 0.0 por hora (0 en 0.35 h)
+  W2 proporción de 4xx: web_frac_4xx >= 0.1149 y web_peticiones >= 10
+     criterio: máximo F1 en validación (0.960); empatan 3 valores entre 0.1 y 0.1298
+     referencia sin etiquetas (máximo de entrenamiento + 1 paso): 0.13
+     validación:
+       Por ventana (30 s): TP=12 FP=0 FN=1 TN=29  precisión=1.000 recall=0.923 F1=0.960
+       Por incidente: 5/5 detectados (recall 1.00); primera alerta: mediana 25.0 s, máximo 32.5 s
+       Falsas alarmas: 0.0 por hora (0 en 0.35 h)
+     prueba:
+       Por ventana (30 s): TP=10 FP=0 FN=1 TN=31  precisión=1.000 recall=0.909 F1=0.952
+       Por incidente: 5/5 detectados (recall 1.00); primera alerta: mediana 23.8 s, máximo 28.1 s
+       Falsas alarmas: 0.0 por hora (0 en 0.35 h)
+  W3 4xx de un mismo cliente: web_max_4xx_cliente >= 18
+     criterio: máximo F1 en validación (0.960); empatan 1 valores entre 18 y 18
+     referencia sin etiquetas (máximo de entrenamiento + 1 paso): 14
+     validación:
+       Por ventana (30 s): TP=12 FP=0 FN=1 TN=29  precisión=1.000 recall=0.923 F1=0.960
+       Por incidente: 5/5 detectados (recall 1.00); primera alerta: mediana 25.0 s, máximo 32.5 s
+       Falsas alarmas: 0.0 por hora (0 en 0.35 h)
+     prueba:
+       Por ventana (30 s): TP=10 FP=0 FN=1 TN=31  precisión=1.000 recall=0.909 F1=0.952
+       Por incidente: 5/5 detectados (recall 1.00); primera alerta: mediana 23.8 s, máximo 28.1 s
+       Falsas alarmas: 0.0 por hora (0 en 0.35 h)
+  Reglas 'completo' (W1 o W2) — prueba:
+     Por ventana (30 s): TP=11 FP=0 FN=0 TN=31  precisión=1.000 recall=1.000 F1=1.000
+     Por incidente: 5/5 detectados (recall 1.00); primera alerta: mediana 23.8 s, máximo 28.1 s
+     Falsas alarmas: 0.0 por hora (0 en 0.35 h)
+  Isolation Forest 'apache_completo' — mismas ventanas de prueba:
+     Por ventana (30 s): TP=11 FP=1 FN=0 TN=30  precisión=0.917 recall=1.000 F1=0.957
+     Por incidente: 5/5 detectados (recall 1.00); primera alerta: mediana 23.8 s, máximo 28.1 s
+     Falsas alarmas: 2.9 por hora (1 en 0.35 h)
+  Incidente por incidente (prueba): primera alerta en segundos desde el inicio real
+     sesión        reglas          IF
+     S04 I2        23.8 s      23.8 s
+     S06 I2        27.5 s      27.5 s
+     S07 I2        28.1 s      28.1 s
+     S22 I2        23.6 s      23.6 s
+     S32 I2        14.7 s      14.7 s
+  Falsos positivos en prueba — reglas: ninguno; IF: S32/v1
+
+=== Tabla comparativa en prueba (mismas ventanas; unidad por ventana = 30 s)
+    umbrales calibrados con máximo F1 en las etiquetas de validación
+  fuente  detector                              prec   rec    F1    inc   t_med   FA/h
+  auditd  reglas_completo                       1.00  1.00  1.00    5/5    15.1    0.0
+  auditd  IF_auditd_completo                    0.90  0.75  0.82    5/5    32.9    2.9
+  auditd  reglas_generico                       1.00  0.92  0.96    5/5    15.4    0.0
+  auditd  IF_auditd_sin_clave_protegido         0.92  0.92  0.92    5/5    15.4    2.9
+  apache  reglas_completo                       1.00  1.00  1.00    5/5    23.8    0.0
+  apache  IF_apache_completo                    0.92  1.00  0.96    5/5    23.8    2.9
+
+=== Misma tabla SIN etiquetas: reglas con máximo de entrenamiento + 1 paso (A2 fijo en 1);
+    IF con alerta si supera el puntaje máximo de entrenamiento
+  fuente  detector                              prec   rec    F1    inc   t_med   FA/h
+  auditd  reglas_completo                       1.00  1.00  1.00    5/5    15.1    0.0
+  auditd  IF_auditd_completo                    0.50  0.08  0.14    1/5    24.7    2.9
+  auditd  reglas_generico                       1.00  1.00  1.00    5/5    15.1    0.0
+  auditd  IF_auditd_sin_clave_protegido         1.00  0.50  0.67    4/5    41.1    0.0
+  apache  reglas_completo                       0.79  1.00  0.88    5/5    23.8    8.6
+  apache  IF_apache_completo                    0.85  1.00  0.92    5/5    23.8    5.7
+

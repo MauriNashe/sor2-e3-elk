@@ -6,7 +6,8 @@
 #   elastic           superusuario, solo administración (Kibana UI, setup, filebeat setup)
 #   kibana_system     usuario interno de Kibana (built-in, acá solo se le fija la contraseña)
 #   logstash_internal rol logstash_writer: SOLO crea documentos en lab-*; no lee ni borra
-#   lab_analyst       rol lab_analyst: lee lab-*; escribe solo en lab-alertas* (detector, T7)
+#   lab_analyst       rol lab_analyst: lee lab-* y sus estadísticas (monitor, para _cat/indices);
+#                     escribe solo en lab-alertas* (detector, T7)
 set -euo pipefail
 
 ES="http://es01:9200"
@@ -50,7 +51,7 @@ api POST /_security/user/logstash_internal \
 api PUT /_security/role/lab_analyst '{
   "cluster": ["monitor"],
   "indices": [
-    { "names": ["lab-*"],        "privileges": ["read", "view_index_metadata"] },
+    { "names": ["lab-*"],        "privileges": ["read", "view_index_metadata", "monitor"] },
     { "names": ["lab-alertas*"], "privileges": ["create_index", "create_doc", "auto_configure", "read", "view_index_metadata"] }
   ]
 }'

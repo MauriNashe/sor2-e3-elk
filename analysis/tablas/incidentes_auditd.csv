@@ -1,0 +1,6 @@
+sesión,intensidad (eventos/s),duración (s),eventos del incidente,IF completo,IF sin clave protegido,Reglas A1 o A2,Regla A1 (genérica)
+S11,1.96,46.3,102,24.7,24.7,24.7,24.7
+S14,1.24,54.3,72,32.9,32.9,2.9,32.9
+S16,2.88,59.2,170,11.1,11.1,11.1,11.1
+S26,2.15,44.4,97,45.1,15.1,15.1,15.1
+S35,1.88,42.2,80,45.4,15.4,15.4,15.4

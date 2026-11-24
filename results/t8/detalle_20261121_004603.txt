@@ -1,0 +1,60 @@
+===== auditd: 21 líneas que faltan en ES
+  [2026-11-20T06:33:45+00:00] type=USER_AUTH msg=audit(1795156425.482:3264): pid=34800 uid=1000 auid=1000 ses=1 subj=unconfined msg='op=PAM:authentication grantors=pam_permit,pam_cap acct="labadmin" exe="/usr/bin/sudo" hostname=? addr=? terminal=/dev/pts/0 res=success'
+  [2026-11-20T06:33:45+00:00] type=USER_ACCT msg=audit(1795156425.482:3265): pid=34800 uid=1000 auid=1000 ses=1 subj=unconfined msg='op=PAM:accounting grantors=pam_permit acct="labadmin" exe="/usr/bin/sudo" hostname=? addr=? terminal=/dev/pts/0 res=success'
+  [2026-11-20T06:33:45+00:00] type=USER_CMD msg=audit(1795156425.483:3266): pid=34800 uid=1000 auid=1000 ses=1 subj=unconfined msg='cwd="/home/labadmin/sor2-e3-elk-ml" cmd=6261736820736372697074732F74325F7265696E69636961725F696E67657374612E7368 exe="/usr/bin/sudo" terminal=pts/0 res=success'
+  [2026-11-20T06:33:45+00:00] type=CRED_REFR msg=audit(1795156425.483:3267): pid=34800 uid=1000 auid=1000 ses=1 subj=unconfined msg='op=PAM:setcred grantors=pam_permit,pam_cap acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=/dev/pts/0 res=success'
+  [2026-11-20T06:33:45+00:00] type=USER_START msg=audit(1795156425.484:3268): pid=34800 uid=1000 auid=1000 ses=1 subj=unconfined msg='op=PAM:session_open grantors=pam_limits,pam_env,pam_env,pam_permit,pam_umask,pam_unix acct="root" exe="/usr/bin/sudo" hostname=? addr=? terminal=/dev/pts/0 res=success'
+  [2026-11-20T06:33:45+00:00] type=SERVICE_STOP msg=audit(1795156425.514:3269): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='unit=filebeat comm="systemd" exe="/usr/lib/systemd/systemd" hostname=? addr=? terminal=? res=success'
+  [2026-11-20T20:00:42+00:00] type=DAEMON_START msg=audit(1795204842.292:2670): op=start ver=3.1.2 format=raw kernel=6.8.0-149-generic auid=4294967295 pid=699 uid=0 ses=4294967295 subj=unconfined  res=success
+  [2026-11-20T20:00:42+00:00] type=AVC msg=audit(1795204842.479:153): apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="rsyslogd" pid=866 comm="apparmor_parser"
+  [2026-11-20T20:00:42+00:00] type=TRUSTED_APP msg=audit(1795204842.641:167): pid=860 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='{"datetime":"2026-11-20T20:00:42.642476975Z","level":"INFO","description":"Security logging enabled","app_id":"canonical.snapd.snapd","type":"security","category":"SYS","event":"sys_logging_enabled"} '
+  [2026-11-20T20:00:42+00:00] type=AVC msg=audit(1795204842.796:171): apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="/usr/lib/snapd/snap-confine" pid=1008 comm="apparmor_parser"
+  [2026-11-20T20:00:50+00:00] type=TRUSTED_APP msg=audit(1795204850.828:300): pid=860 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='{"datetime":"2026-11-20T20:00:50.829137957Z","level":"CRITICAL","description":"Security logging disabled","app_id":"canonical.snapd.snapd","type":"security","category":"SYS","event":"sys_logging_disabled"} '
+  [2026-11-20T23:47:27+00:00] type=DAEMON_START msg=audit(1795218447.545:128): op=start ver=3.1.2 format=raw kernel=6.8.0-149-generic auid=4294967295 pid=661 uid=0 ses=4294967295 subj=unconfined  res=success
+  [2026-11-20T23:47:28+00:00] type=AVC msg=audit(1795218448.042:156): apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="rsyslogd" pid=831 comm="apparmor_parser"
+  [2026-11-20T23:47:28+00:00] type=TRUSTED_APP msg=audit(1795218448.193:169): pid=824 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='{"datetime":"2026-11-20T23:47:28.194822656Z","level":"INFO","description":"Security logging enabled","app_id":"canonical.snapd.snapd","type":"security","category":"SYS","event":"sys_logging_enabled"} '
+  [2026-11-20T23:47:28+00:00] type=AVC msg=audit(1795218448.325:173): apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="/usr/lib/snapd/snap-confine" pid=974 comm="apparmor_parser"
+  [2026-11-20T23:47:36+00:00] type=TRUSTED_APP msg=audit(1795218456.351:303): pid=824 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='{"datetime":"2026-11-20T23:47:36.352166388Z","level":"CRITICAL","description":"Security logging disabled","app_id":"canonical.snapd.snapd","type":"security","category":"SYS","event":"sys_logging_disabled"} '
+  [2026-11-21T03:21:33+00:00] type=DAEMON_START msg=audit(1795231293.401:6857): op=start ver=3.1.2 format=raw kernel=6.8.0-149-generic auid=4294967295 pid=673 uid=0 ses=4294967295 subj=unconfined  res=success
+  [2026-11-21T03:21:33+00:00] type=AVC msg=audit(1795231293.603:161): apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="rsyslogd" pid=830 comm="apparmor_parser"
+  [2026-11-21T03:21:33+00:00] type=TRUSTED_APP msg=audit(1795231293.740:169): pid=823 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='{"datetime":"2026-11-21T03:21:33.741679744Z","level":"INFO","description":"Security logging enabled","app_id":"canonical.snapd.snapd","type":"security","category":"SYS","event":"sys_logging_enabled"} '
+  [2026-11-21T03:21:33+00:00] type=AVC msg=audit(1795231293.879:179): apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="/usr/lib/snapd/snap-confine" pid=1047 comm="apparmor_parser"
+  [2026-11-21T03:21:41+00:00] type=TRUSTED_APP msg=audit(1795231301.905:307): pid=823 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='{"datetime":"2026-11-21T03:21:41.906357847Z","level":"CRITICAL","description":"Security logging disabled","app_id":"canonical.snapd.snapd","type":"security","category":"SYS","event":"sys_logging_disabled"} '
+===== auditd: 15 documentos con error de parseo
+  [2026-11-20T20:00:44.429Z] error: ['field [auditd.log.kv] does not contain value_split [(?<!\\\\\\\\)=]']
+      original: None
+  [2026-11-20T20:00:44.433Z] error: ['field [auditd.log.kv] does not contain value_split [(?<!\\\\\\\\)=]']
+      original: None
+  [2026-11-20T20:00:44.433Z] error: ['field [auditd.log.sub_kv] does not contain value_split [=]']
+      original: None
+  [2026-11-20T20:00:44.433Z] error: ['field [auditd.log.kv] does not contain value_split [(?<!\\\\\\\\)=]']
+      original: None
+  [2026-11-20T20:00:53.441Z] error: ['field [auditd.log.sub_kv] does not contain value_split [=]']
+      original: None
+  [2026-11-20T23:47:30.791Z] error: ['field [auditd.log.kv] does not contain value_split [(?<!\\\\\\\\)=]']
+      original: None
+  [2026-11-20T23:47:30.797Z] error: ['field [auditd.log.kv] does not contain value_split [(?<!\\\\\\\\)=]']
+      original: None
+  [2026-11-20T23:47:30.799Z] error: ['field [auditd.log.sub_kv] does not contain value_split [=]']
+      original: None
+  [2026-11-20T23:47:30.799Z] error: ['field [auditd.log.kv] does not contain value_split [(?<!\\\\\\\\)=]']
+      original: None
+  [2026-11-20T23:47:39.810Z] error: ['field [auditd.log.sub_kv] does not contain value_split [=]']
+      original: None
+  [2026-11-21T03:21:35.401Z] error: ['field [auditd.log.kv] does not contain value_split [(?<!\\\\\\\\)=]']
+      original: None
+  [2026-11-21T03:21:35.404Z] error: ['field [auditd.log.kv] does not contain value_split [(?<!\\\\\\\\)=]']
+      original: None
+  [2026-11-21T03:21:35.404Z] error: ['field [auditd.log.sub_kv] does not contain value_split [=]']
+      original: None
+  [2026-11-21T03:21:35.404Z] error: ['field [auditd.log.kv] does not contain value_split [(?<!\\\\\\\\)=]']
+      original: None
+  [2026-11-21T03:21:43.412Z] error: ['field [auditd.log.sub_kv] does not contain value_split [=]']
+      original: None
+
+===== apache-access: 0 líneas que faltan en ES
+===== apache-access: 0 documentos con error de parseo
+
+===== apache-error: 0 líneas que faltan en ES
+===== apache-error: 0 documentos con error de parseo
+

@@ -4,7 +4,7 @@
 #     sudo bash scripts/t2_ingesta_setup.sh
 #
 # Hace:
-#   1. auditd.conf: rotación ampliada (50 MB x 10 archivos) y nombre de host en cada registro
+#   1. auditd.conf: rotación ampliada (50 MB x 10 archivos) y formato RAW
 #   2. Crea el archivo protegido de prueba /srv/lab/protegido/secreto.txt (root, 600)
 #   3. Instala y carga las reglas configs/auditd/lab.rules
 #   4. Instala configs/filebeat/filebeat.yml en /etc/filebeat
@@ -43,7 +43,11 @@ setconf() {
 setconf max_log_file 50
 setconf num_logs 10
 setconf max_log_file_action ROTATE
-setconf name_format HOSTNAME
+# RAW: el formato ENRICHED (defecto de Ubuntu) agrega valores traducidos tras un separador 0x1D que el
+# módulo auditd de Filebeat no sabe parsear. NONE: sin "node=" (con HOSTNAME aplicado por SIGHUP salía
+# "node=(null)"); el nombre de host lo aporta Filebeat en host.name.
+setconf log_format RAW
+setconf name_format NONE
 kill -HUP "$(pidof auditd)"          # auditd relee su configuración con SIGHUP
 grep -E '^(log_format|max_log_file|num_logs|max_log_file_action|name_format)[[:space:]]*=' "$CONF"
 
@@ -77,6 +81,7 @@ jq '.index_patterns = ["lab-auditd-*", "lab-apache-*", "lab-otros-*"]
     | .template.settings.index.final_pipeline = "lab-ingested"
     | .template.settings.index.number_of_replicas = 0
     | .template.mappings.properties.lab = {"properties": {
+        "filebeat_read":     {"type": "date"},
         "logstash_received": {"type": "date"},
         "es_ingested":       {"type": "date"}}}
     | ._meta = {"descripcion": "Mapeo ECS de Filebeat '"$STACK_VERSION"' adaptado al laboratorio (sin data stream ni ILM)"}' \

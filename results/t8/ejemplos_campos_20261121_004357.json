@@ -1,0 +1,1116 @@
+{
+  "path": {
+    "documentos": 34479,
+    "campos": {
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30328257,
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:22:22.508320515Z",
+      "lab.logstash_received": "2026-11-21T03:21:53.802693329Z",
+      "lab.filebeat_read": "2026-11-21T03:21:35.402Z",
+      "auditd.log.item": "0",
+      "auditd.log.nametype": "PARENT",
+      "auditd.log.cap_fi": "0",
+      "auditd.log.cap_fp": "0",
+      "auditd.log.cap_frootid": "0",
+      "auditd.log.inode": "1229098",
+      "auditd.log.mode": "040755",
+      "auditd.log.cap_fver": "0",
+      "auditd.log.sequence": 105,
+      "auditd.log.dev": "fc:00",
+      "auditd.log.rdev": "00:00",
+      "auditd.log.cap_fe": "0",
+      "auditd.log.name": "/srv/lab/protegido/",
+      "tags": [],
+      "@timestamp": "2026-11-21T03:21:33.435Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:22:22.508320515Z",
+      "event.original": "type=PATH msg=audit(1795231293.435:105): item=0 name=\"/srv/lab/protegido/\" inode=1229098 dev=fc:00 mode=040755 ouid=0 ogid=0 rdev=00:00 nametype=PARENT cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": "path",
+      "event.dataset": "auditd.log",
+      "user.owner.id": "0",
+      "user.owner.group.id": "0"
+    }
+  },
+  "proctitle": {
+    "documentos": 32354,
+    "campos": {
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30457993,
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:42:48.606007099Z",
+      "lab.logstash_received": "2026-11-21T03:42:48.515352154Z",
+      "lab.filebeat_read": "2026-11-21T03:42:36.621Z",
+      "auditd.log.sequence": 369,
+      "auditd.log.proctitle": "sshd: labadmin [priv]",
+      "tags": [],
+      "@timestamp": "2026-11-21T03:42:35.257Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:42:48.606007099Z",
+      "event.original": "type=PROCTITLE msg=audit(1795232555.257:369): proctitle=737368643A206C616261646D696E205B707269765D",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": "proctitle",
+      "event.dataset": "auditd.log"
+    }
+  },
+  "syscall": {
+    "documentos": 32354,
+    "campos": {
+      "process.parent.pid": 3413,
+      "process.name": "sshd",
+      "process.exit_code": 4,
+      "process.pid": 11689,
+      "process.executable": "/usr/sbin/sshd",
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30457704,
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:42:48.608422433Z",
+      "lab.logstash_received": "2026-11-21T03:42:48.515044500Z",
+      "lab.filebeat_read": "2026-11-21T03:42:36.621Z",
+      "auditd.log.syscall": "1",
+      "auditd.log.subj": "unconfined",
+      "auditd.log.ses": "5",
+      "auditd.log.a0": "3",
+      "auditd.log.a1": "7ffdeec0a090",
+      "auditd.log.sequence": 369,
+      "auditd.log.a2": "4",
+      "auditd.log.a3": "0",
+      "auditd.log.success": "yes",
+      "auditd.log.tty": "(none)",
+      "auditd.log.items": "0",
+      "tags": [],
+      "@timestamp": "2026-11-21T03:42:35.257Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "host.architecture": "x86_64",
+      "event.ingested": "2026-11-21T03:42:48.608422433Z",
+      "event.original": "type=SYSCALL msg=audit(1795232555.257:369): arch=c000003e syscall=1 success=yes exit=4 a0=3 a1=7ffdeec0a090 a2=4 a3=0 items=0 ppid=3413 pid=11689 auid=1000 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=5 comm=\"sshd\" exe=\"/usr/sbin/sshd\" subj=unconfined key=(null)",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": "syscall",
+      "event.category": [
+        "process"
+      ],
+      "event.type": [
+        "info"
+      ],
+      "event.dataset": "auditd.log",
+      "user.effective.id": "0",
+      "user.effective.group.id": "0",
+      "user.saved.id": "0",
+      "user.saved.group.id": "0",
+      "user.audit.id": "1000",
+      "user.id": "0",
+      "user.filesystem.id": "0",
+      "user.filesystem.group.id": "0",
+      "user.group.id": "0"
+    }
+  },
+  "cwd": {
+    "documentos": 31028,
+    "campos": {
+      "process.working_directory": "/",
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30328209,
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:22:22.415591887Z",
+      "lab.logstash_received": "2026-11-21T03:21:53.824595431Z",
+      "lab.filebeat_read": "2026-11-21T03:21:35.402Z",
+      "auditd.log.sequence": 105,
+      "tags": [],
+      "@timestamp": "2026-11-21T03:21:33.435Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:22:22.415591887Z",
+      "event.original": "type=CWD msg=audit(1795231293.435:105): cwd=\"/\"",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": "cwd",
+      "event.dataset": "auditd.log"
+    }
+  },
+  "execve": {
+    "documentos": 3239,
+    "campos": {
+      "process.args": [
+        "ls",
+        "-la",
+        "/home/labuser/trabajo"
+      ],
+      "process.args_count": 3,
+      "process.executable": "ls",
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30092280,
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-20T21:24:26.894889835Z",
+      "lab.logstash_received": "2026-11-20T21:24:26.885458857Z",
+      "lab.filebeat_read": "2026-11-20T21:24:21.779Z",
+      "auditd.log.sequence": 2860,
+      "tags": [],
+      "@timestamp": "2026-11-20T21:24:21.207Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-20T21:24:26.894889835Z",
+      "event.original": "type=EXECVE msg=audit(1795209861.207:2860): argc=3 a0=\"ls\" a1=\"-la\" a2=\"/home/labuser/trabajo\"",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": "execve",
+      "event.dataset": "auditd.log"
+    }
+  },
+  "sockaddr": {
+    "documentos": 904,
+    "campos": {
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30440405,
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:22:27.210537738Z",
+      "lab.logstash_received": "2026-11-21T03:22:27.124346999Z",
+      "lab.filebeat_read": "2026-11-21T03:21:36.409Z",
+      "auditd.log.sequence": 301,
+      "auditd.log.saddr": "100000000000000000000000",
+      "tags": [],
+      "@timestamp": "2026-11-21T03:21:36.129Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:22:27.210537738Z",
+      "event.original": "type=SOCKADDR msg=audit(1795231296.129:301): saddr=100000000000000000000000",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": "sockaddr",
+      "event.dataset": "auditd.log"
+    }
+  },
+  "loaded-firewall-rule-to": {
+    "documentos": 890,
+    "campos": {
+      "process.name": "iptables",
+      "process.pid": 1668,
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30439924,
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:22:27.209847869Z",
+      "lab.logstash_received": "2026-11-21T03:22:27.124325329Z",
+      "lab.filebeat_read": "2026-11-21T03:21:36.409Z",
+      "auditd.log.sequence": 301,
+      "auditd.log.op": "nft_register_rule",
+      "auditd.log.entries": 1,
+      "auditd.log.family": "2",
+      "auditd.log.subj": "unconfined",
+      "auditd.log.record_type": "NETFILTER_CFG",
+      "auditd.log.table": "filter:86",
+      "tags": [],
+      "@timestamp": "2026-11-21T03:21:36.129Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:22:27.209847869Z",
+      "event.original": "type=NETFILTER_CFG msg=audit(1795231296.129:301): table=filter:86 family=2 entries=1 op=nft_register_rule pid=1668 subj=unconfined comm=\"iptables\"",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": [
+        "loaded-firewall-rule-to"
+      ],
+      "event.category": [
+        "configuration"
+      ],
+      "event.type": [
+        "change"
+      ],
+      "event.dataset": "auditd.log"
+    }
+  },
+  "bpf": {
+    "documentos": 447,
+    "campos": {
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30444082,
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:22:27.220117779Z",
+      "lab.logstash_received": "2026-11-21T03:22:27.124594251Z",
+      "lab.filebeat_read": "2026-11-21T03:22:04.420Z",
+      "auditd.log.sequence": 316,
+      "auditd.log.op": "UNLOAD",
+      "tags": [],
+      "@timestamp": "2026-11-21T03:22:03.981Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:22:27.220117779Z",
+      "event.original": "type=BPF msg=audit(1795231323.981:316): prog-id=20 op=UNLOAD",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": "bpf",
+      "event.dataset": "auditd.log"
+    }
+  },
+  "violated-apparmor-policy": {
+    "documentos": 217,
+    "campos": {
+      "process.name": "apparmor_parser",
+      "process.pid": 1185,
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30364126,
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:22:22.330150070Z",
+      "lab.logstash_received": "2026-11-21T03:22:22.069657595Z",
+      "lab.filebeat_read": "2026-11-21T03:21:35.404Z",
+      "auditd.log.sequence": 197,
+      "auditd.log.profile": "unconfined",
+      "auditd.log.name": "docker-default",
+      "auditd.log.apparmor": "STATUS",
+      "auditd.log.operation": "profile_load",
+      "auditd.log.record_type": "AVC",
+      "tags": [],
+      "@timestamp": "2026-11-21T03:21:35.241Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:22:22.330150070Z",
+      "event.original": "type=AVC msg=audit(1795231295.241:197): apparmor=\"STATUS\" operation=\"profile_load\" profile=\"unconfined\" name=\"docker-default\" pid=1185 comm=\"apparmor_parser\"",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": [
+        "violated-apparmor-policy"
+      ],
+      "event.dataset": "auditd.log"
+    }
+  },
+  "started-service": {
+    "documentos": 183,
+    "campos": {
+      "process.name": "systemd",
+      "process.pid": 1,
+      "process.executable": "/usr/lib/systemd/systemd",
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30456332,
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:40:32.771694978Z",
+      "lab.logstash_received": "2026-11-21T03:40:32.764214017Z",
+      "lab.filebeat_read": "2026-11-21T03:40:21.609Z",
+      "auditd.log.ses": "4294967295",
+      "auditd.log.record_type": "SERVICE_START",
+      "auditd.log.sequence": 364,
+      "auditd.log.unit": "sysstat-collect",
+      "auditd.log.subj": "unconfined",
+      "tags": [],
+      "@timestamp": "2026-11-21T03:40:16.515Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:40:32.771694978Z",
+      "event.original": "type=SERVICE_START msg=audit(1795232416.515:364): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='unit=sysstat-collect comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": [
+        "started-service"
+      ],
+      "event.category": [
+        "process"
+      ],
+      "event.type": [
+        "start"
+      ],
+      "event.dataset": "auditd.log",
+      "event.outcome": "success",
+      "user.audit.id": "4294967295",
+      "user.id": "0"
+    }
+  },
+  "stopped-service": {
+    "documentos": 179,
+    "campos": {
+      "process.name": "systemd",
+      "process.pid": 1,
+      "process.executable": "/usr/lib/systemd/systemd",
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30456555,
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:40:32.770340940Z",
+      "lab.logstash_received": "2026-11-21T03:40:32.764759436Z",
+      "lab.filebeat_read": "2026-11-21T03:40:21.609Z",
+      "auditd.log.ses": "4294967295",
+      "auditd.log.record_type": "SERVICE_STOP",
+      "auditd.log.sequence": 365,
+      "auditd.log.unit": "sysstat-collect",
+      "auditd.log.subj": "unconfined",
+      "tags": [],
+      "@timestamp": "2026-11-21T03:40:16.515Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:40:32.770340940Z",
+      "event.original": "type=SERVICE_STOP msg=audit(1795232416.515:365): pid=1 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='unit=sysstat-collect comm=\"systemd\" exe=\"/usr/lib/systemd/systemd\" hostname=? addr=? terminal=? res=success'",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": [
+        "stopped-service"
+      ],
+      "event.category": [
+        "process"
+      ],
+      "event.type": [
+        "stop"
+      ],
+      "event.dataset": "auditd.log",
+      "event.outcome": "success",
+      "user.audit.id": "4294967295",
+      "user.id": "0"
+    }
+  },
+  "changed-promiscuous-mode-on-device": {
+    "documentos": 126,
+    "campos": {
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30420861,
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:22:26.984781104Z",
+      "lab.logstash_received": "2026-11-21T03:22:26.905868507Z",
+      "lab.filebeat_read": "2026-11-21T03:21:36.408Z",
+      "auditd.log.ses": "4294967295",
+      "auditd.log.sequence": 277,
+      "auditd.log.dev": "vethbb16eeb",
+      "auditd.log.prom": "256",
+      "auditd.log.record_type": "ANOM_PROMISCUOUS",
+      "auditd.log.old_prom": "0",
+      "tags": [],
+      "@timestamp": "2026-11-21T03:21:36.036Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:22:26.984781104Z",
+      "event.original": "type=ANOM_PROMISCUOUS msg=audit(1795231296.036:277): dev=vethbb16eeb prom=256 old_prom=0 auid=4294967295 uid=0 gid=0 ses=4294967295",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": [
+        "changed-promiscuous-mode-on-device"
+      ],
+      "event.dataset": "auditd.log",
+      "user.audit.id": "4294967295",
+      "user.id": "0",
+      "user.group.id": "0"
+    }
+  },
+  "started-session": {
+    "documentos": 103,
+    "campos": {
+      "process.pid": 11689,
+      "process.executable": "/usr/sbin/sshd",
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30458092,
+      "source.address": "192.168.56.1",
+      "source.ip": "192.168.56.1",
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:42:48.607276573Z",
+      "lab.logstash_received": "2026-11-21T03:42:48.515062151Z",
+      "lab.filebeat_read": "2026-11-21T03:42:36.621Z",
+      "auditd.log.ses": "5",
+      "auditd.log.op": "PAM:session_open",
+      "auditd.log.record_type": "USER_START",
+      "auditd.log.sequence": 370,
+      "auditd.log.uid": "0",
+      "auditd.log.hostname": "192.168.56.1",
+      "auditd.log.subj": "unconfined",
+      "auditd.log.grantors": "pam_selinux,pam_loginuid,pam_keyinit,pam_permit,pam_umask,pam_unix,pam_systemd,pam_mail,pam_limits,pam_env,pam_env,pam_selinux",
+      "tags": [],
+      "@timestamp": "2026-11-21T03:42:35.519Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:42:48.607276573Z",
+      "event.original": "type=USER_START msg=audit(1795232555.519:370): pid=11689 uid=0 auid=1000 ses=5 subj=unconfined msg='op=PAM:session_open grantors=pam_selinux,pam_loginuid,pam_keyinit,pam_permit,pam_umask,pam_unix,pam_systemd,pam_mail,pam_limits,pam_env,pam_env,pam_selinux acct=\"labadmin\" exe=\"/usr/sbin/sshd\" hostname=192.168.56.1 addr=192.168.56.1 terminal=ssh res=success'",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": [
+        "started-session"
+      ],
+      "event.category": [
+        "session"
+      ],
+      "event.type": [
+        "start"
+      ],
+      "event.dataset": "auditd.log",
+      "event.outcome": "success",
+      "user.effective.name": "labadmin",
+      "user.audit.id": "1000",
+      "user.name": "labadmin",
+      "user.id": "1000",
+      "user.terminal": "ssh"
+    }
+  },
+  "was-authorized": {
+    "documentos": 103,
+    "campos": {
+      "process.pid": 11689,
+      "process.executable": "/usr/sbin/sshd",
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30457044,
+      "source.address": "192.168.56.1",
+      "source.ip": "192.168.56.1",
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:42:48.605306370Z",
+      "lab.logstash_received": "2026-11-21T03:42:48.515303663Z",
+      "lab.filebeat_read": "2026-11-21T03:42:36.620Z",
+      "auditd.log.ses": "4294967295",
+      "auditd.log.op": "PAM:accounting",
+      "auditd.log.record_type": "USER_ACCT",
+      "auditd.log.sequence": 367,
+      "auditd.log.uid": "0",
+      "auditd.log.hostname": "192.168.56.1",
+      "auditd.log.subj": "unconfined",
+      "auditd.log.grantors": "pam_permit",
+      "tags": [],
+      "@timestamp": "2026-11-21T03:42:35.255Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:42:48.605306370Z",
+      "event.original": "type=USER_ACCT msg=audit(1795232555.255:367): pid=11689 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='op=PAM:accounting grantors=pam_permit acct=\"labadmin\" exe=\"/usr/sbin/sshd\" hostname=192.168.56.1 addr=192.168.56.1 terminal=ssh res=success'",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": [
+        "was-authorized"
+      ],
+      "event.category": [
+        "authentication"
+      ],
+      "event.type": [
+        "info"
+      ],
+      "event.dataset": "auditd.log",
+      "event.outcome": "success",
+      "user.effective.name": "labadmin",
+      "user.audit.id": "4294967295",
+      "user.name": "labadmin",
+      "user.id": "4294967295",
+      "user.terminal": "ssh"
+    }
+  },
+  "disposed-credentials": {
+    "documentos": 101,
+    "campos": {
+      "process.pid": 11689,
+      "process.executable": "/usr/sbin/sshd",
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30459053,
+      "source.address": "192.168.56.1",
+      "source.ip": "192.168.56.1",
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:42:48.606271012Z",
+      "lab.logstash_received": "2026-11-21T03:42:48.515378303Z",
+      "lab.filebeat_read": "2026-11-21T03:42:36.621Z",
+      "auditd.log.ses": "5",
+      "auditd.log.op": "PAM:setcred",
+      "auditd.log.record_type": "CRED_DISP",
+      "auditd.log.sequence": 373,
+      "auditd.log.uid": "0",
+      "auditd.log.hostname": "192.168.56.1",
+      "auditd.log.subj": "unconfined",
+      "auditd.log.grantors": "pam_permit",
+      "tags": [],
+      "@timestamp": "2026-11-21T03:42:35.873Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:42:48.606271012Z",
+      "event.original": "type=CRED_DISP msg=audit(1795232555.873:373): pid=11689 uid=0 auid=1000 ses=5 subj=unconfined msg='op=PAM:setcred grantors=pam_permit acct=\"labadmin\" exe=\"/usr/sbin/sshd\" hostname=192.168.56.1 addr=192.168.56.1 terminal=ssh res=success'",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": [
+        "disposed-credentials"
+      ],
+      "event.category": [
+        "authentication"
+      ],
+      "event.type": [
+        "info"
+      ],
+      "event.dataset": "auditd.log",
+      "event.outcome": "success",
+      "user.effective.name": "labadmin",
+      "user.audit.id": "1000",
+      "user.name": "labadmin",
+      "user.id": "1000",
+      "user.terminal": "ssh"
+    }
+  },
+  "ended-session": {
+    "documentos": 101,
+    "campos": {
+      "process.pid": 11689,
+      "process.executable": "/usr/sbin/sshd",
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30458695,
+      "source.address": "192.168.56.1",
+      "source.ip": "192.168.56.1",
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:42:48.608920683Z",
+      "lab.logstash_received": "2026-11-21T03:42:48.515096156Z",
+      "lab.filebeat_read": "2026-11-21T03:42:36.621Z",
+      "auditd.log.ses": "5",
+      "auditd.log.op": "PAM:session_close",
+      "auditd.log.record_type": "USER_END",
+      "auditd.log.sequence": 372,
+      "auditd.log.uid": "0",
+      "auditd.log.hostname": "192.168.56.1",
+      "auditd.log.subj": "unconfined",
+      "auditd.log.grantors": "pam_selinux,pam_loginuid,pam_keyinit,pam_permit,pam_umask,pam_unix,pam_systemd,pam_mail,pam_limits,pam_env,pam_env,pam_selinux",
+      "tags": [],
+      "@timestamp": "2026-11-21T03:42:35.872Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:42:48.608920683Z",
+      "event.original": "type=USER_END msg=audit(1795232555.872:372): pid=11689 uid=0 auid=1000 ses=5 subj=unconfined msg='op=PAM:session_close grantors=pam_selinux,pam_loginuid,pam_keyinit,pam_permit,pam_umask,pam_unix,pam_systemd,pam_mail,pam_limits,pam_env,pam_env,pam_selinux acct=\"labadmin\" exe=\"/usr/sbin/sshd\" hostname=192.168.56.1 addr=192.168.56.1 terminal=ssh res=success'",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": [
+        "ended-session"
+      ],
+      "event.type": [
+        "end"
+      ],
+      "event.category": [
+        "session"
+      ],
+      "event.dataset": "auditd.log",
+      "event.outcome": "success",
+      "user.effective.name": "labadmin",
+      "user.audit.id": "1000",
+      "user.name": "labadmin",
+      "user.id": "1000",
+      "user.terminal": "ssh"
+    }
+  },
+  "acquired-credentials": {
+    "documentos": 81,
+    "campos": {
+      "process.pid": 11810,
+      "process.executable": "/usr/sbin/sshd",
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30458451,
+      "source.address": "192.168.56.1",
+      "source.ip": "192.168.56.1",
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:42:48.606007211Z",
+      "lab.logstash_received": "2026-11-21T03:42:48.515042070Z",
+      "lab.filebeat_read": "2026-11-21T03:42:36.621Z",
+      "auditd.log.ses": "5",
+      "auditd.log.op": "PAM:setcred",
+      "auditd.log.record_type": "CRED_ACQ",
+      "auditd.log.sequence": 371,
+      "auditd.log.uid": "0",
+      "auditd.log.hostname": "192.168.56.1",
+      "auditd.log.subj": "unconfined",
+      "auditd.log.grantors": "pam_permit,pam_cap",
+      "tags": [],
+      "@timestamp": "2026-11-21T03:42:35.521Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:42:48.606007211Z",
+      "event.original": "type=CRED_ACQ msg=audit(1795232555.521:371): pid=11810 uid=0 auid=1000 ses=5 subj=unconfined msg='op=PAM:setcred grantors=pam_permit,pam_cap acct=\"labadmin\" exe=\"/usr/sbin/sshd\" hostname=192.168.56.1 addr=192.168.56.1 terminal=ssh res=success'",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": [
+        "acquired-credentials"
+      ],
+      "event.type": [
+        "info"
+      ],
+      "event.category": [
+        "authentication"
+      ],
+      "event.dataset": "auditd.log",
+      "event.outcome": "success",
+      "user.effective.name": "labadmin",
+      "user.audit.id": "1000",
+      "user.name": "labadmin",
+      "user.id": "1000",
+      "user.terminal": "ssh"
+    }
+  },
+  "refreshed-credentials": {
+    "documentos": 79,
+    "campos": {
+      "process.pid": 8821,
+      "process.executable": "/usr/sbin/cron",
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30455177,
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:35:23.183735569Z",
+      "lab.logstash_received": "2026-11-21T03:35:23.175033348Z",
+      "lab.filebeat_read": "2026-11-21T03:35:11.541Z",
+      "auditd.log.ses": "4",
+      "auditd.log.op": "PAM:setcred",
+      "auditd.log.record_type": "CRED_REFR",
+      "auditd.log.sequence": 359,
+      "auditd.log.uid": "0",
+      "auditd.log.subj": "unconfined",
+      "auditd.log.grantors": "pam_permit,pam_cap",
+      "tags": [],
+      "@timestamp": "2026-11-21T03:35:01.956Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:35:23.183735569Z",
+      "event.original": "type=CRED_REFR msg=audit(1795232101.956:359): pid=8821 uid=0 auid=0 ses=4 subj=unconfined msg='op=PAM:setcred grantors=pam_permit,pam_cap acct=\"root\" exe=\"/usr/sbin/cron\" hostname=? addr=? terminal=cron res=success'",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": [
+        "refreshed-credentials"
+      ],
+      "event.category": [
+        "authentication"
+      ],
+      "event.type": [
+        "info"
+      ],
+      "event.dataset": "auditd.log",
+      "event.outcome": "success",
+      "user.effective.name": "root",
+      "user.audit.id": "0",
+      "user.name": "root",
+      "user.id": "0",
+      "user.terminal": "cron"
+    }
+  },
+  "changed-login-id-to": {
+    "documentos": 60,
+    "campos": {
+      "process.pid": 11689,
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30457558,
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:42:48.605306412Z",
+      "lab.logstash_received": "2026-11-21T03:42:48.514452379Z",
+      "lab.filebeat_read": "2026-11-21T03:42:36.621Z",
+      "auditd.log.ses": "5",
+      "auditd.log.old_ses": "4294967295",
+      "auditd.log.record_type": "LOGIN",
+      "auditd.log.sequence": 369,
+      "auditd.log.uid": "0",
+      "auditd.log.old_auid": "4294967295",
+      "auditd.log.tty": "(none)",
+      "auditd.log.subj": "unconfined",
+      "tags": [],
+      "@timestamp": "2026-11-21T03:42:35.257Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:42:48.605306412Z",
+      "event.original": "type=LOGIN msg=audit(1795232555.257:369): pid=11689 uid=0 subj=unconfined old-auid=4294967295 auid=1000 tty=(none) old-ses=4294967295 ses=5 res=1",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": [
+        "changed-login-id-to"
+      ],
+      "event.category": [
+        "authentication"
+      ],
+      "event.type": [
+        "start"
+      ],
+      "event.dataset": "auditd.log",
+      "event.outcome": "1",
+      "user.effective.id": "1000",
+      "user.audit.id": "1000",
+      "user.id": "4294967295"
+    }
+  },
+  "authenticated": {
+    "documentos": 43,
+    "campos": {
+      "process.pid": 11689,
+      "process.executable": "/usr/sbin/sshd",
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30456777,
+      "source.address": "192.168.56.1",
+      "source.ip": "192.168.56.1",
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:42:48.607993902Z",
+      "lab.logstash_received": "2026-11-21T03:42:48.514892866Z",
+      "lab.filebeat_read": "2026-11-21T03:42:36.620Z",
+      "auditd.log.ses": "4294967295",
+      "auditd.log.op": "PAM:authentication",
+      "auditd.log.record_type": "USER_AUTH",
+      "auditd.log.sequence": 366,
+      "auditd.log.uid": "0",
+      "auditd.log.hostname": "192.168.56.1",
+      "auditd.log.subj": "unconfined",
+      "auditd.log.grantors": "pam_permit,pam_cap",
+      "tags": [],
+      "@timestamp": "2026-11-21T03:42:35.253Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:42:48.607993902Z",
+      "event.original": "type=USER_AUTH msg=audit(1795232555.253:366): pid=11689 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='op=PAM:authentication grantors=pam_permit,pam_cap acct=\"labadmin\" exe=\"/usr/sbin/sshd\" hostname=192.168.56.1 addr=192.168.56.1 terminal=ssh res=success'",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": [
+        "authenticated"
+      ],
+      "event.category": [
+        "authentication"
+      ],
+      "event.type": [
+        "info"
+      ],
+      "event.dataset": "auditd.log",
+      "event.outcome": "success",
+      "user.effective.name": "labadmin",
+      "user.audit.id": "4294967295",
+      "user.name": "labadmin",
+      "user.id": "4294967295",
+      "user.terminal": "ssh"
+    }
+  },
+  "ran-command": {
+    "documentos": 43,
+    "campos": {
+      "process.args": [
+        "shutdown",
+        "now"
+      ],
+      "process.pid": 5287,
+      "process.working_directory": "/home/labadmin",
+      "process.args_count": 2,
+      "process.executable": "/usr/bin/sudo",
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30280246,
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:22:22.244684207Z",
+      "lab.logstash_received": "2026-11-21T03:21:53.831103422Z",
+      "lab.filebeat_read": "2026-11-21T03:21:35.400Z",
+      "auditd.log.ses": "1",
+      "auditd.log.record_type": "USER_CMD",
+      "auditd.log.sequence": 330,
+      "auditd.log.subj": "unconfined",
+      "tags": [],
+      "@timestamp": "2026-11-20T23:52:23.557Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:22:22.244684207Z",
+      "event.original": "type=USER_CMD msg=audit(1795218743.557:330): pid=5287 uid=1000 auid=1000 ses=1 subj=unconfined msg='cwd=\"/home/labadmin\" cmd=73687574646F776E206E6F77 exe=\"/usr/bin/sudo\" terminal=pts/0 res=success'",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": [
+        "ran-command"
+      ],
+      "event.category": [
+        "process"
+      ],
+      "event.type": [
+        "start"
+      ],
+      "event.dataset": "auditd.log",
+      "event.outcome": "success",
+      "user.audit.id": "1000",
+      "user.id": "1000",
+      "user.terminal": "pts/0"
+    }
+  },
+  "changed-audit-configuration": {
+    "documentos": 33,
+    "campos": {
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30329274,
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:22:22.516248253Z",
+      "lab.logstash_received": "2026-11-21T03:21:53.802715631Z",
+      "lab.filebeat_read": "2026-11-21T03:21:35.403Z",
+      "auditd.log.ses": "4294967295",
+      "auditd.log.sequence": 107,
+      "auditd.log.op": "add_rule",
+      "auditd.log.subj": "unconfined",
+      "auditd.log.list": "4",
+      "auditd.log.record_type": "CONFIG_CHANGE",
+      "auditd.log.key": "lab_acceso_denegado",
+      "tags": [],
+      "@timestamp": "2026-11-21T03:21:33.435Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:22:22.516248253Z",
+      "event.original": "type=CONFIG_CHANGE msg=audit(1795231293.435:107): auid=4294967295 ses=4294967295 subj=unconfined op=add_rule key=\"lab_acceso_denegado\" list=4 res=1",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": [
+        "changed-audit-configuration"
+      ],
+      "event.category": [
+        "process",
+        "configuration"
+      ],
+      "event.type": [
+        "change"
+      ],
+      "event.dataset": "auditd.log",
+      "event.outcome": "1",
+      "user.audit.id": "4294967295"
+    }
+  },
+  "logged-in": {
+    "documentos": 23,
+    "campos": {
+      "process.pid": 3948,
+      "process.executable": "/usr/sbin/sshd",
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30450845,
+      "source.address": "192.168.56.1",
+      "source.ip": "192.168.56.1",
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:23:21.567421995Z",
+      "lab.logstash_received": "2026-11-21T03:23:21.553177014Z",
+      "lab.filebeat_read": "2026-11-21T03:23:11.436Z",
+      "auditd.log.ses": "1",
+      "auditd.log.op": "login",
+      "auditd.log.record_type": "USER_LOGIN",
+      "auditd.log.sequence": 343,
+      "auditd.log.uid": "0",
+      "auditd.log.hostname": "192.168.56.1",
+      "auditd.log.id": "1000",
+      "auditd.log.subj": "unconfined",
+      "tags": [],
+      "@timestamp": "2026-11-21T03:23:05.996Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:23:21.567421995Z",
+      "event.original": "type=USER_LOGIN msg=audit(1795231385.996:343): pid=3948 uid=0 auid=1000 ses=1 subj=unconfined msg='op=login id=1000 exe=\"/usr/sbin/sshd\" hostname=192.168.56.1 addr=192.168.56.1 terminal=/dev/pts/0 res=success'",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": [
+        "logged-in"
+      ],
+      "event.category": [
+        "authentication"
+      ],
+      "event.type": [
+        "start"
+      ],
+      "event.dataset": "auditd.log",
+      "event.outcome": "success",
+      "user.effective.id": "1000",
+      "user.audit.id": "1000",
+      "user.id": "1000",
+      "user.terminal": "/dev/pts/0"
+    }
+  },
+  "booted-system": {
+    "documentos": 3,
+    "campos": {
+      "process.name": "systemd-update-utmp",
+      "process.pid": 758,
+      "process.executable": "/usr/lib/systemd/systemd-update-utmp",
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30344368,
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:22:22.533557454Z",
+      "lab.logstash_received": "2026-11-21T03:21:53.832845013Z",
+      "lab.filebeat_read": "2026-11-21T03:21:35.403Z",
+      "auditd.log.ses": "4294967295",
+      "auditd.log.record_type": "SYSTEM_BOOT",
+      "auditd.log.sequence": 127,
+      "auditd.log.subj": "unconfined",
+      "tags": [],
+      "@timestamp": "2026-11-21T03:21:33.451Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:22:22.533557454Z",
+      "event.original": "type=SYSTEM_BOOT msg=audit(1795231293.451:127): pid=758 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg=' comm=\"systemd-update-utmp\" exe=\"/usr/lib/systemd/systemd-update-utmp\" hostname=? addr=? terminal=? res=success'",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": [
+        "booted-system"
+      ],
+      "event.type": "info",
+      "event.category": "host",
+      "event.dataset": "auditd.log",
+      "event.outcome": "success",
+      "user.audit.id": "4294967295",
+      "user.id": "0"
+    }
+  },
+  "changed-to-runlevel": {
+    "documentos": 3,
+    "campos": {
+      "process.name": "systemd-update-utmp",
+      "process.pid": 1849,
+      "process.executable": "/usr/lib/systemd/systemd-update-utmp",
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30441008,
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:22:27.213904857Z",
+      "lab.logstash_received": "2026-11-21T03:22:27.124379319Z",
+      "lab.filebeat_read": "2026-11-21T03:21:36.409Z",
+      "auditd.log.ses": "4294967295",
+      "auditd.log.record_type": "SYSTEM_RUNLEVEL",
+      "auditd.log.sequence": 303,
+      "auditd.log.new-level": "5",
+      "auditd.log.old-level": "N",
+      "auditd.log.subj": "unconfined",
+      "tags": [],
+      "@timestamp": "2026-11-21T03:21:36.269Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:22:27.213904857Z",
+      "event.original": "type=SYSTEM_RUNLEVEL msg=audit(1795231296.269:303): pid=1849 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg='old-level=N new-level=5 comm=\"systemd-update-utmp\" exe=\"/usr/lib/systemd/systemd-update-utmp\" hostname=? addr=? terminal=? res=success'",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": [
+        "changed-to-runlevel"
+      ],
+      "event.category": [
+        "host"
+      ],
+      "event.type": [
+        "change"
+      ],
+      "event.dataset": "auditd.log",
+      "event.outcome": "success",
+      "user.audit.id": "4294967295",
+      "user.id": "0"
+    }
+  },
+  "shutdown-audit": {
+    "documentos": 3,
+    "campos": {
+      "process.pid": 1,
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30299698,
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:22:22.387865297Z",
+      "lab.logstash_received": "2026-11-21T03:21:53.797126121Z",
+      "lab.filebeat_read": "2026-11-21T03:21:35.401Z",
+      "auditd.log.ses": "4294967295",
+      "auditd.log.sequence": 129,
+      "auditd.log.op": "terminate",
+      "auditd.log.subj": "unconfined",
+      "auditd.log.record_type": "DAEMON_END",
+      "tags": [],
+      "@timestamp": "2026-11-20T23:52:33.974Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:22:22.387865297Z",
+      "event.original": "type=DAEMON_END msg=audit(1795218753.974:129): op=terminate auid=0 uid=0 ses=4294967295 pid=1 subj=unconfined res=success",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": [
+        "shutdown-audit"
+      ],
+      "event.category": [
+        "process"
+      ],
+      "event.type": [
+        "stop"
+      ],
+      "event.dataset": "auditd.log",
+      "event.outcome": "success",
+      "user.audit.id": "0",
+      "user.id": "0"
+    }
+  },
+  "shutdown-system": {
+    "documentos": 3,
+    "campos": {
+      "process.name": "systemd-update-utmp",
+      "process.pid": 6100,
+      "process.executable": "/usr/lib/systemd/systemd-update-utmp",
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 30298224,
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-21T03:22:22.347386386Z",
+      "lab.logstash_received": "2026-11-21T03:21:53.831582244Z",
+      "lab.filebeat_read": "2026-11-21T03:21:35.401Z",
+      "auditd.log.ses": "4294967295",
+      "auditd.log.record_type": "SYSTEM_SHUTDOWN",
+      "auditd.log.sequence": 387,
+      "auditd.log.subj": "unconfined",
+      "tags": [],
+      "@timestamp": "2026-11-20T23:52:33.953Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-21T03:22:22.347386386Z",
+      "event.original": "type=SYSTEM_SHUTDOWN msg=audit(1795218753.953:387): pid=6100 uid=0 auid=4294967295 ses=4294967295 subj=unconfined msg=' comm=\"systemd-update-utmp\" exe=\"/usr/lib/systemd/systemd-update-utmp\" hostname=? addr=? terminal=? res=success'",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": [
+        "shutdown-system"
+      ],
+      "event.category": "host",
+      "event.type": "info",
+      "event.dataset": "auditd.log",
+      "event.outcome": "success",
+      "user.audit.id": "4294967295",
+      "user.id": "0"
+    }
+  },
+  "rotated-audit-logs": {
+    "documentos": 1,
+    "campos": {
+      "process.pid": 34868,
+      "log.file.path": "/var/log/audit/audit.log",
+      "log.offset": 0,
+      "fileset.name": "log",
+      "lab.es_ingested": "2026-11-20T06:33:47.850030184Z",
+      "lab.logstash_received": "2026-11-20T06:33:47.825711180Z",
+      "lab.filebeat_read": "2026-11-20T06:33:47.744Z",
+      "auditd.log.ses": "1",
+      "auditd.log.sequence": 5711,
+      "auditd.log.op": "rotate-logs",
+      "auditd.log.subj": "unconfined",
+      "auditd.log.record_type": "DAEMON_ROTATE",
+      "tags": [],
+      "@timestamp": "2026-11-20T06:33:45.530Z",
+      "service.type": "auditd",
+      "host.name": "sor2-lab",
+      "event.ingested": "2026-11-20T06:33:47.850030184Z",
+      "event.original": "type=DAEMON_ROTATE msg=audit(1795156425.530:5711): op=rotate-logs auid=1000 uid=0 ses=1 pid=34868 subj=unconfined res=success",
+      "event.kind": "event",
+      "event.module": "auditd",
+      "event.action": [
+        "rotated-audit-logs"
+      ],
+      "event.category": [
+        "process"
+      ],
+      "event.type": [
+        "change"
+      ],
+      "event.dataset": "auditd.log",
+      "event.outcome": "success",
+      "user.audit.id": "1000",
+      "user.id": "0"
+    }
+  },
+  "apache.access": {
+    "campos": {
+      "log.file.path": "/var/log/apache2/access.log",
+      "log.offset": 4850551,
+      "source.address": "172.30.0.232",
+      "source.ip": "172.30.0.232",
+      "fileset.name": "access",
+      "lab.es_ingested": "2026-11-20T21:20:51.999051140Z",
+      "lab.logstash_received": "2026-11-20T21:20:51.992556779Z",
+      "lab.filebeat_read": "2026-11-20T21:20:41.889Z",
+      "url.path": "/js/app.js",
+      "url.extension": "js",
+      "url.original": "/js/app.js",
+      "tags": [],
+      "@timestamp": "2026-11-20T21:20:38.000Z",
+      "service.type": "apache",
+      "host.name": "sor2-lab",
+      "http.request.referrer": "-",
+      "http.request.method": "GET",
+      "http.response.status_code": 200,
+      "http.response.body.bytes": 1358,
+      "http.version": "1.1",
+      "event.ingested": "2026-11-20T21:20:51.999051140Z",
+      "event.original": "172.30.0.232 - - [20/Nov/2026:18:20:38 -0300] \"GET /js/app.js HTTP/1.1\" 200 1358 \"-\" \"Mozilla/5.0 (X11; Linux x86_64; rv:133.0) Gecko/20100101 Firefox/133.0\"",
+      "event.kind": "event",
+      "event.created": "2026-11-20T21:20:41.889Z",
+      "event.module": "apache",
+      "event.category": "web",
+      "event.dataset": "apache.access",
+      "event.outcome": "success",
+      "user.name": "-",
+      "user_agent.original": "Mozilla/5.0 (X11; Linux x86_64; rv:133.0) Gecko/20100101 Firefox/133.0",
+      "user_agent.os.name": "Linux",
+      "user_agent.name": "Firefox",
+      "user_agent.device.name": "Other",
+      "user_agent.version": "133.0"
+    }
+  }
+}

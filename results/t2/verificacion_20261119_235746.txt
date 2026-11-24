@@ -1,0 +1,50 @@
+=== Verificación T2 — 2026-11-19T23:57:46-03:00 — marca t2check1795143466 — desde 2026-11-20T02:57:46.000Z (UTC) ===
+
+[1] Servicios
+  [OK]    filebeat activo (esperado active, obtenido active)
+  [OK]    reglas de auditd cargadas (lab_*) (esperado 4, obtenido 4)
+  [OK]    auditd en formato RAW (sin separador 0x1D en las últimas 200 líneas) (esperado 0, obtenido 0)
+  [OK]    auditd sin node=(null) (esperado 0, obtenido 0)
+
+[2] Generar eventos conocidos
+  labuser: lectura de secreto.txt denegada (esperado)
+  GET /?t2check1795143466 -> 200
+  GET /no-existe-t2check1795143466 -> 404
+  Esperando 20 s a que el pipeline los procese...
+
+[3] Evidencia en los logs originales
+  audit.log: eventos SYSCALL con key=lab_protegido en los últimos 10 min: 7
+  access.log: líneas con la marca: 2
+  [OK]    peticiones de prueba en access.log (esperado 2, obtenido 2)
+
+[4] Llegada a Elasticsearch
+  [FALLA] peticiones de prueba en lab-apache-* (esperado 2, obtenido 0)
+  registros con lab_protegido en lab-auditd-* desde T0: 0 (cada evento de auditd son varios registros)
+  [FALLA] acceso al archivo protegido llegó a lab-auditd-* (esperado si, obtenido no)
+  [OK]    eventos sin módulo (lab-otros-*) (esperado 0, obtenido 0)
+  [OK]    documentos con error de parseo desde T0 (esperado 0, obtenido 0)
+  [OK]    documentos con error de parseo en total (esperado 0, obtenido 0)
+
+[5] Índices del laboratorio
+index                 health docs.count store.size
+lab-apache-2026.11.20 green           9     71.7kb
+lab-auditd-2026.11.20 green          43    137.8kb
+lab-test              yellow          1      6.7kb
+
+[6] Ejemplo: petición 404 en lab-apache-* (campos y marcas de tiempo)
+{
+  "@timestamp": null,
+  "host": null,
+  "source_ip": null,
+  "method": null,
+  "url": null,
+  "status": null,
+  "event": null,
+  "lab": null
+}
+
+[7] Ejemplo: acceso al archivo protegido en lab-auditd-* (documento completo)
+null
+
+=== Resultado: 8 OK, 2 fallas ===
+Salida guardada en /home/labadmin/sor2-e3-elk-ml/results/t2/verificacion_20261119_235746.txt

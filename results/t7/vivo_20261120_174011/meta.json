@@ -1,0 +1,36 @@
+{
+  "inicio": "2026-11-20T20:40:11.115Z",
+  "minutos": 2.0,
+  "espera_s": 30,
+  "ventana_s": 30,
+  "modelos": {
+    "auditd": {
+      "auditd_completo": {
+        "umbral": 0.5539618952020393,
+        "transformacion": "log1p"
+      },
+      "auditd_sin_clave_protegido": {
+        "umbral": 0.5924788026814682,
+        "transformacion": "log1p"
+      }
+    },
+    "apache": {
+      "apache_completo": {
+        "umbral": 0.6049695721093282,
+        "transformacion": "ninguna"
+      }
+    }
+  },
+  "umbrales_reglas": {
+    "A1": 10.0,
+    "A2": 1,
+    "W1": 27.0,
+    "W2": 0.1149,
+    "W3": 18.0
+  },
+  "reloj": [
+    "Reference ID    : 40B00374 (sa-south-1.clearnet.pw)",
+    "System time     : 0.000175782 seconds slow of NTP time",
+    "Leap status     : Normal"
+  ]
+}

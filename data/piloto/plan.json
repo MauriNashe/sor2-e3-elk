@@ -1,0 +1,87 @@
+{
+  "creado": "2026-11-20T06:13:41.118Z",
+  "semilla": 20261120,
+  "sesiones_por_escenario": 1,
+  "duracion_s": 180,
+  "pausa_s": 20,
+  "sesiones": [
+    {
+      "escenario": "B1",
+      "fuente": "auditd",
+      "tipo": "benigno",
+      "conjunto": "entrenamiento",
+      "semilla": 476132630,
+      "parametros": {
+        "tasa": 0.71,
+        "rafagas": 3,
+        "errores": 2
+      },
+      "sesion": "S01",
+      "orden": 1,
+      "ips_clientes": [],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "I1",
+      "fuente": "auditd",
+      "tipo": "incidente",
+      "conjunto": "validacion",
+      "semilla": 455682155,
+      "parametros": {
+        "tasa": 0.39,
+        "rafagas": 0,
+        "errores": 1,
+        "inc_inicio": 58.1,
+        "inc_duracion": 44.0,
+        "inc_tasa": 2.6
+      },
+      "sesion": "S02",
+      "orden": 2,
+      "ips_clientes": [],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "B2",
+      "fuente": "apache",
+      "tipo": "benigno",
+      "conjunto": "entrenamiento",
+      "semilla": 771824239,
+      "parametros": {
+        "clientes": 1,
+        "tasa": 0.47,
+        "rafagas": 3,
+        "p404": 0.028
+      },
+      "sesion": "S03",
+      "orden": 3,
+      "ips_clientes": [
+        "172.30.0.106"
+      ],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "I2",
+      "fuente": "apache",
+      "tipo": "incidente",
+      "conjunto": "validacion",
+      "semilla": 168290750,
+      "parametros": {
+        "clientes": 3,
+        "tasa": 0.45,
+        "rafagas": 1,
+        "p404": 0.027,
+        "inc_inicio": 48.2,
+        "inc_duracion": 51.5,
+        "inc_tasa": 5.04
+      },
+      "sesion": "S04",
+      "orden": 4,
+      "ips_clientes": [
+        "172.30.0.186",
+        "172.30.0.103",
+        "172.30.0.104"
+      ],
+      "ip_atacante": "172.30.0.13"
+    }
+  ]
+}

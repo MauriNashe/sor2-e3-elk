@@ -1,0 +1,56 @@
+Validación de la ingesta — 2026-11-20T04:11:35+00:00 (se ignoran las líneas de los últimos 90 s)
+
+===== auditd: /var/log/audit/audit.log  <->  lab-auditd-*
+  líneas en el archivo:            315  (comparadas: 298, recientes excluidas: 17)
+  documentos en Elasticsearch:     310  (sin event.original: 0)
+  líneas que faltan en ES:         0
+  documentos de más en ES:         0  (duplicados o de un archivo ya rotado)
+  documentos con error de parseo:  0
+  por tipo de registro (log / ES):
+    BPF                    4 / 4      
+    CRED_ACQ              16 / 18        <-- difiere
+    CRED_DISP             32 / 33        <-- difiere
+    CRED_REFR             28 / 28     
+    CWD                    6 / 6      
+    DAEMON_ROTATE          1 / 1      
+    EXECVE                 4 / 4      
+    LOGIN                 13 / 14        <-- difiere
+    PATH                  10 / 10     
+    PROCTITLE             19 / 20        <-- difiere
+    SERVICE_START         15 / 16        <-- difiere
+    SERVICE_STOP          14 / 15        <-- difiere
+    SYSCALL               19 / 20        <-- difiere
+    USER_ACCT             33 / 34        <-- difiere
+    USER_AUTH              3 / 4         <-- difiere
+    USER_CMD              18 / 18     
+    USER_END              32 / 33        <-- difiere
+    USER_START            31 / 32        <-- difiere
+
+===== apache-access: /var/log/apache2/access.log  <->  lab-apache-*
+  líneas en el archivo:            2  (comparadas: 2, recientes excluidas: 0)
+  documentos en Elasticsearch:     6  (sin event.original: 0)
+  líneas que faltan en ES:         0
+  documentos de más en ES:         4  (duplicados o de un archivo ya rotado)
+  documentos con error de parseo:  0
+  ejemplos de líneas que sobran en ES:
+    127.0.0.1 - - [19/Nov/2026:23:57:46 -0300] "GET /?t2check1795143466 HTTP/1.1" 200 10926 "-" "curl/8.5.0"
+    127.0.0.1 - - [19/Nov/2026:23:57:46 -0300] "GET /no-existe-t2check1795143466 HTTP/1.1" 404 432 "-" "curl/8.5.0"
+    127.0.0.1 - - [19/Nov/2026:23:34:57 -0300] "GET /?t2check1795142097 HTTP/1.1" 200 10926 "-" "curl/8.5.0"
+
+===== apache-error: /var/log/apache2/error.log  <->  lab-apache-*
+  líneas en el archivo:            2  (comparadas: 2, recientes excluidas: 0)
+  documentos en Elasticsearch:     7  (sin event.original: 0)
+  líneas que faltan en ES:         0
+  documentos de más en ES:         5  (duplicados o de un archivo ya rotado)
+  documentos con error de parseo:  0
+  ejemplos de líneas que sobran en ES:
+    [Thu Nov 19 23:26:37.935945 2026] [mpm_event:notice] [pid 1124:tid 129786979264384] AH00489: Apache/2.4.58 (Ubuntu) configured -- resuming normal operations
+    [Thu Nov 19 01:03:53.166201 2026] [mpm_event:notice] [pid 3386:tid 136128152545152] AH00489: Apache/2.4.58 (Ubuntu) configured -- resuming normal operations
+    [Thu Nov 19 23:26:37.936363 2026] [core:notice] [pid 1124:tid 129786979264384] AH00094: Command line: '/usr/sbin/apache2'
+
+===== Resumen
+  auditd: 298 líneas / 310 docs / faltan 0 / de más 0 / errores 0
+  apache-access: 2 líneas / 6 docs / faltan 0 / de más 4 / errores 0
+  apache-error: 2 líneas / 7 docs / faltan 0 / de más 5 / errores 0
+
+Tipos de registro de auditd con ejemplo guardado: acquired-credentials, apache.access, authenticated, bpf, changed-login-id-to, cwd, disposed-credentials, ended-session, execve, path, proctitle, ran-command, refreshed-credentials, rotated-audit-logs, started-service, started-session, stopped-service, syscall, was-authorized

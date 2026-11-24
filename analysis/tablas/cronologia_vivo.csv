@@ -1,0 +1,5 @@
+sesión,detector,primer evento,indexado,fin de ventana,consulta,ALERTA,espera,procesamiento
+S01 I2,IF_apache_completo,-0.549,10.363,5.451,35.451,35.507,30.0,0.056
+S01 I2,reglas_completo,-0.549,10.363,35.451,65.451,65.503,30.0,0.052
+S02 I1,IF_auditd_completo,0.001,8.064,21.352,51.352,51.411,30.0,0.059
+S02 I1,reglas_completo,0.001,8.064,21.352,51.352,51.411,30.0,0.059

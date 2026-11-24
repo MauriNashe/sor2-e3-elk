@@ -1,0 +1,9 @@
+fuente,tramo,n,mediana (s),p95 (s),máximo (s)
+auditd,lectura,2274,0.683,5.317,9.899
+auditd,envio,2274,8.091,10.141,10.210
+auditd,indexacion,2274,0.028,0.070,0.116
+auditd,total,2274,8.708,15.390,17.772
+apache,lectura,1688,0.819,5.839,9.853
+apache,envio,1688,6.897,10.133,11.323
+apache,indexacion,1688,0.013,0.045,0.088
+apache,total,1688,7.927,13.999,19.976

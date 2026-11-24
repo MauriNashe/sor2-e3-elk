@@ -1,0 +1,67 @@
+Validación de la ingesta — 2026-11-21T03:46:03+00:00 (se ignoran las líneas de los últimos 90 s)
+
+===== auditd: /var/log/audit/audit.log  <->  lab-auditd-*
+  líneas en el archivo:            137243  (comparadas: 137211, recientes excluidas: 32; 6 de audit.log.1 posteriores al primer documento de ES)
+  documentos en Elasticsearch:     137223  (sin event.original: 15)
+  líneas que faltan en ES:         21
+  documentos de líneas ya rotadas: 0  (están en audit.log.1)
+  documentos de más en ES:         0  (duplicados o sin origen en el log)
+  documentos con error de parseo:  15
+  por tipo de registro (log / ES):
+    ANOM_PROMISCUOUS     126 / 126    
+    AVC                  223 / 217       <-- difiere
+    BPF                  447 / 447    
+    CONFIG_CHANGE         33 / 33     
+    CRED_ACQ              81 / 81     
+    CRED_DISP            102 / 102    
+    CRED_REFR             81 / 80        <-- difiere
+    CWD                31028 / 31028  
+    DAEMON_END             3 / 3      
+    DAEMON_ROTATE          1 / 1      
+    DAEMON_START           3 / 0         <-- difiere
+    EXECVE              3239 / 3239   
+    LOGIN                 60 / 60     
+    NETFILTER_CFG        890 / 890    
+    PATH               34479 / 34479  
+    PROCTITLE          32354 / 32354  
+    SERVICE_START        183 / 183    
+    SERVICE_STOP         180 / 179       <-- difiere
+    SOCKADDR             904 / 904    
+    SYSCALL            32354 / 32354  
+    SYSTEM_BOOT            3 / 3      
+    SYSTEM_RUNLEVEL        3 / 3      
+    SYSTEM_SHUTDOWN        3 / 3      
+    TRUSTED_APP            6 / 0         <-- difiere
+    USER_ACCT            105 / 104       <-- difiere
+    USER_AUTH             45 / 44        <-- difiere
+    USER_CMD              45 / 44        <-- difiere
+    USER_END             102 / 102    
+    USER_LOGIN            23 / 23     
+    USER_START           105 / 104       <-- difiere
+  ejemplos de líneas que faltan en ES:
+    type=USER_AUTH msg=audit(1795156425.482:3264): pid=34800 uid=1000 auid=1000 ses=1 subj=unconfined msg='op=PAM:authentication grantors=pam_permit,pam_cap acct="labadmin" exe="/usr/bin/sudo" hostname=? 
+    type=USER_ACCT msg=audit(1795156425.482:3265): pid=34800 uid=1000 auid=1000 ses=1 subj=unconfined msg='op=PAM:accounting grantors=pam_permit acct="labadmin" exe="/usr/bin/sudo" hostname=? addr=? termi
+    type=USER_CMD msg=audit(1795156425.483:3266): pid=34800 uid=1000 auid=1000 ses=1 subj=unconfined msg='cwd="/home/labadmin/sor2-e3-elk-ml" cmd=6261736820736372697074732F74325F7265696E69636961725F696E67
+
+===== apache-access: /var/log/apache2/access.log  <->  lab-apache-*
+  líneas en el archivo:            26350  (comparadas: 26350, recientes excluidas: 0; 26350 de access.log.1 posteriores al primer documento de ES)
+  documentos en Elasticsearch:     26350  (sin event.original: 0)
+  líneas que faltan en ES:         0
+  documentos de líneas ya rotadas: 0  (están en access.log.1)
+  documentos de más en ES:         0  (duplicados o sin origen en el log)
+  documentos con error de parseo:  0
+
+===== apache-error: /var/log/apache2/error.log  <->  lab-apache-*
+  líneas en el archivo:            2  (comparadas: 2, recientes excluidas: 0; 0 de error.log.1 posteriores al primer documento de ES)
+  documentos en Elasticsearch:     83  (sin event.original: 0)
+  líneas que faltan en ES:         0
+  documentos de líneas ya rotadas: 81  (están en error.log.1)
+  documentos de más en ES:         0  (duplicados o sin origen en el log)
+  documentos con error de parseo:  0
+
+===== Resumen
+  auditd: 137211 líneas / 137223 docs / faltan 21 / de archivo rotado 0 / de más 0 / errores 15
+  apache-access: 26350 líneas / 26350 docs / faltan 0 / de archivo rotado 0 / de más 0 / errores 0
+  apache-error: 2 líneas / 83 docs / faltan 0 / de archivo rotado 81 / de más 0 / errores 0
+
+Tipos de registro de auditd con ejemplo guardado: acquired-credentials, apache.access, authenticated, booted-system, bpf, changed-audit-configuration, changed-login-id-to, changed-promiscuous-mode-on-device, changed-to-runlevel, cwd, disposed-credentials, ended-session, execve, loaded-firewall-rule-to, logged-in, path, proctitle, ran-command, refreshed-credentials, rotated-audit-logs, shutdown-audit, shutdown-system, sockaddr, started-service, started-session, stopped-service, syscall, violated-apparmor-policy, was-authorized

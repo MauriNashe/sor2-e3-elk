@@ -1,0 +1,87 @@
+[03:38:21] Plan nuevo: data/lote/plan.json (40 sesiones, semilla 20261120)
+[03:38:21] Pendientes: 40 de 40 (≈ 133 min)
+[03:38:21] (1/40) S01 B1 [prueba] {"tasa": 0.6, "rafagas": 0, "errores": 3}
+[03:41:21]    -> OK  evidencia sesión=1043 incidente= lost=0->0 
+[03:41:41] (2/40) S02 I2 [validacion] {"clientes": 3, "tasa": 0.39, "rafagas": 1, "p404": 0.027, "inc_inicio": 86.8, "inc_duracion": 51.0, "inc_tasa": 2.81}
+[03:44:42]    -> OK  evidencia sesión=1812 incidente=133 lost=0->0 
+[03:45:02] (3/40) S03 B1 [validacion] {"tasa": 0.45, "rafagas": 3, "errores": 2}
+[03:48:02]    -> OK  evidencia sesión=1430 incidente= lost=0->0 
+[03:48:22] (4/40) S04 I2 [prueba] {"clientes": 2, "tasa": 0.54, "rafagas": 1, "p404": 0.098, "inc_inicio": 65.6, "inc_duracion": 38.1, "inc_tasa": 4.35}
+[03:51:23]    -> OK  evidencia sesión=1626 incidente=164 lost=0->0 
+[03:51:43] (5/40) S05 B2 [validacion] {"clientes": 1, "tasa": 0.45, "rafagas": 1, "p404": 0.082}
+[03:54:44]    -> OK  evidencia sesión=554 incidente= lost=0->0 
+[03:55:04] (6/40) S06 I2 [prueba] {"clientes": 3, "tasa": 0.31, "rafagas": 1, "p404": 0.047, "inc_inicio": 91.9, "inc_duracion": 36.4, "inc_tasa": 6.59}
+[03:58:05]    -> OK  evidencia sesión=1470 incidente=250 lost=0->0 
+[03:58:25] (7/40) S07 I2 [prueba] {"clientes": 2, "tasa": 0.3, "rafagas": 2, "p404": 0.023, "inc_inicio": 61.2, "inc_duracion": 45.2, "inc_tasa": 7.76}
+[04:01:26]    -> OK  evidencia sesión=1247 incidente=343 lost=0->0 
+[04:01:46] (8/40) S08 I1 [validacion] {"tasa": 0.82, "rafagas": 1, "errores": 0, "inc_inicio": 62.0, "inc_duracion": 47.9, "inc_tasa": 2.11}
+[04:04:46]    -> OK  evidencia sesión=1388 incidente=124 lost=0->0 
+[04:05:06] (9/40) S09 B2 [prueba] {"clientes": 1, "tasa": 0.6, "rafagas": 3, "p404": 0.041}
+[04:08:07]    -> OK  evidencia sesión=810 incidente= lost=0->0 
+[04:08:27] (10/40) S10 B1 [prueba] {"tasa": 0.53, "rafagas": 2, "errores": 0}
+[04:11:27]    -> OK  evidencia sesión=2063 incidente= lost=0->0 
+[04:11:47] (11/40) S11 I1 [prueba] {"tasa": 0.75, "rafagas": 1, "errores": 2, "inc_inicio": 95.3, "inc_duracion": 46.3, "inc_tasa": 1.96}
+[04:14:48]    -> OK  evidencia sesión=1849 incidente=102 lost=0->0 
+[04:15:08] (12/40) S12 B1 [entrenamiento] {"tasa": 0.84, "rafagas": 1, "errores": 2}
+[04:18:08]    -> OK  evidencia sesión=913 incidente= lost=0->0 
+[04:18:28] (13/40) S13 B2 [entrenamiento] {"clientes": 2, "tasa": 0.45, "rafagas": 3, "p404": 0.065}
+[04:21:29]    -> OK  evidencia sesión=1514 incidente= lost=0->0 
+[04:21:49] (14/40) S14 I1 [prueba] {"tasa": 0.59, "rafagas": 0, "errores": 1, "inc_inicio": 87.1, "inc_duracion": 54.3, "inc_tasa": 1.24}
+[04:24:49]    -> OK  evidencia sesión=1168 incidente=72 lost=0->0 
+[04:25:09] (15/40) S15 B2 [validacion] {"clientes": 1, "tasa": 0.21, "rafagas": 0, "p404": 0.094}
+[04:28:10]    -> OK  evidencia sesión=202 incidente= lost=0->0 
+[04:28:30] (16/40) S16 I1 [prueba] {"tasa": 0.41, "rafagas": 0, "errores": 0, "inc_inicio": 48.9, "inc_duracion": 59.2, "inc_tasa": 2.88}
+[04:31:30]    -> OK  evidencia sesión=774 incidente=170 lost=0->0 
+[04:31:50] (17/40) S17 I1 [validacion] {"tasa": 0.43, "rafagas": 2, "errores": 1, "inc_inicio": 46.5, "inc_duracion": 55.1, "inc_tasa": 2.25}
+[04:34:50]    -> OK  evidencia sesión=1997 incidente=132 lost=0->0 
+[04:35:10] (18/40) S18 B1 [entrenamiento] {"tasa": 0.75, "rafagas": 0, "errores": 3}
+[04:38:11]    -> OK  evidencia sesión=1112 incidente= lost=0->0 
+[04:38:31] (19/40) S19 B2 [entrenamiento] {"clientes": 3, "tasa": 0.2, "rafagas": 0, "p404": 0.049}
+[04:41:32]    -> OK  evidencia sesión=708 incidente= lost=0->0 
+[04:41:52] (20/40) S20 B1 [entrenamiento] {"tasa": 0.33, "rafagas": 2, "errores": 3}
+[04:44:52]    -> OK  evidencia sesión=666 incidente= lost=0->0 
+[04:45:12] (21/40) S21 I1 [validacion] {"tasa": 0.86, "rafagas": 1, "errores": 2, "inc_inicio": 68.8, "inc_duracion": 32.5, "inc_tasa": 2.33}
+[04:48:12]    -> OK  evidencia sesión=2057 incidente=71 lost=0->0 
+[04:48:32] (22/40) S22 I2 [prueba] {"clientes": 1, "tasa": 0.59, "rafagas": 0, "p404": 0.023, "inc_inicio": 95.6, "inc_duracion": 41.8, "inc_tasa": 4.38}
+[04:51:33]    -> OK  evidencia sesión=897 incidente=196 lost=0->0 
+[04:51:53] (23/40) S23 B1 [entrenamiento] {"tasa": 0.34, "rafagas": 2, "errores": 3}
+[04:54:53]    -> OK  evidencia sesión=330 incidente= lost=0->0 
+[04:55:13] (24/40) S24 B2 [entrenamiento] {"clientes": 3, "tasa": 0.18, "rafagas": 0, "p404": 0.094}
+[04:58:15]    -> OK  evidencia sesión=547 incidente= lost=0->0 
+[04:58:35] (25/40) S25 B2 [entrenamiento] {"clientes": 2, "tasa": 0.32, "rafagas": 2, "p404": 0.024}
+[05:01:36]    -> OK  evidencia sesión=972 incidente= lost=0->0 
+[05:01:56] (26/40) S26 I1 [prueba] {"tasa": 0.86, "rafagas": 2, "errores": 0, "inc_inicio": 74.9, "inc_duracion": 44.4, "inc_tasa": 2.15}
+[05:04:56]    -> OK  evidencia sesión=1855 incidente=97 lost=0->0 
+[05:05:16] (27/40) S27 I2 [validacion] {"clientes": 2, "tasa": 0.24, "rafagas": 0, "p404": 0.05, "inc_inicio": 78.0, "inc_duracion": 54.6, "inc_tasa": 6.18}
+[05:08:17]    -> OK  evidencia sesión=870 incidente=371 lost=0->0 
+[05:08:37] (28/40) S28 I2 [validacion] {"clientes": 2, "tasa": 0.29, "rafagas": 2, "p404": 0.09, "inc_inicio": 64.3, "inc_duracion": 30.5, "inc_tasa": 4.16}
+[05:11:38]    -> OK  evidencia sesión=1218 incidente=146 lost=0->0 
+[05:11:58] (29/40) S29 B1 [entrenamiento] {"tasa": 0.64, "rafagas": 3, "errores": 2}
+[05:14:59]    -> OK  evidencia sesión=1673 incidente= lost=0->0 
+[05:15:19] (30/40) S30 I2 [validacion] {"clientes": 2, "tasa": 0.56, "rafagas": 2, "p404": 0.098, "inc_inicio": 48.1, "inc_duracion": 46.8, "inc_tasa": 5.36}
+[05:18:20]    -> OK  evidencia sesión=1755 incidente=252 lost=0->0 
+[05:18:40] (31/40) S31 I1 [validacion] {"tasa": 0.76, "rafagas": 0, "errores": 0, "inc_inicio": 101.9, "inc_duracion": 42.7, "inc_tasa": 0.96}
+[05:21:40]    -> OK  evidencia sesión=1363 incidente=43 lost=0->0 
+[05:22:00] (32/40) S32 I2 [prueba] {"clientes": 3, "tasa": 0.58, "rafagas": 1, "p404": 0.047, "inc_inicio": 74.5, "inc_duracion": 57.1, "inc_tasa": 1.16}
+[05:25:02]    -> OK  evidencia sesión=2154 incidente=79 lost=0->0 
+[05:25:22] (33/40) S33 I2 [validacion] {"clientes": 2, "tasa": 0.42, "rafagas": 0, "p404": 0.085, "inc_inicio": 61.3, "inc_duracion": 50.9, "inc_tasa": 7.48}
+[05:28:23]    -> OK  evidencia sesión=1329 incidente=374 lost=0->0 
+[05:28:43] (34/40) S34 I1 [validacion] {"tasa": 0.68, "rafagas": 1, "errores": 1, "inc_inicio": 63.0, "inc_duracion": 58.4, "inc_tasa": 2.12}
+[05:31:43]    -> OK  evidencia sesión=2302 incidente=147 lost=0->0 
+[05:32:03] (35/40) S35 I1 [prueba] {"tasa": 0.42, "rafagas": 1, "errores": 2, "inc_inicio": 74.6, "inc_duracion": 42.2, "inc_tasa": 1.88}
+[05:35:04]    -> OK  evidencia sesión=1321 incidente=80 lost=0->0 
+[05:35:24] (36/40) S36 B2 [prueba] {"clientes": 2, "tasa": 0.28, "rafagas": 2, "p404": 0.054}
+[05:38:25]    -> OK  evidencia sesión=858 incidente= lost=0->0 
+[05:38:45] (37/40) S37 B1 [entrenamiento] {"tasa": 0.97, "rafagas": 1, "errores": 1}
+[05:41:45]    -> OK  evidencia sesión=1756 incidente= lost=0->0 
+[05:42:05] (38/40) S38 B2 [entrenamiento] {"clientes": 2, "tasa": 0.29, "rafagas": 3, "p404": 0.023}
+[05:45:06]    -> OK  evidencia sesión=1125 incidente= lost=0->0 
+[05:45:26] (39/40) S39 B2 [entrenamiento] {"clientes": 1, "tasa": 0.25, "rafagas": 0, "p404": 0.058}
+[05:48:27]    -> OK  evidencia sesión=329 incidente= lost=0->0 
+[05:48:47] (40/40) S40 B1 [validacion] {"tasa": 0.52, "rafagas": 2, "errores": 2}
+[05:51:47]    -> OK  evidencia sesión=1737 incidente= lost=0->0 
+[05:51:47] Resumen: 40 ok / 40 sesiones. Manifiesto: data/lote/manifiesto.csv
+[05:51:47]    B1: 10 ok
+[05:51:47]    B2: 10 ok
+[05:51:47]    I1: 10 ok
+[05:51:47]    I2: 10 ok

@@ -1,0 +1,84 @@
+=== Verificación T2 — 2026-11-20T00:17:35-03:00 — marca t2check1795144655 — desde 2026-11-20T03:17:35.000Z (UTC) ===
+
+[1] Servicios
+  [OK]    filebeat activo (esperado active, obtenido active)
+  [OK]    reglas de auditd cargadas (lab_*) (esperado 4, obtenido 4)
+  [OK]    auditd en formato RAW (sin separador 0x1D en las últimas 200 líneas) (esperado 0, obtenido 0)
+  [OK]    auditd sin node=(null) (esperado 0, obtenido 0)
+
+[2] Generar eventos conocidos
+  labuser: lectura de secreto.txt denegada (esperado)
+  GET /?t2check1795144655 -> 200
+  GET /no-existe-t2check1795144655 -> 404
+  Esperando 45 s a que el pipeline los procese y queden visibles...
+
+[3] Evidencia en los logs originales
+  audit.log: eventos SYSCALL con key=lab_protegido en los últimos 10 min: 1
+  access.log: líneas con la marca: 2
+  [OK]    peticiones de prueba en access.log (esperado 2, obtenido 2)
+
+[4] Llegada a Elasticsearch
+  [OK]    peticiones de prueba en lab-apache-* (esperado 2, obtenido 2)
+  registros con lab_protegido en lab-auditd-* desde T0: 1 (cada evento de auditd son varios registros)
+  [OK]    acceso al archivo protegido llegó a lab-auditd-* (esperado si, obtenido si)
+  [OK]    eventos sin módulo (lab-otros-*) (esperado 0, obtenido 0)
+  [OK]    documentos con error de parseo desde T0 (esperado 0, obtenido 0)
+  [OK]    documentos con error de parseo en total (esperado 0, obtenido 0)
+
+[5] Índices del laboratorio
+index                 health docs.count store.size
+lab-apache-2026.11.20 green          13    111.5kb
+lab-auditd-2026.11.20 green         211    838.5kb
+lab-test              yellow          1      6.7kb
+
+[6] Ejemplo: petición 404 en lab-apache-* (campos y marcas de tiempo)
+{
+  "@timestamp": "2026-11-20T03:17:35.000Z",
+  "host": "sor2-lab",
+  "source_ip": "127.0.0.1",
+  "method": "GET",
+  "url": "/no-existe-t2check1795144655",
+  "status": 404,
+  "event": {
+    "ingested": "2026-11-20T03:17:48.089522014Z",
+    "original": "127.0.0.1 - - [20/Nov/2026:00:17:35 -0300] \"GET /no-existe-t2check1795144655 HTTP/1.1\" 404 432 \"-\" \"curl/8.5.0\"",
+    "kind": "event",
+    "created": "2026-11-20T03:17:37.951Z",
+    "module": "apache",
+    "category": "web",
+    "dataset": "apache.access",
+    "outcome": "failure"
+  },
+  "lab": {
+    "es_ingested": "2026-11-20T03:17:48.089522014Z",
+    "logstash_received": "2026-11-20T03:17:48.076787506Z"
+  }
+}
+
+[7] Ejemplo: acceso denegado al archivo protegido en lab-auditd-* (registro SYSCALL)
+{
+  "@timestamp": "2026-11-20T03:17:35.615Z",
+  "host": "sor2-lab",
+  "accion": "syscall",
+  "clave": "lab_protegido",
+  "serie": 733,
+  "syscall": "257",
+  "exito": "no",
+  "codigo_salida": -13,
+  "uid": "1001",
+  "auid": "1000",
+  "proceso": "/usr/bin/cat",
+  "pid": 24786,
+  "event_created": null,
+  "lab": {
+    "es_ingested": "2026-11-20T03:17:48.094605042Z",
+    "logstash_received": "2026-11-20T03:17:48.077687897Z"
+  }
+}
+
+[8] Reconstrucción del evento: registros que comparten el número de serie
+  serie 733 -> registros: ["proctitle","cwd","path","syscall"]
+  [OK]    el evento tiene varios registros (SYSCALL, CWD, PATH, PROCTITLE) (esperado si, obtenido si)
+
+=== Resultado: 11 OK, 0 fallas ===
+Salida guardada en /home/labadmin/sor2-e3-elk-ml/results/t2/verificacion_20261120_001735.txt

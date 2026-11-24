@@ -118,13 +118,17 @@ sudo apt update && sudo apt full-upgrade -y && sudo reboot
 
 ### 6. Copiar el repositorio a la VM 🪟
 
-Copia la carpeta del proyecto desde Windows al directorio personal de `labadmin`.
+Copia la carpeta del proyecto desde Windows a `~/sor2-e3-elk-ml` en la VM, sin la carpeta `.git`. El primer comando crea la carpeta; el segundo es el mismo que se usa después para actualizar la copia (ver [README de las guías](README.md#copiar-el-repo-actualizado-a-la-vm-)).
 
 ```powershell
-scp -r C:\Users\mauri\OneDrive\Escritorio\UNI\SOR_2\Tp_final\sor2-e3-elk-ml labadmin@192.168.56.10:~/
+ssh labadmin@192.168.56.10 mkdir -p sor2-e3-elk-ml
 ```
 
-**Resultado:** lista de archivos copiados, cada uno al `100%`. Cuando el repo esté en GitHub, se reemplaza por un `git clone` dentro de la VM.
+```powershell
+cmd /c "tar -cf - --exclude=.git -C C:\Users\mauri\OneDrive\Escritorio\UNI\SOR_2\Tp_final\sor2-e3-elk-ml . | ssh labadmin@192.168.56.10 tar -xf - -C sor2-e3-elk-ml"
+```
+
+**Resultado:** cada comando pide la contraseña de `labadmin` y termina sin mensajes. En la VM, `ls ~/sor2-e3-elk-ml` muestra el contenido del repo.
 
 ### 7. Revisar el script de preparación 🐧
 

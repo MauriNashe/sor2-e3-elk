@@ -1,0 +1,62 @@
+T7 — Prueba en vivo: results/t7/vivo_20261120_181045
+Inicio 2026-11-20T21:10:45.409Z, 17.0 min, ventanas de 30 s, espera 30 s
+Reloj (chronyc tracking): Reference ID    : 40B00374 (sa-south-1.clearnet.pw); System time     : 0.000063369 seconds fast of NTP time; Leap status     : Normal
+Todas las marcas salen del reloj de la VM: no hay desfase entre equipos que corregir.
+
+== Métricas en vivo (ventanas de las sesiones; mismas definiciones que T5/T6)
+  apache: 12 ventanas de sesión (3 con incidente, 0 ambiguas)
+    IF_apache_completo               TP=2 FP=1 FN=1 TN=8  incidentes 1/1  falsas alarmas/h 10.0
+    regla_W1                         TP=1 FP=0 FN=2 TN=9  incidentes 1/1  falsas alarmas/h 0.0
+    regla_W2                         TP=1 FP=0 FN=2 TN=9  incidentes 1/1  falsas alarmas/h 0.0
+    regla_W3                         TP=1 FP=0 FN=2 TN=9  incidentes 1/1  falsas alarmas/h 0.0
+    reglas_completo                  TP=1 FP=0 FN=2 TN=9  incidentes 1/1  falsas alarmas/h 0.0
+    Alertas en ventanas fuera de las sesiones de apache (pausas u otra fuente activa): IF_apache_completo=1
+  auditd: 12 ventanas de sesión (2 con incidente, 0 ambiguas)
+    IF_auditd_completo               TP=2 FP=0 FN=0 TN=10  incidentes 1/1  falsas alarmas/h 0.0
+    IF_auditd_sin_clave_protegido    TP=2 FP=0 FN=0 TN=10  incidentes 1/1  falsas alarmas/h 0.0
+    regla_A1                         TP=2 FP=0 FN=0 TN=10  incidentes 1/1  falsas alarmas/h 0.0
+    regla_A2                         TP=2 FP=0 FN=0 TN=10  incidentes 1/1  falsas alarmas/h 0.0
+    reglas_completo                  TP=2 FP=0 FN=0 TN=10  incidentes 1/1  falsas alarmas/h 0.0
+    reglas_generico                  TP=2 FP=0 FN=0 TN=10  incidentes 1/1  falsas alarmas/h 0.0
+    Alertas en ventanas fuera de las sesiones de auditd (pausas u otra fuente activa): IF_auditd_completo=20, IF_auditd_sin_clave_protegido=5
+
+== Cronología de cada incidente (segundos; t=0 es el inicio real del incidente)
+  S01 I2 [IF_apache_completo]: primer evento -0.5 → Filebeat 1.2 → Logstash 10.3 → indexado 10.4 | fin de ventana 5.5 → consulta 35.5 → ALERTA 35.5  (espera 30.0, procesamiento 0.06, el último evento de la ventana se indexó 25.1 s antes de la consulta)
+  S01 I2 [reglas_completo]: primer evento -0.5 → Filebeat 1.2 → Logstash 10.3 → indexado 10.4 | fin de ventana 35.5 → consulta 65.5 → ALERTA 65.5  (espera 30.0, procesamiento 0.05, el último evento de la ventana se indexó 25.1 s antes de la consulta)
+  S02 I1 [IF_auditd_completo]: primer evento 0.0 → Filebeat 1.9 → Logstash 8.0 → indexado 8.1 | fin de ventana 21.4 → consulta 51.4 → ALERTA 51.4  (espera 30.0, procesamiento 0.06, el último evento de la ventana se indexó 23.2 s antes de la consulta)
+  S02 I1 [reglas_completo]: primer evento 0.0 → Filebeat 1.9 → Logstash 8.0 → indexado 8.1 | fin de ventana 21.4 → consulta 51.4 → ALERTA 51.4  (espera 30.0, procesamiento 0.06, el último evento de la ventana se indexó 23.2 s antes de la consulta)
+  La ingesta corre en paralelo con la acumulación de la ventana: la alerta no puede salir antes del fin de
+  la ventana + la espera, y la espera solo alcanza si el último evento ya estaba indexado al consultar.
+
+== Latencia de ingesta de todos los eventos de la prueba (s): mediana / p95 / máximo
+  auditd (2274 eventos):
+    lectura (generación→Filebeat)      0.683 /   5.317 /   9.899
+    envío (Filebeat→Logstash)          8.091 /  10.141 /  10.210
+    indexación (Logstash→ES)           0.028 /   0.070 /   0.116
+    total (generación→indexado)        8.708 /  15.390 /  17.772
+  apache (1688 eventos):
+    lectura (generación→Filebeat)      0.819 /   5.839 /   9.853
+    envío (Filebeat→Logstash)          6.897 /  10.133 /  11.323
+    indexación (Logstash→ES)           0.013 /   0.045 /   0.088
+    total (generación→indexado)        7.927 /  13.999 /  19.976
+  (Apache registra al segundo: su tramo de lectura incluye hasta 1 s de redondeo.)
+
+== Completitud: lo que vio el detector en vivo vs. lo que hay ahora en Elasticsearch
+  auditd: 0/12 ventanas con eventos que llegaron después de la consulta; 0 de 2221 eventos (0.00 %)
+  apache: 0/12 ventanas con eventos que llegaron después de la consulta; 0 de 1669 eventos (0.00 %)
+
+== CPU (% de un núcleo; la VM tiene 4) y memoria (MiB) durante la prueba: media / máximo
+  apache2                                  CPU    0.1 /    0.5   mem     19.5 /     19.6
+  auditd                                   CPU    0.0 /    0.2   mem      1.9 /      1.9
+  detector                                 CPU    0.1 /    0.4   mem    162.3 /    163.3
+  docker:lab-S01-atk                       CPU    0.2 /    0.3   mem     14.0 /     14.0
+  docker:lab-S01-c0                        CPU    0.1 /    0.4   mem     23.1 /     23.1
+  docker:lab-S01-c1                        CPU    0.3 /    1.3   mem     18.2 /     18.2
+  docker:lab-S03-c0                        CPU    0.0 /    0.3   mem     13.9 /     14.0
+  docker:sor2-e3-es01-1                    CPU    4.6 /   37.7   mem   2995.5 /   3000.3
+  docker:sor2-e3-kibana-1                  CPU    1.4 /    6.4   mem   1224.3 /   1224.7
+  docker:sor2-e3-logstash-1                CPU    2.0 /   39.0   mem   1007.9 /   1023.0
+  filebeat                                 CPU    0.1 /    0.4   mem    136.6 /    140.4
+  vm_mem_disponible                        CPU       - /      -   mem   2223.7 /   2275.8
+  vm_total                                 CPU    2.8 /    7.7   mem 
+  vm_total es el % de toda la VM (4 núcleos = 100 %); el resto, % de un núcleo.

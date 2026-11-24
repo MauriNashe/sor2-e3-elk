@@ -1,0 +1,5 @@
+sesion,escenario,detector,inicio_incidente,primer_evento,primer_evento_s,lectura_filebeat_s,recepcion_logstash_s,indexacion_s,ingesta_primer_evento_s,detectado,ventana_alertada,fin_ventana_s,consulta_s,alerta_s,espera_s,procesamiento_s,margen_ultimo_indexado_s
+S01,I2,IF_apache_completo,2026-11-20T21:11:54.549Z,2026-11-20T21:11:54.000Z,-0.549,1.188,10.343,10.363,10.912,True,2026-11-20T21:11:30.000Z,5.451,35.451,35.507,30.0,0.056,25.069
+S01,I2,reglas_completo,2026-11-20T21:11:54.549Z,2026-11-20T21:11:54.000Z,-0.549,1.188,10.343,10.363,10.912,True,2026-11-20T21:12:00.000Z,35.451,65.451,65.503,30.0,0.052,25.088
+S02,I1,IF_auditd_completo,2026-11-20T21:15:38.648Z,2026-11-20T21:15:38.649Z,0.001,1.861,8.033,8.064,8.063,True,2026-11-20T21:15:30.000Z,21.352,51.352,51.411,30.0,0.059,23.219
+S02,I1,reglas_completo,2026-11-20T21:15:38.648Z,2026-11-20T21:15:38.649Z,0.001,1.861,8.033,8.064,8.063,True,2026-11-20T21:15:30.000Z,21.352,51.352,51.411,30.0,0.059,23.219

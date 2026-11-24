@@ -33,6 +33,8 @@ echo
 echo "[1] Servicios"
 check "filebeat activo" active "$(systemctl is-active filebeat)"
 check "reglas de auditd cargadas (lab_*)" 4 "$(sudo auditctl -l | grep -cE '(key=|-k )lab_')"
+check "auditd en formato RAW (sin separador 0x1D en las últimas 200 líneas)" 0 "$(sudo tail -n 200 /var/log/audit/audit.log | grep -c $'\x1d')"
+check "auditd sin node=(null)" 0 "$(sudo tail -n 200 /var/log/audit/audit.log | grep -c 'node=(null)')"
 
 echo
 echo "[2] Generar eventos conocidos"
@@ -41,8 +43,10 @@ sudo -u labuser cat /srv/lab/protegido/secreto.txt >/dev/null 2>&1 && echo "  ¡
 sudo -u labuser /usr/bin/id >/dev/null
 curl -s -o /dev/null -w "  GET /?$MARCA -> %{http_code}\n" "http://127.0.0.1/?$MARCA"
 curl -s -o /dev/null -w "  GET /no-existe-$MARCA -> %{http_code}\n" "http://127.0.0.1/no-existe-$MARCA"
-echo "  Esperando 20 s a que el pipeline los procese..."
-sleep 20
+# Latencia observada en la primera prueba: Filebeat lee hasta ~10 s después (backoff de lectura), envía en
+# lotes con flush de hasta ~10 s, y los índices lab-* se refrescan cada 5 s (plantilla de Filebeat).
+echo "  Esperando 45 s a que el pipeline los procese y queden visibles..."
+sleep 45
 
 echo
 echo "[3] Evidencia en los logs originales"
@@ -57,8 +61,9 @@ echo "[4] Llegada a Elasticsearch"
 RANGO="{\"range\":{\"@timestamp\":{\"gte\":\"$T0\"}}}"
 N_HTTP=$(cuenta "{\"query\":{\"bool\":{\"filter\":[$RANGO,{\"query_string\":{\"query\":\"*$MARCA*\",\"default_field\":\"url.original\"}}]}}}" "lab-apache-*")
 check "peticiones de prueba en lab-apache-*" 2 "$N_HTTP"
-# La clave de la regla (key=lab_protegido) la guarda el módulo bajo auditd.log.*; se busca en esos campos.
-CLAVE='{"multi_match":{"query":"lab_protegido","fields":["auditd.log.*","tags"],"lenient":true}}'
+# El módulo guarda la clave de la regla en auditd.log.key. En los registros SYSCALL el tipo de registro
+# está en event.action ("syscall"), no en auditd.log.record_type. event.original no está indexado.
+CLAVE='{"term":{"auditd.log.key":"lab_protegido"}}'
 N_PROT=$(cuenta "{\"query\":{\"bool\":{\"filter\":[$RANGO,$CLAVE]}}}" "lab-auditd-*")
 echo "  registros con lab_protegido en lab-auditd-* desde T0: $N_PROT (cada evento de auditd son varios registros)"
 [ "$N_PROT" != "error" ] && [ "$N_PROT" -gt 0 ] && check "acceso al archivo protegido llegó a lab-auditd-*" si si \
@@ -67,6 +72,8 @@ N_OTROS=$(cuenta '{"query":{"match_all":{}}}' "lab-otros-*")
 check "eventos sin módulo (lab-otros-*)" 0 "${N_OTROS/error/0}"
 N_ERR=$(cuenta "{\"query\":{\"bool\":{\"filter\":[$RANGO,{\"exists\":{\"field\":\"error.message\"}}]}}}" "lab-auditd-*,lab-apache-*")
 check "documentos con error de parseo desde T0" 0 "$N_ERR"
+N_ERR_TOT=$(cuenta '{"query":{"exists":{"field":"error.message"}}}' "lab-auditd-*,lab-apache-*")
+check "documentos con error de parseo en total" 0 "$N_ERR_TOT"
 
 echo
 echo "[5] Índices del laboratorio"
@@ -82,11 +89,39 @@ curl -s -u "$AUTH" "$ES/lab-apache-*/_search" -H 'Content-Type: application/json
       url: .url.original, status: .http.response.status_code, event: .event, lab: .lab}'
 
 echo
-echo "[7] Ejemplo: acceso al archivo protegido en lab-auditd-* (documento completo)"
-curl -s -u "$AUTH" "$ES/lab-auditd-*/_search" -H 'Content-Type: application/json' -d "{
+echo "[7] Ejemplo: acceso denegado al archivo protegido en lab-auditd-* (registro SYSCALL)"
+SYSCALL_DOC=$(curl -s -u "$AUTH" "$ES/lab-auditd-*/_search" -H 'Content-Type: application/json' -d "{
   \"size\":1, \"sort\":[{\"@timestamp\":\"desc\"}],
-  \"query\":{\"bool\":{\"filter\":[$RANGO,$CLAVE]}}}" \
-  | jq '.hits.hits[0]._source'
+  \"query\":{\"bool\":{\"filter\":[$RANGO,$CLAVE,{\"term\":{\"event.action\":\"syscall\"}}]}}}" | jq '.hits.hits[0]._source')
+echo "$SYSCALL_DOC" | jq '{
+  "@timestamp", host: .host.name, accion: .event.action, clave: .auditd.log.key, serie: .auditd.log.sequence,
+  syscall: .auditd.log.syscall, exito: .auditd.log.success, codigo_salida: .process.exit_code,
+  uid: .user.id, auid: .user.audit.id, proceso: .process.executable, pid: .process.pid,
+  lab: .lab}'
+
+echo
+echo "[7b] Latencias del acceso denegado (s): generación -> lectura -> recepción -> indexación"
+echo "$SYSCALL_DOC" | jq -r '
+  def t: if . == null then null else (sub("\\.[0-9]+Z$"; "Z") | fromdateiso8601) + ((capture("\\.(?<f>[0-9]+)Z$").f // "0") | ("0." + .) | tonumber) end;
+  [ (."@timestamp" | t), (.lab.filebeat_read | t), (.lab.logstash_received | t), (.lab.es_ingested | t) ] as $x
+  | if ($x | any(. == null)) then "  (falta alguna marca: lab.filebeat_read aparece después de reiniciar Logstash y la ingesta)"
+    else "  lectura Filebeat: \(($x[1]-$x[0])*1000|round/1000) | hasta Logstash: \(($x[2]-$x[1])*1000|round/1000) | indexación: \(($x[3]-$x[2])*1000|round/1000) | total: \(($x[3]-$x[0])*1000|round/1000)" end'
+
+echo
+echo "[8] Reconstrucción del evento: registros que comparten el número de serie"
+SERIE=$(echo "$SYSCALL_DOC" | jq -r '.auditd.log.sequence // empty')
+if [ -n "$SERIE" ]; then
+  REGS=$(curl -s -u "$AUTH" "$ES/lab-auditd-*/_search" -H 'Content-Type: application/json' -d "{
+    \"size\":20, \"sort\":[{\"@timestamp\":\"asc\"}],
+    \"query\":{\"bool\":{\"filter\":[$RANGO,{\"term\":{\"auditd.log.sequence\":$SERIE}}]}}}" \
+    | jq -c '[.hits.hits[]._source.event.action]')
+  echo "  serie $SERIE -> registros: $REGS"
+  N_REGS=$(echo "$REGS" | jq 'length')
+  [ "$N_REGS" -ge 3 ] && check "el evento tiene varios registros (SYSCALL, CWD, PATH, PROCTITLE)" si si \
+    || check "el evento tiene varios registros (SYSCALL, CWD, PATH, PROCTITLE)" si "no ($N_REGS)"
+else
+  check "el evento tiene varios registros (SYSCALL, CWD, PATH, PROCTITLE)" si "sin SYSCALL"
+fi
 
 echo
 echo "=== Resultado: $PASS OK, $FAIL fallas ==="

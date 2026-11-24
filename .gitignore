@@ -17,7 +17,7 @@ data/raw/*
 !data/raw/.gitkeep
 !data/raw/muestras/
 data/procesado/*.parquet
-results/**/modelos/*.joblib
+# Los modelos de la T5 (results/t5/modelos/*.joblib, ~1,3 MB) SÍ se versionan: la consigna los pide como entregable.
 
 # --- Referencias: PDFs con copyright, solo locales (las citas van en el informe) ---
 informe/referencias/*.pdf

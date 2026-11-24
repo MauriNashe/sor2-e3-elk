@@ -1,0 +1,59 @@
+Diagnóstico de parseo incorrecto — T2, primera ejecución (19/11/2026, ~23:45 hora local)
+Contexto: scripts/t2_verificar.sh dio 4 OK y 3 fallas (results/t2/verificacion_20261119_233457.txt).
+Consultas hechas con el usuario elastic sobre lab-*. Se conserva como evidencia de "parseo incorrecto" (consigna T2).
+
+=== Índices
+index                 health docs.count
+lab-apache-2026.11.20 green           7
+lab-auditd-2026.11.20 green        2328
+lab-test              yellow          1
+
+=== Problema 1: Apache — todos los documentos con error de ingest pipeline (20 en total con error.message)
+Causa: con ecs_compatibility v8, el input beats de Logstash ya copia la línea en [event][original]
+(tag "beats_input_codec_plain_applied"); el pipeline del módulo apache intenta hacer lo mismo y falla.
+Resultado: la línea no se parsea (sin url.original, http.*, source.ip), solo queda event.original.
+
+  {
+    "indice": "lab-apache-2026.11.20",
+    "error": { "message": "field [event.original] already exists" },
+    "event": {
+      "ingested": "2026-11-20T02:35:11.258488836Z",
+      "original": "127.0.0.1 - - [19/Nov/2026:23:34:57 -0300] \"GET /no-existe-t2check1795142097 HTTP/1.1\" 404 432 \"-\" \"curl/8.5.0\"",
+      "module": "apache",
+      "dataset": "apache.access"
+    },
+    "lab": {
+      "es_ingested": "2026-11-20T02:35:11.258488836Z",
+      "logstash_received": "2026-11-20T02:35:11.243676658Z"
+    }
+  }
+
+=== Problema 2: auditd — se indexa, pero con campos mal parseados
+Causa A: log_format = ENRICHED (valor por defecto en Ubuntu 24.04). auditd agrega al final de cada registro,
+tras el separador 0x1D, los valores traducidos (UID="root" AUID="unset"). El pipeline del módulo auditd
+de Filebeat no lo contempla y mezcla esos valores con el último campo.
+Causa B: name_format = HOSTNAME aplicado con SIGHUP produjo "node=(null)" en lugar del nombre de host.
+
+Registro original (event.original):
+  node=(null) type=CRED_ACQ msg=audit(1795142701.886:421): pid=10945 uid=0 auid=4294967295 ses=4294967295
+  subj=unconfined msg='op=PAM:setcred grantors=pam_permit,pam_cap acct="root" exe="/usr/sbin/cron"
+  hostname=? addr=? terminal=cron res=success'\u001dUID="root" AUID="unset"
+
+Campos resultantes (extracto) — incorrectos:
+  "event.outcome": "success'\u001dUID=\"root"          <- debería ser "success"
+  "auditd.log.msg": ["audit(1795142701.886:421):", "'op=PAM:setcred"]   <- el mensaje anidado quedó partido
+  "auditd.log.AUID": "unset"                            <- campo inventado por el formato ENRICHED
+  "user.id": "4294967295"                               <- es el auid sin asignar, no el uid del proceso (uid=0)
+Campos resultantes — correctos:
+  "auditd.log.record_type": "CRED_ACQ", "process.pid": 10945, "process.executable": "/usr/sbin/cron",
+  "host.name": "sor2-lab" (lo pone Filebeat), "@timestamp": "2026-11-20T02:45:02.269Z"
+
+Consecuencia: la búsqueda por la clave de la regla (key="lab_protegido") no encontró ningún documento,
+aunque ausearch confirmaba 2 eventos SYSCALL con esa clave en audit.log.
+
+=== Corrección aplicada
+- Logstash (configs/logstash/pipeline/lab.conf): se elimina [event][original] antes de enviar a los
+  pipelines de los módulos.
+- auditd.conf: log_format = RAW y name_format = NONE (el host lo aporta Filebeat en host.name).
+- scripts/t2_reiniciar_ingesta.sh: rota audit.log, borra los índices con datos mal parseados y vacía el
+  registro de Filebeat para volver a ingestar desde cero.

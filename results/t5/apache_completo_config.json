@@ -1,0 +1,380 @@
+{
+  "fuente": "apache",
+  "variante": "completo",
+  "fecha": "2026-11-20T17:38:56",
+  "datos": {
+    "archivo": "data/procesado/ventanas_apache.csv",
+    "sha256": "1aa9729a2006829be34287a26fd1405aa8c15d27f24075b0541e40288344235b"
+  },
+  "caracteristicas": [
+    "web_peticiones",
+    "web_4xx",
+    "web_404",
+    "web_5xx",
+    "web_frac_4xx",
+    "web_rutas_distintas",
+    "web_rutas_4xx_distintas",
+    "web_clientes",
+    "web_max_pet_cliente",
+    "web_max_4xx_cliente",
+    "web_max_rutas_cliente",
+    "web_bytes_medio",
+    "web_max_por_segundo",
+    "web_segundos_activos"
+  ],
+  "hiperparametros": {
+    "transformacion": "ninguna",
+    "n_estimators": 100,
+    "max_samples": "auto",
+    "max_features": 1.0
+  },
+  "semilla": 20261120,
+  "umbral": 0.6049695721093282,
+  "criterio_umbral": "máximo F1 por ventana en validación",
+  "grilla": {
+    "transformacion": [
+      "ninguna",
+      "log1p"
+    ],
+    "n_estimators": [
+      100,
+      300
+    ],
+    "max_samples": [
+      "auto",
+      16,
+      8
+    ],
+    "max_features": [
+      1.0,
+      0.6
+    ]
+  },
+  "busqueda": [
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 100,
+      "max_samples": "auto",
+      "max_features": 1.0,
+      "ap": 1.0,
+      "roc_auc": 1.0,
+      "orden": 0
+    },
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 100,
+      "max_samples": "auto",
+      "max_features": 0.6,
+      "ap": 1.0,
+      "roc_auc": 1.0,
+      "orden": 1
+    },
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 100,
+      "max_samples": 16,
+      "max_features": 1.0,
+      "ap": 1.0,
+      "roc_auc": 1.0,
+      "orden": 2
+    },
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 100,
+      "max_samples": 16,
+      "max_features": 0.6,
+      "ap": 1.0,
+      "roc_auc": 1.0,
+      "orden": 3
+    },
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 300,
+      "max_samples": "auto",
+      "max_features": 1.0,
+      "ap": 1.0,
+      "roc_auc": 1.0,
+      "orden": 6
+    },
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 300,
+      "max_samples": "auto",
+      "max_features": 0.6,
+      "ap": 1.0,
+      "roc_auc": 1.0,
+      "orden": 7
+    },
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 300,
+      "max_samples": 16,
+      "max_features": 1.0,
+      "ap": 1.0,
+      "roc_auc": 1.0,
+      "orden": 8
+    },
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 300,
+      "max_samples": 16,
+      "max_features": 0.6,
+      "ap": 1.0,
+      "roc_auc": 1.0,
+      "orden": 9
+    },
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 300,
+      "max_samples": 8,
+      "max_features": 1.0,
+      "ap": 1.0,
+      "roc_auc": 1.0,
+      "orden": 10
+    },
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 300,
+      "max_samples": 8,
+      "max_features": 0.6,
+      "ap": 1.0,
+      "roc_auc": 1.0,
+      "orden": 11
+    },
+    {
+      "transformacion": "log1p",
+      "n_estimators": 100,
+      "max_samples": 8,
+      "max_features": 1.0,
+      "ap": 1.0,
+      "roc_auc": 1.0,
+      "orden": 16
+    },
+    {
+      "transformacion": "log1p",
+      "n_estimators": 100,
+      "max_samples": 8,
+      "max_features": 0.6,
+      "ap": 1.0,
+      "roc_auc": 1.0,
+      "orden": 17
+    },
+    {
+      "transformacion": "log1p",
+      "n_estimators": 300,
+      "max_samples": 8,
+      "max_features": 0.6,
+      "ap": 1.0,
+      "roc_auc": 1.0,
+      "orden": 23
+    },
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 100,
+      "max_samples": 8,
+      "max_features": 1.0,
+      "ap": 0.9945054945054945,
+      "roc_auc": 0.9973474801061007,
+      "orden": 4
+    },
+    {
+      "transformacion": "ninguna",
+      "n_estimators": 100,
+      "max_samples": 8,
+      "max_features": 0.6,
+      "ap": 0.9945054945054945,
+      "roc_auc": 0.9973474801061009,
+      "orden": 5
+    },
+    {
+      "transformacion": "log1p",
+      "n_estimators": 100,
+      "max_samples": "auto",
+      "max_features": 0.6,
+      "ap": 0.9945054945054945,
+      "roc_auc": 0.9973474801061009,
+      "orden": 13
+    },
+    {
+      "transformacion": "log1p",
+      "n_estimators": 300,
+      "max_samples": 8,
+      "max_features": 1.0,
+      "ap": 0.9885883347421809,
+      "roc_auc": 0.9946949602122016,
+      "orden": 22
+    },
+    {
+      "transformacion": "log1p",
+      "n_estimators": 300,
+      "max_samples": "auto",
+      "max_features": 0.6,
+      "ap": 0.9855769230769229,
+      "roc_auc": 0.9920424403183024,
+      "orden": 19
+    },
+    {
+      "transformacion": "log1p",
+      "n_estimators": 100,
+      "max_samples": "auto",
+      "max_features": 1.0,
+      "ap": 0.9819004524886878,
+      "roc_auc": 0.9893899204244031,
+      "orden": 12
+    },
+    {
+      "transformacion": "log1p",
+      "n_estimators": 100,
+      "max_samples": 16,
+      "max_features": 0.6,
+      "ap": 0.9819004524886878,
+      "roc_auc": 0.9893899204244031,
+      "orden": 15
+    },
+    {
+      "transformacion": "log1p",
+      "n_estimators": 300,
+      "max_samples": "auto",
+      "max_features": 1.0,
+      "ap": 0.9819004524886876,
+      "roc_auc": 0.9893899204244031,
+      "orden": 18
+    },
+    {
+      "transformacion": "log1p",
+      "n_estimators": 300,
+      "max_samples": 16,
+      "max_features": 0.6,
+      "ap": 0.9786324786324785,
+      "roc_auc": 0.986737400530504,
+      "orden": 21
+    },
+    {
+      "transformacion": "log1p",
+      "n_estimators": 100,
+      "max_samples": 16,
+      "max_features": 1.0,
+      "ap": 0.9557605855682778,
+      "roc_auc": 0.9787798408488064,
+      "orden": 14
+    },
+    {
+      "transformacion": "log1p",
+      "n_estimators": 300,
+      "max_samples": 16,
+      "max_features": 1.0,
+      "ap": 0.932280841330615,
+      "roc_auc": 0.9655172413793103,
+      "orden": 20
+    }
+  ],
+  "metricas_prueba": {
+    "ventana": {
+      "tp": 11,
+      "fp": 1,
+      "fn": 0,
+      "tn": 30,
+      "precision": 0.9166666666666666,
+      "recall": 1.0,
+      "f1": 0.9565217391304348,
+      "fpr": 0.03225806451612903
+    },
+    "incidentes": 5,
+    "incidentes_detectados": 5,
+    "recall_incidente": 1.0,
+    "t_primera_alerta_mediana_s": 23.8,
+    "t_primera_alerta_max_s": 28.1,
+    "falsas_alarmas_hora": 2.857142857142857,
+    "horas_observadas": 0.35,
+    "detalle_incidentes": [
+      {
+        "sesion": "S04",
+        "escenario": "I2",
+        "inicio_incidente": "2026-11-20T06:49:28.880Z",
+        "detectado": true,
+        "ventanas_incidente": 2,
+        "ventanas_alertadas": 2,
+        "t_primera_alerta_s": 23.8
+      },
+      {
+        "sesion": "S06",
+        "escenario": "I2",
+        "inicio_incidente": "2026-11-20T06:56:37.045Z",
+        "detectado": true,
+        "ventanas_incidente": 2,
+        "ventanas_alertadas": 2,
+        "t_primera_alerta_s": 27.5
+      },
+      {
+        "sesion": "S07",
+        "escenario": "I2",
+        "inicio_incidente": "2026-11-20T06:59:27.448Z",
+        "detectado": true,
+        "ventanas_incidente": 2,
+        "ventanas_alertadas": 2,
+        "t_primera_alerta_s": 28.1
+      },
+      {
+        "sesion": "S22",
+        "escenario": "I2",
+        "inicio_incidente": "2026-11-20T07:50:09.048Z",
+        "detectado": true,
+        "ventanas_incidente": 2,
+        "ventanas_alertadas": 2,
+        "t_primera_alerta_s": 23.6
+      },
+      {
+        "sesion": "S32",
+        "escenario": "I2",
+        "inicio_incidente": "2026-11-20T08:23:16.097Z",
+        "detectado": true,
+        "ventanas_incidente": 3,
+        "ventanas_alertadas": 3,
+        "t_primera_alerta_s": 14.7
+      }
+    ]
+  },
+  "estabilidad_prueba": {
+    "f1_ventana": [
+      0.9166666666666666,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.9565217391304348,
+      1.0,
+      1.0,
+      0.9565217391304348,
+      1.0
+    ],
+    "recall_incidente": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "falsas_alarmas_hora": [
+      5.714285714285714,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      2.857142857142857,
+      0.0,
+      0.0,
+      2.857142857142857,
+      0.0
+    ]
+  },
+  "versiones": {
+    "python": "3.12.3",
+    "scikit-learn": "1.9.1",
+    "numpy": "2.5.5"
+  }
+}

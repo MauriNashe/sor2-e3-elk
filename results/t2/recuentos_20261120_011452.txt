@@ -1,0 +1,51 @@
+Validación de la ingesta — 2026-11-20T04:14:52+00:00 (se ignoran las líneas de los últimos 90 s)
+
+===== auditd: /var/log/audit/audit.log  <->  lab-auditd-*
+  líneas en el archivo:            331  (comparadas: 317, recientes excluidas: 14)
+  documentos en Elasticsearch:     317  (sin event.original: 0)
+  líneas que faltan en ES:         0
+  documentos de líneas ya rotadas: 0  (están en audit.log.1)
+  documentos de más en ES:         0  (duplicados o sin origen en el log)
+  documentos con error de parseo:  0
+  por tipo de registro (log / ES):
+    BPF                    4 / 4      
+    CRED_ACQ              18 / 18     
+    CRED_DISP             34 / 34     
+    CRED_REFR             29 / 29     
+    CWD                    6 / 6      
+    DAEMON_ROTATE          1 / 1      
+    EXECVE                 4 / 4      
+    LOGIN                 14 / 14     
+    PATH                  10 / 10     
+    PROCTITLE             20 / 20     
+    SERVICE_START         16 / 16     
+    SERVICE_STOP          15 / 15     
+    SYSCALL               20 / 20     
+    USER_ACCT             35 / 35     
+    USER_AUTH              5 / 5      
+    USER_CMD              19 / 19     
+    USER_END              34 / 34     
+    USER_START            33 / 33     
+
+===== apache-access: /var/log/apache2/access.log  <->  lab-apache-*
+  líneas en el archivo:            2  (comparadas: 2, recientes excluidas: 0)
+  documentos en Elasticsearch:     6  (sin event.original: 0)
+  líneas que faltan en ES:         0
+  documentos de líneas ya rotadas: 4  (están en access.log.1)
+  documentos de más en ES:         0  (duplicados o sin origen en el log)
+  documentos con error de parseo:  0
+
+===== apache-error: /var/log/apache2/error.log  <->  lab-apache-*
+  líneas en el archivo:            2  (comparadas: 2, recientes excluidas: 0)
+  documentos en Elasticsearch:     7  (sin event.original: 0)
+  líneas que faltan en ES:         0
+  documentos de líneas ya rotadas: 5  (están en error.log.1)
+  documentos de más en ES:         0  (duplicados o sin origen en el log)
+  documentos con error de parseo:  0
+
+===== Resumen
+  auditd: 317 líneas / 317 docs / faltan 0 / de archivo rotado 0 / de más 0 / errores 0
+  apache-access: 2 líneas / 6 docs / faltan 0 / de archivo rotado 4 / de más 0 / errores 0
+  apache-error: 2 líneas / 7 docs / faltan 0 / de archivo rotado 5 / de más 0 / errores 0
+
+Tipos de registro de auditd con ejemplo guardado: acquired-credentials, apache.access, authenticated, bpf, changed-login-id-to, cwd, disposed-credentials, ended-session, execve, path, proctitle, ran-command, refreshed-credentials, rotated-audit-logs, started-service, started-session, stopped-service, syscall, was-authorized

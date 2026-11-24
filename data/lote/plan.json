@@ -1,0 +1,789 @@
+{
+  "creado": "2026-11-20T06:38:21.451Z",
+  "semilla": 20261120,
+  "sesiones_por_escenario": 10,
+  "duracion_s": 180,
+  "pausa_s": 20,
+  "sesiones": [
+    {
+      "escenario": "B1",
+      "fuente": "auditd",
+      "tipo": "benigno",
+      "conjunto": "prueba",
+      "semilla": 247364804,
+      "parametros": {
+        "tasa": 0.6,
+        "rafagas": 0,
+        "errores": 3
+      },
+      "sesion": "S01",
+      "orden": 1,
+      "ips_clientes": [],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "I2",
+      "fuente": "apache",
+      "tipo": "incidente",
+      "conjunto": "validacion",
+      "semilla": 191200148,
+      "parametros": {
+        "clientes": 3,
+        "tasa": 0.39,
+        "rafagas": 1,
+        "p404": 0.027,
+        "inc_inicio": 86.8,
+        "inc_duracion": 51.0,
+        "inc_tasa": 2.81
+      },
+      "sesion": "S02",
+      "orden": 2,
+      "ips_clientes": [
+        "172.30.0.20",
+        "172.30.0.68",
+        "172.30.0.171"
+      ],
+      "ip_atacante": "172.30.0.73"
+    },
+    {
+      "escenario": "B1",
+      "fuente": "auditd",
+      "tipo": "benigno",
+      "conjunto": "validacion",
+      "semilla": 331600656,
+      "parametros": {
+        "tasa": 0.45,
+        "rafagas": 3,
+        "errores": 2
+      },
+      "sesion": "S03",
+      "orden": 3,
+      "ips_clientes": [],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "I2",
+      "fuente": "apache",
+      "tipo": "incidente",
+      "conjunto": "prueba",
+      "semilla": 906711558,
+      "parametros": {
+        "clientes": 2,
+        "tasa": 0.54,
+        "rafagas": 1,
+        "p404": 0.098,
+        "inc_inicio": 65.6,
+        "inc_duracion": 38.1,
+        "inc_tasa": 4.35
+      },
+      "sesion": "S04",
+      "orden": 4,
+      "ips_clientes": [
+        "172.30.0.46",
+        "172.30.0.30"
+      ],
+      "ip_atacante": "172.30.0.157"
+    },
+    {
+      "escenario": "B2",
+      "fuente": "apache",
+      "tipo": "benigno",
+      "conjunto": "validacion",
+      "semilla": 479369726,
+      "parametros": {
+        "clientes": 1,
+        "tasa": 0.45,
+        "rafagas": 1,
+        "p404": 0.082
+      },
+      "sesion": "S05",
+      "orden": 5,
+      "ips_clientes": [
+        "172.30.0.31"
+      ],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "I2",
+      "fuente": "apache",
+      "tipo": "incidente",
+      "conjunto": "prueba",
+      "semilla": 472536199,
+      "parametros": {
+        "clientes": 3,
+        "tasa": 0.31,
+        "rafagas": 1,
+        "p404": 0.047,
+        "inc_inicio": 91.9,
+        "inc_duracion": 36.4,
+        "inc_tasa": 6.59
+      },
+      "sesion": "S06",
+      "orden": 6,
+      "ips_clientes": [
+        "172.30.0.122",
+        "172.30.0.194",
+        "172.30.0.124"
+      ],
+      "ip_atacante": "172.30.0.87"
+    },
+    {
+      "escenario": "I2",
+      "fuente": "apache",
+      "tipo": "incidente",
+      "conjunto": "prueba",
+      "semilla": 756068107,
+      "parametros": {
+        "clientes": 2,
+        "tasa": 0.3,
+        "rafagas": 2,
+        "p404": 0.023,
+        "inc_inicio": 61.2,
+        "inc_duracion": 45.2,
+        "inc_tasa": 7.76
+      },
+      "sesion": "S07",
+      "orden": 7,
+      "ips_clientes": [
+        "172.30.0.78",
+        "172.30.0.44"
+      ],
+      "ip_atacante": "172.30.0.93"
+    },
+    {
+      "escenario": "I1",
+      "fuente": "auditd",
+      "tipo": "incidente",
+      "conjunto": "validacion",
+      "semilla": 696705345,
+      "parametros": {
+        "tasa": 0.82,
+        "rafagas": 1,
+        "errores": 0,
+        "inc_inicio": 62.0,
+        "inc_duracion": 47.9,
+        "inc_tasa": 2.11
+      },
+      "sesion": "S08",
+      "orden": 8,
+      "ips_clientes": [],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "B2",
+      "fuente": "apache",
+      "tipo": "benigno",
+      "conjunto": "prueba",
+      "semilla": 25361247,
+      "parametros": {
+        "clientes": 1,
+        "tasa": 0.6,
+        "rafagas": 3,
+        "p404": 0.041
+      },
+      "sesion": "S09",
+      "orden": 9,
+      "ips_clientes": [
+        "172.30.0.119"
+      ],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "B1",
+      "fuente": "auditd",
+      "tipo": "benigno",
+      "conjunto": "prueba",
+      "semilla": 915124225,
+      "parametros": {
+        "tasa": 0.53,
+        "rafagas": 2,
+        "errores": 0
+      },
+      "sesion": "S10",
+      "orden": 10,
+      "ips_clientes": [],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "I1",
+      "fuente": "auditd",
+      "tipo": "incidente",
+      "conjunto": "prueba",
+      "semilla": 345268236,
+      "parametros": {
+        "tasa": 0.75,
+        "rafagas": 1,
+        "errores": 2,
+        "inc_inicio": 95.3,
+        "inc_duracion": 46.3,
+        "inc_tasa": 1.96
+      },
+      "sesion": "S11",
+      "orden": 11,
+      "ips_clientes": [],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "B1",
+      "fuente": "auditd",
+      "tipo": "benigno",
+      "conjunto": "entrenamiento",
+      "semilla": 16651027,
+      "parametros": {
+        "tasa": 0.84,
+        "rafagas": 1,
+        "errores": 2
+      },
+      "sesion": "S12",
+      "orden": 12,
+      "ips_clientes": [],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "B2",
+      "fuente": "apache",
+      "tipo": "benigno",
+      "conjunto": "entrenamiento",
+      "semilla": 812019755,
+      "parametros": {
+        "clientes": 2,
+        "tasa": 0.45,
+        "rafagas": 3,
+        "p404": 0.065
+      },
+      "sesion": "S13",
+      "orden": 13,
+      "ips_clientes": [
+        "172.30.0.106",
+        "172.30.0.90"
+      ],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "I1",
+      "fuente": "auditd",
+      "tipo": "incidente",
+      "conjunto": "prueba",
+      "semilla": 889885548,
+      "parametros": {
+        "tasa": 0.59,
+        "rafagas": 0,
+        "errores": 1,
+        "inc_inicio": 87.1,
+        "inc_duracion": 54.3,
+        "inc_tasa": 1.24
+      },
+      "sesion": "S14",
+      "orden": 14,
+      "ips_clientes": [],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "B2",
+      "fuente": "apache",
+      "tipo": "benigno",
+      "conjunto": "validacion",
+      "semilla": 592185132,
+      "parametros": {
+        "clientes": 1,
+        "tasa": 0.21,
+        "rafagas": 0,
+        "p404": 0.094
+      },
+      "sesion": "S15",
+      "orden": 15,
+      "ips_clientes": [
+        "172.30.0.113"
+      ],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "I1",
+      "fuente": "auditd",
+      "tipo": "incidente",
+      "conjunto": "prueba",
+      "semilla": 683294137,
+      "parametros": {
+        "tasa": 0.41,
+        "rafagas": 0,
+        "errores": 0,
+        "inc_inicio": 48.9,
+        "inc_duracion": 59.2,
+        "inc_tasa": 2.88
+      },
+      "sesion": "S16",
+      "orden": 16,
+      "ips_clientes": [],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "I1",
+      "fuente": "auditd",
+      "tipo": "incidente",
+      "conjunto": "validacion",
+      "semilla": 292381647,
+      "parametros": {
+        "tasa": 0.43,
+        "rafagas": 2,
+        "errores": 1,
+        "inc_inicio": 46.5,
+        "inc_duracion": 55.1,
+        "inc_tasa": 2.25
+      },
+      "sesion": "S17",
+      "orden": 17,
+      "ips_clientes": [],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "B1",
+      "fuente": "auditd",
+      "tipo": "benigno",
+      "conjunto": "entrenamiento",
+      "semilla": 432215589,
+      "parametros": {
+        "tasa": 0.75,
+        "rafagas": 0,
+        "errores": 3
+      },
+      "sesion": "S18",
+      "orden": 18,
+      "ips_clientes": [],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "B2",
+      "fuente": "apache",
+      "tipo": "benigno",
+      "conjunto": "entrenamiento",
+      "semilla": 930703905,
+      "parametros": {
+        "clientes": 3,
+        "tasa": 0.2,
+        "rafagas": 0,
+        "p404": 0.049
+      },
+      "sesion": "S19",
+      "orden": 19,
+      "ips_clientes": [
+        "172.30.0.117",
+        "172.30.0.52",
+        "172.30.0.20"
+      ],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "B1",
+      "fuente": "auditd",
+      "tipo": "benigno",
+      "conjunto": "entrenamiento",
+      "semilla": 394359397,
+      "parametros": {
+        "tasa": 0.33,
+        "rafagas": 2,
+        "errores": 3
+      },
+      "sesion": "S20",
+      "orden": 20,
+      "ips_clientes": [],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "I1",
+      "fuente": "auditd",
+      "tipo": "incidente",
+      "conjunto": "validacion",
+      "semilla": 710201017,
+      "parametros": {
+        "tasa": 0.86,
+        "rafagas": 1,
+        "errores": 2,
+        "inc_inicio": 68.8,
+        "inc_duracion": 32.5,
+        "inc_tasa": 2.33
+      },
+      "sesion": "S21",
+      "orden": 21,
+      "ips_clientes": [],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "I2",
+      "fuente": "apache",
+      "tipo": "incidente",
+      "conjunto": "prueba",
+      "semilla": 709848315,
+      "parametros": {
+        "clientes": 1,
+        "tasa": 0.59,
+        "rafagas": 0,
+        "p404": 0.023,
+        "inc_inicio": 95.6,
+        "inc_duracion": 41.8,
+        "inc_tasa": 4.38
+      },
+      "sesion": "S22",
+      "orden": 22,
+      "ips_clientes": [
+        "172.30.0.192"
+      ],
+      "ip_atacante": "172.30.0.217"
+    },
+    {
+      "escenario": "B1",
+      "fuente": "auditd",
+      "tipo": "benigno",
+      "conjunto": "entrenamiento",
+      "semilla": 321107945,
+      "parametros": {
+        "tasa": 0.34,
+        "rafagas": 2,
+        "errores": 3
+      },
+      "sesion": "S23",
+      "orden": 23,
+      "ips_clientes": [],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "B2",
+      "fuente": "apache",
+      "tipo": "benigno",
+      "conjunto": "entrenamiento",
+      "semilla": 296517237,
+      "parametros": {
+        "clientes": 3,
+        "tasa": 0.18,
+        "rafagas": 0,
+        "p404": 0.094
+      },
+      "sesion": "S24",
+      "orden": 24,
+      "ips_clientes": [
+        "172.30.0.159",
+        "172.30.0.71",
+        "172.30.0.116"
+      ],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "B2",
+      "fuente": "apache",
+      "tipo": "benigno",
+      "conjunto": "entrenamiento",
+      "semilla": 63027419,
+      "parametros": {
+        "clientes": 2,
+        "tasa": 0.32,
+        "rafagas": 2,
+        "p404": 0.024
+      },
+      "sesion": "S25",
+      "orden": 25,
+      "ips_clientes": [
+        "172.30.0.55",
+        "172.30.0.204"
+      ],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "I1",
+      "fuente": "auditd",
+      "tipo": "incidente",
+      "conjunto": "prueba",
+      "semilla": 832296007,
+      "parametros": {
+        "tasa": 0.86,
+        "rafagas": 2,
+        "errores": 0,
+        "inc_inicio": 74.9,
+        "inc_duracion": 44.4,
+        "inc_tasa": 2.15
+      },
+      "sesion": "S26",
+      "orden": 26,
+      "ips_clientes": [],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "I2",
+      "fuente": "apache",
+      "tipo": "incidente",
+      "conjunto": "validacion",
+      "semilla": 478482199,
+      "parametros": {
+        "clientes": 2,
+        "tasa": 0.24,
+        "rafagas": 0,
+        "p404": 0.05,
+        "inc_inicio": 78.0,
+        "inc_duracion": 54.6,
+        "inc_tasa": 6.18
+      },
+      "sesion": "S27",
+      "orden": 27,
+      "ips_clientes": [
+        "172.30.0.55",
+        "172.30.0.213"
+      ],
+      "ip_atacante": "172.30.0.146"
+    },
+    {
+      "escenario": "I2",
+      "fuente": "apache",
+      "tipo": "incidente",
+      "conjunto": "validacion",
+      "semilla": 653398410,
+      "parametros": {
+        "clientes": 2,
+        "tasa": 0.29,
+        "rafagas": 2,
+        "p404": 0.09,
+        "inc_inicio": 64.3,
+        "inc_duracion": 30.5,
+        "inc_tasa": 4.16
+      },
+      "sesion": "S28",
+      "orden": 28,
+      "ips_clientes": [
+        "172.30.0.72",
+        "172.30.0.154"
+      ],
+      "ip_atacante": "172.30.0.186"
+    },
+    {
+      "escenario": "B1",
+      "fuente": "auditd",
+      "tipo": "benigno",
+      "conjunto": "entrenamiento",
+      "semilla": 492866728,
+      "parametros": {
+        "tasa": 0.64,
+        "rafagas": 3,
+        "errores": 2
+      },
+      "sesion": "S29",
+      "orden": 29,
+      "ips_clientes": [],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "I2",
+      "fuente": "apache",
+      "tipo": "incidente",
+      "conjunto": "validacion",
+      "semilla": 70541911,
+      "parametros": {
+        "clientes": 2,
+        "tasa": 0.56,
+        "rafagas": 2,
+        "p404": 0.098,
+        "inc_inicio": 48.1,
+        "inc_duracion": 46.8,
+        "inc_tasa": 5.36
+      },
+      "sesion": "S30",
+      "orden": 30,
+      "ips_clientes": [
+        "172.30.0.106",
+        "172.30.0.34"
+      ],
+      "ip_atacante": "172.30.0.14"
+    },
+    {
+      "escenario": "I1",
+      "fuente": "auditd",
+      "tipo": "incidente",
+      "conjunto": "validacion",
+      "semilla": 180701359,
+      "parametros": {
+        "tasa": 0.76,
+        "rafagas": 0,
+        "errores": 0,
+        "inc_inicio": 101.9,
+        "inc_duracion": 42.7,
+        "inc_tasa": 0.96
+      },
+      "sesion": "S31",
+      "orden": 31,
+      "ips_clientes": [],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "I2",
+      "fuente": "apache",
+      "tipo": "incidente",
+      "conjunto": "prueba",
+      "semilla": 102770152,
+      "parametros": {
+        "clientes": 3,
+        "tasa": 0.58,
+        "rafagas": 1,
+        "p404": 0.047,
+        "inc_inicio": 74.5,
+        "inc_duracion": 57.1,
+        "inc_tasa": 1.16
+      },
+      "sesion": "S32",
+      "orden": 32,
+      "ips_clientes": [
+        "172.30.0.157",
+        "172.30.0.36",
+        "172.30.0.67"
+      ],
+      "ip_atacante": "172.30.0.84"
+    },
+    {
+      "escenario": "I2",
+      "fuente": "apache",
+      "tipo": "incidente",
+      "conjunto": "validacion",
+      "semilla": 842194937,
+      "parametros": {
+        "clientes": 2,
+        "tasa": 0.42,
+        "rafagas": 0,
+        "p404": 0.085,
+        "inc_inicio": 61.3,
+        "inc_duracion": 50.9,
+        "inc_tasa": 7.48
+      },
+      "sesion": "S33",
+      "orden": 33,
+      "ips_clientes": [
+        "172.30.0.63",
+        "172.30.0.230"
+      ],
+      "ip_atacante": "172.30.0.102"
+    },
+    {
+      "escenario": "I1",
+      "fuente": "auditd",
+      "tipo": "incidente",
+      "conjunto": "validacion",
+      "semilla": 58701267,
+      "parametros": {
+        "tasa": 0.68,
+        "rafagas": 1,
+        "errores": 1,
+        "inc_inicio": 63.0,
+        "inc_duracion": 58.4,
+        "inc_tasa": 2.12
+      },
+      "sesion": "S34",
+      "orden": 34,
+      "ips_clientes": [],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "I1",
+      "fuente": "auditd",
+      "tipo": "incidente",
+      "conjunto": "prueba",
+      "semilla": 32994512,
+      "parametros": {
+        "tasa": 0.42,
+        "rafagas": 1,
+        "errores": 2,
+        "inc_inicio": 74.6,
+        "inc_duracion": 42.2,
+        "inc_tasa": 1.88
+      },
+      "sesion": "S35",
+      "orden": 35,
+      "ips_clientes": [],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "B2",
+      "fuente": "apache",
+      "tipo": "benigno",
+      "conjunto": "prueba",
+      "semilla": 934536545,
+      "parametros": {
+        "clientes": 2,
+        "tasa": 0.28,
+        "rafagas": 2,
+        "p404": 0.054
+      },
+      "sesion": "S36",
+      "orden": 36,
+      "ips_clientes": [
+        "172.30.0.95",
+        "172.30.0.224"
+      ],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "B1",
+      "fuente": "auditd",
+      "tipo": "benigno",
+      "conjunto": "entrenamiento",
+      "semilla": 991867436,
+      "parametros": {
+        "tasa": 0.97,
+        "rafagas": 1,
+        "errores": 1
+      },
+      "sesion": "S37",
+      "orden": 37,
+      "ips_clientes": [],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "B2",
+      "fuente": "apache",
+      "tipo": "benigno",
+      "conjunto": "entrenamiento",
+      "semilla": 776964696,
+      "parametros": {
+        "clientes": 2,
+        "tasa": 0.29,
+        "rafagas": 3,
+        "p404": 0.023
+      },
+      "sesion": "S38",
+      "orden": 38,
+      "ips_clientes": [
+        "172.30.0.12",
+        "172.30.0.17"
+      ],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "B2",
+      "fuente": "apache",
+      "tipo": "benigno",
+      "conjunto": "entrenamiento",
+      "semilla": 390227065,
+      "parametros": {
+        "clientes": 1,
+        "tasa": 0.25,
+        "rafagas": 0,
+        "p404": 0.058
+      },
+      "sesion": "S39",
+      "orden": 39,
+      "ips_clientes": [
+        "172.30.0.192"
+      ],
+      "ip_atacante": ""
+    },
+    {
+      "escenario": "B1",
+      "fuente": "auditd",
+      "tipo": "benigno",
+      "conjunto": "validacion",
+      "semilla": 395691947,
+      "parametros": {
+        "tasa": 0.52,
+        "rafagas": 2,
+        "errores": 2
+      },
+      "sesion": "S40",
+      "orden": 40,
+      "ips_clientes": [],
+      "ip_atacante": ""
+    }
+  ]
+}

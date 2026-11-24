@@ -1,0 +1,5 @@
+escenario,sesiones,ventanas,con incidente,ambiguas,alertas IF completo,alertas reglas
+B1,2,12,0,0,0,0
+I1,5,30,12,0,10,12
+B2,2,12,0,0,0,0
+I2,5,30,11,0,12,11

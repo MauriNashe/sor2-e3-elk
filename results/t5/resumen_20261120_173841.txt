@@ -1,0 +1,90 @@
+T5 — Isolation Forest (20261120_173841)
+Python 3.12.3, scikit-learn 1.9.1, numpy 2.5.5; semilla 20261120
+
+=== auditd / completo: 17 características
+  Ventanas: entrenamiento 36 (6 sesiones), validación 42 (12 positivas, 0 ambiguas), prueba 42 (12 positivas, 0 ambiguas)
+  Búsqueda en validación (mejores 5 de 24; criterio: AP, luego ROC-AUC, luego la más simple):
+    AP=0.979 ROC-AUC=0.992  transformacion=log1p n_estimators=300 max_samples=8 max_features=0.6
+    AP=0.975 ROC-AUC=0.989  transformacion=log1p n_estimators=100 max_samples=auto max_features=0.6
+    AP=0.975 ROC-AUC=0.989  transformacion=log1p n_estimators=300 max_samples=auto max_features=0.6
+    AP=0.971 ROC-AUC=0.989  transformacion=log1p n_estimators=100 max_samples=8 max_features=0.6
+    AP=0.971 ROC-AUC=0.986  transformacion=log1p n_estimators=300 max_samples=16 max_features=0.6
+  Elegida: {'transformacion': 'log1p', 'n_estimators': 300, 'max_samples': 8, 'max_features': 0.6}
+  Umbral (máximo F1 en validación): 0.5540   [puntajes de entrenamiento: mediana 0.5130, máximo 0.5748]
+  Validación:
+    Por ventana (30 s): TP=12 FP=1 FN=0 TN=29  precisión=0.923 recall=1.000 F1=0.960
+    Por incidente: 5/5 detectados (recall 1.00); primera alerta: mediana 21.2 s, máximo 28.0 s
+    Falsas alarmas: 2.9 por hora (1 en 0.35 h)
+  Prueba:
+    Por ventana (30 s): TP=9 FP=1 FN=3 TN=29  precisión=0.900 recall=0.750 F1=0.818
+    Por incidente: 5/5 detectados (recall 1.00); primera alerta: mediana 32.9 s, máximo 45.4 s
+    Falsas alarmas: 2.9 por hora (1 en 0.35 h)
+      S11 I1: detectado, 2/2 ventanas, primera alerta 24.7 s
+      S14 I1: detectado, 2/3 ventanas, primera alerta 32.9 s
+      S16 I1: detectado, 3/3 ventanas, primera alerta 11.1 s
+      S26 I1: detectado, 1/2 ventanas, primera alerta 45.1 s
+      S35 I1: detectado, 1/2 ventanas, primera alerta 45.4 s
+  Comparación — umbral sin etiquetas (máximo de entrenamiento), en prueba:
+    Por ventana (30 s): TP=1 FP=1 FN=11 TN=29  precisión=0.500 recall=0.083 F1=0.143
+    Por incidente: 1/5 detectados (recall 0.20); primera alerta: mediana 24.7 s, máximo 24.7 s
+    Falsas alarmas: 2.9 por hora (1 en 0.35 h)
+  Estabilidad en prueba con 10 semillas: F1 por ventana 0.806 ± 0.074; recall por incidente 1.00 ± 0.00; falsas alarmas/h 10.6 ± 4.1
+
+=== auditd / sin_clave_protegido: 16 características
+  Ventanas: entrenamiento 36 (6 sesiones), validación 42 (12 positivas, 0 ambiguas), prueba 42 (12 positivas, 0 ambiguas)
+  Búsqueda en validación (mejores 5 de 24; criterio: AP, luego ROC-AUC, luego la más simple):
+    AP=0.987 ROC-AUC=0.994  transformacion=log1p n_estimators=100 max_samples=auto max_features=1.0
+    AP=0.979 ROC-AUC=0.992  transformacion=log1p n_estimators=100 max_samples=16 max_features=1.0
+    AP=0.974 ROC-AUC=0.989  transformacion=log1p n_estimators=100 max_samples=auto max_features=0.6
+    AP=0.953 ROC-AUC=0.981  transformacion=log1p n_estimators=300 max_samples=auto max_features=0.6
+    AP=0.952 ROC-AUC=0.978  transformacion=log1p n_estimators=100 max_samples=8 max_features=1.0
+  Elegida: {'transformacion': 'log1p', 'n_estimators': 100, 'max_samples': 'auto', 'max_features': 1.0}
+  Umbral (máximo F1 en validación): 0.5925   [puntajes de entrenamiento: mediana 0.4912, máximo 0.6096]
+  Validación:
+    Por ventana (30 s): TP=12 FP=1 FN=0 TN=29  precisión=0.923 recall=1.000 F1=0.960
+    Por incidente: 5/5 detectados (recall 1.00); primera alerta: mediana 21.2 s, máximo 28.0 s
+    Falsas alarmas: 2.9 por hora (1 en 0.35 h)
+  Prueba:
+    Por ventana (30 s): TP=11 FP=1 FN=1 TN=29  precisión=0.917 recall=0.917 F1=0.917
+    Por incidente: 5/5 detectados (recall 1.00); primera alerta: mediana 15.4 s, máximo 32.9 s
+    Falsas alarmas: 2.9 por hora (1 en 0.35 h)
+      S11 I1: detectado, 2/2 ventanas, primera alerta 24.7 s
+      S14 I1: detectado, 2/3 ventanas, primera alerta 32.9 s
+      S16 I1: detectado, 3/3 ventanas, primera alerta 11.1 s
+      S26 I1: detectado, 2/2 ventanas, primera alerta 15.1 s
+      S35 I1: detectado, 2/2 ventanas, primera alerta 15.4 s
+  Comparación — umbral sin etiquetas (máximo de entrenamiento), en prueba:
+    Por ventana (30 s): TP=6 FP=0 FN=6 TN=30  precisión=1.000 recall=0.500 F1=0.667
+    Por incidente: 4/5 detectados (recall 0.80); primera alerta: mediana 41.1 s, máximo 45.1 s
+    Falsas alarmas: 0.0 por hora (0 en 0.35 h)
+  Estabilidad en prueba con 10 semillas: F1 por ventana 0.883 ± 0.048; recall por incidente 1.00 ± 0.00; falsas alarmas/h 6.9 ± 1.4
+
+=== apache / completo: 14 características
+  Ventanas: entrenamiento 36 (6 sesiones), validación 42 (13 positivas, 0 ambiguas), prueba 42 (11 positivas, 0 ambiguas)
+  Búsqueda en validación (mejores 5 de 24; criterio: AP, luego ROC-AUC, luego la más simple):
+    AP=1.000 ROC-AUC=1.000  transformacion=ninguna n_estimators=100 max_samples=auto max_features=1.0
+    AP=1.000 ROC-AUC=1.000  transformacion=ninguna n_estimators=100 max_samples=auto max_features=0.6
+    AP=1.000 ROC-AUC=1.000  transformacion=ninguna n_estimators=100 max_samples=16 max_features=1.0
+    AP=1.000 ROC-AUC=1.000  transformacion=ninguna n_estimators=100 max_samples=16 max_features=0.6
+    AP=1.000 ROC-AUC=1.000  transformacion=ninguna n_estimators=300 max_samples=auto max_features=1.0
+  Elegida: {'transformacion': 'ninguna', 'n_estimators': 100, 'max_samples': 'auto', 'max_features': 1.0}
+  Umbral (máximo F1 en validación): 0.6050   [puntajes de entrenamiento: mediana 0.4725, máximo 0.5856]
+  Validación:
+    Por ventana (30 s): TP=13 FP=0 FN=0 TN=29  precisión=1.000 recall=1.000 F1=1.000
+    Por incidente: 5/5 detectados (recall 1.00); primera alerta: mediana 11.3 s, máximo 28.0 s
+    Falsas alarmas: 0.0 por hora (0 en 0.35 h)
+  Prueba:
+    Por ventana (30 s): TP=11 FP=1 FN=0 TN=30  precisión=0.917 recall=1.000 F1=0.957
+    Por incidente: 5/5 detectados (recall 1.00); primera alerta: mediana 23.8 s, máximo 28.1 s
+    Falsas alarmas: 2.9 por hora (1 en 0.35 h)
+      S04 I2: detectado, 2/2 ventanas, primera alerta 23.8 s
+      S06 I2: detectado, 2/2 ventanas, primera alerta 27.5 s
+      S07 I2: detectado, 2/2 ventanas, primera alerta 28.1 s
+      S22 I2: detectado, 2/2 ventanas, primera alerta 23.6 s
+      S32 I2: detectado, 3/3 ventanas, primera alerta 14.7 s
+  Comparación — umbral sin etiquetas (máximo de entrenamiento), en prueba:
+    Por ventana (30 s): TP=11 FP=2 FN=0 TN=29  precisión=0.846 recall=1.000 F1=0.917
+    Por incidente: 5/5 detectados (recall 1.00); primera alerta: mediana 23.8 s, máximo 28.1 s
+    Falsas alarmas: 5.7 por hora (2 en 0.35 h)
+  Estabilidad en prueba con 10 semillas: F1 por ventana 0.983 ± 0.028; recall por incidente 1.00 ± 0.00; falsas alarmas/h 1.1 ± 1.9
+
